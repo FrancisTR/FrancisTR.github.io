@@ -202,6 +202,7 @@ body{
     background-color: var(--bg-primary);
     z-index: 169;
     transition: width 200ms ease;
+    height: 100%;
 }
 .navbar-nav{
     list-style: none;
@@ -243,8 +244,9 @@ body{
     font-size: 1.5rem; /* icon size */
     margin: 0 1.5rem;
 }
-.navbar:hover{
+.navbar:hover .NavLogo ion-icon{
     width: 16rem;
+    display: none;
 }
 .navbar:hover .link-text{
     display: block;
@@ -256,50 +258,60 @@ body{
     text-align: center;
     color: var(--text-secondary);
     background: var(--bg-secondary);
-    font-size: 1.5rem;
-    text-transform: uppercase;
+    font-size: 1.3rem; /* 1.5*/
     letter-spacing: 0.3ch;
     width: 100%;
 }
-.NavLogo ion-icon{
-    transform: rotate(0deg);
-    transition: transform 1s;
+.NavLogo:hover ion-icon{
+    display: none;
+}
+.logo-text{
+  display: inline;
+  position: absolute;
+  left: -999px;
+  transition: var(--transition-speed);
 }
 .navbar:hover .NavLogo ion-icon{
     transform: rotate(-180deg);
 }
+
+
 /* Small screen */
 @media only screen and (max-width: 600px){
-    .navbar{
+
+    .navbar {
         bottom: 0;
         width: 100vw;
         height: 5rem;
     }
-    .NavLogo{
+    
+    .NavLogo {
         display: none;
     }
-    .navbar-nav{
+    
+    .navbar-nav {
         flex-direction: row;
     }
-    .nav-link{
+    
+    .nav-link {
         justify-content: center;
     }
-
-    main{
+    
+    main {
         margin: 0;
+        margin-bottom: 5rem;
     }
 
-    /* Testing CURRENTLY */
-    .navbar:hover{
-        width: 0rem;
+    .link-text{
+        display: none;
+        align-items: center;
+        text-align: center;
+        position: absolute;
     }
     .navbar:hover .link-text{
         display: none;
     }
-    .nav-link{
-        transition: none;
-    }
-    /* --- */
+    
 }
 
 /* Large Screen*/
@@ -315,7 +327,15 @@ body{
     }
     .navbar:hover .link-text{
         display: inline; /* inline */
-        transition: opacity var(--transition-speed);
+        
+    }
+
+    .navbar:hover .NavLogo ion-icon{
+        margin-left: 11rem;
+    }
+
+    .navbar:hover .logo-text{
+        left: 0px;
     }
 }
 
@@ -491,7 +511,7 @@ body{
     width: 69%;
     height: auto;
     border-radius: 25px;
-    border: 2px solid white;
+    border: 4px solid orange;
 }
 @media screen and (max-width: 900px){
     .AboutContent{
@@ -558,7 +578,7 @@ body{
 */
 .Skillscontainer{
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -650,16 +670,20 @@ body{
 
 @media screen and (max-width: 990px){
     .Skillscontainer{
-        grid-template-columns: repeat(2, 1fr);
-        padding: 2rem 50px;
+        grid-template-columns: repeat(3, 1fr);
+        padding: 2rem 0px;
     }
 }
 @media screen and (max-width: 650px){
     .Skillscontainer{
-        grid-template-columns: 1fr;
+        grid-template-columns: repeat(2, 1fr); /* 1fr*/
     }
 }
-
+@media screen and (max-width: 290px){
+    .Skillscontainer{
+        grid-template-columns: 1fr; /* 1fr*/
+    }
+}
 
 
 /* -------------------------------------------- */
@@ -859,7 +883,9 @@ body{
     align-items: center;
     justify-content: space-between;
 }
-
+.RBox p{
+    line-height: 30px;
+}
 .Rwrapper .RBox .Rinfo .Rname{
     font-size: 17px;
     font-weight: 600;
@@ -1122,16 +1148,9 @@ body{
 .sci li a:hover{
     color: #fff;
 }
-/* map */
-.Cmap{
-    padding: 0;
-}
-.Cmap iframe{
-    width: 100%;
-    height: 100%;
-}
+
 /* Responsive */
-@media (max-width: 991px){
+@media (max-width: 1005px){/* 991 */
 
     .contactUs{
         padding: 20px;
