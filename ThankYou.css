@@ -1,0 +1,62 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+button{
+    background-color: transparent;
+    color: white;
+    border: 2px solid blueviolet;
+    text-decoration: none;
+    padding: 10px 30px;
+    border-radius: 5px;
+    font-size: 17px;
+    font-weight: bold;
+    margin-top: 5px;
+
+}
+button:hover{
+    background-color: transparent;
+    border: 2px solid orange;
+    color: orange;
+    transition: .4s;
+    cursor: pointer;
+}
+
+
+
+
+
+body .Thankyou{
+    width: 100%;
+    min-height: 100vh;
+    background-image: linear-gradient(#161922, #0e3959);
+    background-size: cover;
+    background-position: center;
+
+    display: grid;
+    place-items: center center;
+}
+
+.Thankyou h1{
+    color: white;
+    text-align: center;
+}
+.Thankyou h4{
+    color: white;
+    text-align: center;
+}
+.PikachuImage{
+    width: 58%;
+    margin: auto;
+    text-align: center;
+}
+.PikachuImage img{
+    width: 58%;
+    height: auto;
+    border-radius: 25px;
+    border: 4px solid white;
+}
