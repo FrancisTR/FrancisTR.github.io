@@ -241,7 +241,7 @@ body{
 }
 .nav-link ion-icon{
     min-width: 2rem;
-    font-size: 1.5rem; /* icon size */
+    font-size: 2rem; /* icon size */
     margin: 0 1.5rem;
 }
 .navbar:hover .NavLogo ion-icon{
@@ -310,6 +310,9 @@ body{
     }
     .navbar:hover .link-text{
         display: none;
+    }
+    .nav-link ion-icon{
+        font-size: 1.3rem; /* icon size */
     }
     
 }
