@@ -596,7 +596,7 @@ body{
     /* cursor: pointer; */
     /* border: 1px solid red; */
 }
-
+/*
 .skill-box:hover > .skill-title:after, .skill-box:hover > .skill-title:before{
     width: 35px;
 }
@@ -604,7 +604,7 @@ body{
 .skill-box:hover .skillimg{
     transform: translateY(-10px);
 }
-
+*/
 .skill-title{
     display: flex;
     flex-direction: column;
@@ -1104,7 +1104,7 @@ body{
 }
 /* Info */
 .Cinfo{
-    background: #0e3959;
+    background: #1c1b29;
 }
 .Cinfo h3{
     color: #fff;
@@ -1118,7 +1118,7 @@ body{
     min-width: 40px;
     height: 40px;
     color: #fff;
-    background: #18b7ff;
+    background: orange;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1204,7 +1204,7 @@ body{
 footer{
     position: relative;
     width: 100%;
-    background: #0e3959;
+    background: #1c1b29;
     min-height: 69px;
     padding: 20px 50px;
     display: flex;
