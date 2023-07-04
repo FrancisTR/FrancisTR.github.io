@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+        <title>Francis' Website</title>
+        <link rel="stylesheet" href="styles.css" />
+        <script defer src="Animate.js"></script>
+        <link rel="shortcut icon" type="x-icon" href="../Images/WebSiteIcon.png" />  
+    </head>
+
+    <body>
+        <!--Nav Bar-->
+        <nav class="navbar">
+            <ul class="navbar-nav">
+
+                <!--Name-->
+                <li class="NavLogo">
+                    <a href="#Home" class="nav-link">
+                        <span class="link-text logo-text">Francis Tran</span>
+                        <ion-icon name="caret-forward-outline"></ion-icon>
+                    </a>
+                </li>
+
+                <!--About Me-->
+                <li class="nav-item">
+                    <a href="#About" class="nav-link">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <span class="link-text navTextAnimate">About me</span>
+                    </a>
+                </li>
+
+                <!--My Skills-->
+                <li class="nav-item">
+                    <a href="#Skills" class="nav-link">
+                        <ion-icon name="code-outline"></ion-icon>
+                        <span class="link-text navTextAnimate">My Skills</span>
+                    </a>
+                </li>
+
+                <!--My Projects-->
+                <li class="nav-item">
+                    <a href="#Projects" class="nav-link">
+                        <ion-icon name="cube-outline"></ion-icon>
+                        <span class="link-text navTextAnimate">My Projects</span>
+                    </a>
+                </li>
+
+                <!--References-->
+                <li class="nav-item">
+                    <a href="#References" class="nav-link">
+                        <ion-icon name="newspaper-outline"></ion-icon>
+                        <span class="link-text navTextAnimate">References</span>
+                    </a>
+                </li>
+
+                <!--Contact Me-->
+                <li class="nav-item">
+                    <a href="#Contact" class="nav-link">
+                        <ion-icon name="send-outline"></ion-icon>
+                        <span class="link-text navTextAnimate">Contact me!</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+
+        <!--BEGINNING OF WEB CONTENT-->   
+        <main>
+            <!--Home Section-->
+            <section id="Home">
+                <div class="banner">
+                    <div class="content">
+                        <h1>Hello! I'm Francis Tran</h1>
+                        <a href='#About'><button><ion-icon name="person-outline"></ion-icon> About me</button></a>
+                        <a href='#Skills'><button><ion-icon name="code-outline"></ion-icon> My Skills</button></a>
+                        <a href='#Projects'><button><ion-icon name="cube-outline"></ion-icon> My Projects</button></a>
+                        <a href='#References'><button><ion-icon name="newspaper-outline"></ion-icon> References</button></a>
+                        <a href='#Contact'><button> <ion-icon name="send-outline"></ion-icon> Contact Me!</button></a>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <!-- About Section -->
+            <section id="About">
+                <div class="banner1"> <!--Background Image-->
+                    <div class="AboutContainer">
+                        <div class="AboutTitle">
+                            <h1>About me!</h1>
+                        </div>
+                        <div class="AboutContent">
+                            <div class="AboutArticle">
+                                <h2>CRM Salesforce Intern | CS & Game Design Student @ University of St. Thomas</h2>
+                                <p>I am currently a 4th year Computer Science student seeking a summer internship in my related field.</p>
+                                <div class="AchieveAward">
+                                    <img src="../Images/Trophy.png" alt="Trophy" />
+                                    <p>Achievements/Awards</p>
+                                    <img src="../Images/Trophy.png" alt="Trophy" />
+                                </div>
+                                <ul>
+                                    <li>St. Thomas ITS Award Nominee</li>
+                                    <li>St. Thomas Deans Honor List <b>x6</b></li>
+                                </ul>
+                            </div>
+                            <div class="AboutImage">
+                                <img src="../Images/Francis.gif" alt="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <!--Skills section-->
+            <section id="Skills">
+                <div class="banner2">
+                    <div class="SkillsInner">
+                        <div class="Skillsheader">
+                            <h1>My Skills</h1>
+                        </div>
+
+                        <div class="Skillscontainer"> <!--Cards -->
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/Python.png" class="skill-icon">
+                                    </div>
+                                    <h3>Python</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/Flask.png" class="skill-icon">
+                                    </div>
+                                    <h3>Flask</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/socket-io.png" class="skill-icon">
+                                    </div>
+                                    <h3>Socket-IO</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/HTML5.png" class="skill-icon">
+                                    </div>
+                                    <h3>HTML5</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/CSS.png" class="skill-icon">
+                                    </div>
+                                    <h3>CSS</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/JavaScript.png" class="skill-icon">
+                                    </div>
+                                    <h3>JavaScript</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/BootStrap.svg" class="skill-icon">
+                                    </div>
+                                    <h3>BootStrap</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/sqlite.png" class="skill-icon">
+                                    </div>
+                                    <h3>SQLite</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/p5.svg" class="skill-icon">
+                                    </div>
+                                    <h3>p5.js</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/Processing.png" class="skill-icon">
+                                    </div>
+                                    <h3>Processing</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/Salesforce.png" class="skill-icon">
+                                    </div>
+                                    <h3>Salesforce</h3>
+                                </div>
+                            </div>
+
+                            <div class="skill-box">
+                                <div class="skill-title">
+                                    <div class="skillimg">
+                                        <img src="../Images/SalesforceApex.png" class="skill-icon">
+                                    </div>
+                                    <h3>Apex</h3>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <!-- Project Section -->
+            <section id="Projects">
+                <div class="banner3">
+                    <div class="projectTitle">
+                        <h1>Projects</h1>
+                    </div>
+                    <div class="cards"> <!-- List of cards -->
+
+                        <div class="card card0 hidden">
+                            <div class="containerCard">
+                                <img src="../Images/Summit_Events.jpg" alt="Summit_Events">
+                            </div>
+                            <div class="details">
+                                <h1>Summit Events App</h1>
+
+                                <!--Code-->
+                                <img src="../Images/Salesforce.png" alt="Salesforce" />
+                                <img src="../Images/SalesforceApex.png" alt="Apex" />
+                                <img src="../Images/JavaScript.png" alt="JS" />
+                                <br>
+                                <a href='#' target="_blank"><button><ion-icon name="cube-outline"></ion-icon> TBD</button></a>
+                                <a href='https://github.com/SFDO-Community/Summit-Events-App' target="_blank"><button><ion-icon name="code-outline"></ion-icon> Source</button></a>
+                                <br>
+                                <p>
+                                    <i>"An open source community events app that serves a broad variety of needs for EDUs and NGOs. 
+                                    The event solution has the flexibility needed to offer events of different types: paid, free, group, guests, and individual. 
+                                    The solution will include the full life cycle of the event: registration, receipting, confirmation, reporting and web faced exposure."</i>
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="card card1 hidden">
+                            <div class="containerCard">
+                                <img src="../Images/CRMProject.png" alt="CRMProject">
+                            </div>
+                            <div class="details">
+                                <h1>CRM St. Thomas New College Application</h1>
+
+                                <!--Code-->
+                                <img src="../Images/Salesforce.png" alt="Salesforce" />
+                                <img src="../Images/HTML5.png" alt="HTML" />
+                                <img src="../Images/CSS.png" alt="CSS" />
+                                <img src="../Images/JavaScript.png" alt="JS" />
+                                <br>
+                                <a href='https://www.stthomas.edu/application/index.html' target="_blank"><button><ion-icon name="cube-outline"></ion-icon> Project</button></a>
+                                <a href='#' target="_blank"><button><ion-icon name="code-outline"></ion-icon> TBD</button></a>
+                                <br>
+                                <p>
+                                    Created the new college applications for the University of St. Thomas. This consist of using Salesforce's Objects & Fields 
+                                    along with HTML/CSS/JS for widget creation in both Undergrad and Grad schools.
+                                    This project is part of the Salesforce EDA Migration Project and currently contributing to this project as a CRM Salesforce Intern at the University of St. Thomas.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="card card2 hidden">
+                            <div class="containerCard">
+                                <img src="../Images/RhythmSwipe.png" alt="RhythmSwipe">
+                            </div>
+                            <div class="details">
+                                <h1>2D Game "Rhythm Swipe"</h1>
+
+                                <!--Code-->
+                                <img src="../Images/HTML5.png" alt="HTML" />
+                                <img src="../Images/CSS.png" alt="CSS" />
+                                <img src="../Images/JavaScript.png" alt="JS" />
+                                <img src="../Images/p5.svg" alt="p5.js" />
+                                <img src="../Images/Processing.png" alt="Processing JS" />
+                                <br>
+                                <a href='https://projectrhythmswipe.netlify.app/' target="_blank"><button><ion-icon name="cube-outline"></ion-icon> Project</button></a>
+                                <a href='#' target="_blank"><button><ion-icon name="code-outline"></ion-icon> TBD</button></a>
+                                <br>
+                                <p>
+                                    A 2D rhythm game where the goal is to collect all the jewels before finishing the level
+                                    without missing the rhythm of the music. This game initially started off as a duo final project
+                                    for CISC 298-01 "Topics: Creat. Code Prac. Tech" and has been expanded during the Summer with more contribution
+                                    from friends. Another version of this game was made in Processing using Arduino and was highlighed in the 
+                                    Creative Coding Exhibition. See the <a href="https://github.com/johntran038/Rhythm-Swipe_Processing" target="_blank">Processing source code here</a>.
+                                </p>
+                            </div>
+                        </div>
+
+
+                        <div class="card card3 hidden">
+                            <div class="containerCard">
+                                <img src="../Images/BubbleChat.jpg" alt="ChatRoom">
+                            </div>
+                            <div class="details">
+                                <h1>BubbleChat App</h1>
+
+                                <!--Code-->
+                                <img src="../Images/Python.png" alt="Python" />
+                                <img id="FlaskIMG" src="../Images/Flask.png" alt="Flask" />
+                                <img src="../Images/sqlite.png" alt="SQLite" />
+                                <img src="../Images/socket-io.png" alt="Socket-IO" />
+                                <img src="../Images/HTML5.png" alt="HTML" />
+                                <img src="../Images/CSS.png" alt="CSS" />
+                                <img src="../Images/JavaScript.png" alt="JS" />
+                                <img src="../Images/BootStrap.svg" alt="BootStrap" />
+                                <br>
+                                <a href='#' target="_blank"><button><ion-icon name="cube-outline"></ion-icon> TBD</button></a>
+                                <a href='#' target="_blank"><button><ion-icon name="code-outline"></ion-icon> TBD</button></a>
+                                <br>
+                                <p>
+                                    A summer project where I created a simple chat app using Flask. 
+                                    In addition, I am currently learning and implementing SQLite along with BootStrap. 
+                                    Currently Work in Progress. More details coming soon!
+                                </p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <!--Recommendation page-->
+            <section id="References">
+                <div class="banner4">
+                    <div class="RecTitle">
+                        <h2>References</h2>
+                    </div>
+                    <div class="Rwrapper">
+
+                        <div class="RBox">
+                            <i class="RBookMark"><ion-icon name="chatbox-ellipses-outline"></ion-icon></i>
+                            <p>"I have worked with Francis since May 2022 as his manager on the CRM Team (Salesforce) at the University of St. Thomas, where he used his excellent web development, technical logic and time management skills to achieve great results...<br>
+                                <br>...During his time with our team, he has developed into the go-to-person on application widget creation and maintenance. Francis worked within the framework to create inviting, informative message with engaging style.
+                                Francis is easy to work with. He is straightforward and clear with communications and drives to answers...<br>
+                                <br>I am very comfortable with giving Francis a task, big or small, and letting him tackle it independently...His independence has allowed me to continue working on diverse projects, while knowing the team is producing more and more results. This summer as our team approached major deadlines that seemed nearly impossible, Francis powered through tasks allowing us to achieve the deadlines..."
+                            </p>
+                            <div class="Rcontent">
+                                <div class="Rinfo">
+                                    <div class="Rname">Mike Walter</div>
+                                    <div class="Rjob">Senior Salesforce Admin @ University at St. Thomas</div>
+                                    <a href='../WebFiles/Mikepdf.html' target="_blank"><button><ion-icon name="document-outline"></ion-icon> View pdf</button></a>
+                                </div>
+                                <div class="Rimage">
+                                    <img src="../Images/Mike-Walter.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="RBox">
+                            <i class="RBookMark"><ion-icon name="chatbox-ellipses-outline"></ion-icon></i>
+                            <p>“I served as a Linkages mentor for Francis during his first year at St Thomas where he showed great curiosity about our university and initiative when making applications and developing resumes, cover letters, etc. As an acquaintance into his second year, he demonstrated increased involvement on campus, seeing him at club events more frequently and endeavored into various projects and improved in his writing as I continued to provide writing assistance.”</p>
+                            <div class="Rcontent">
+                                <div class="Rinfo">
+                                    <div class="Rname">Erick Castellanos</div>
+                                    <div class="Rjob">Community Outreach Coordinator at Great MN Schools</div>
+                                </div>
+                                <div class="Rimage">
+                                    <img src="../Images/ErickC.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="RBox">
+                            <i class="RBookMark"><ion-icon name="chatbox-ellipses-outline"></ion-icon></i>
+                            <p>"Francis is a very careful and thoughtful student and writer. He was in my Intensive Writing class during the Fall of 2020 where he demonstrated a fantastic work ethic and deep engagement with the concepts and processes that we practiced in class. In the end, his writing showed great improvement due to his attention to detail and hard work.
+                                This effort was even more impressive given that he and his peers had to start their first semester of college in the midst of a global pandemic."</p>
+                            <div class="Rcontent">
+                                <div class="Rinfo">
+                                    <div class="Rname">Fernando Sanchez</div>
+                                    <div class="Rjob">Associate Professor of English in Professional Writing @ University of St. Thomas</div>
+                                </div>
+                                <div class="Rimage">
+                                    <img src="../Images/Sanchez.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="RBox">
+                            <i class="RBookMark"><ion-icon name="chatbox-ellipses-outline"></ion-icon></i>
+                            <p>“During Francis' time as a Salesforce CRM Intern at the University of St. Thomas I had the pleasure of interacting with him in my role as Senior Software Engineer. Francis had been tasked with building some interactive widgets for our Admissions Application portal. He dove into this task with enthusiasm and impressed the client, the Admissions department, with his innovation and creativity meeting their desired messaging and design. This task involved building front end Web interactions utilizing coding in HTML, JavaScript, and CSS. Francis was self-motivated to tackle these coding challenges, but also willing to seek guidance when he needed it. We met regularly to review his code and I was impressed with his ability to take constructive instruction but also at what he accomplished all on his own. Francis learns quickly, has an incredibly positive personality, is responsive to instruction, and collaborates well in a team. I have no doubt that Francis is up to any challenge set before him and will excel at any given task. He has my recommendation for any position he pursues.”</p>
+                            <div class="Rcontent">
+                                <div class="Rinfo">
+                                    <div class="Rname">Thaddaeus Dahlberg</div>
+                                    <div class="Rjob">Senior Software Engineer at University of St. Thomas</div>
+                                </div>
+                                <div class="Rimage">
+                                    <img src="../Images/Thad.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="RBox">
+                            <i class="RBookMark"><ion-icon name="chatbox-ellipses-outline"></ion-icon></i>
+                            <p>
+                                “Francis has been a delight to work with. I have asked him to create numerous widgets for our admissions student portal, and each one he has created has been visually appealing and informative. He asks good questions but also quickly picks up on directions. When I have not already sent a request, he is very good at reaching out to see if there is anything I would like him to work on. Lastly, it is clear that Francis is eager to expand his knowledge of graphic design. When he does not have a task assigned, he busies himself with other (usually more challenging) projects so that he can improve. He has truly been the perfect intern and will be very successful in his next role.”
+                            </p>
+                            <div class="Rcontent">
+                                <div class="Rinfo">
+                                    <div class="Rname">Aleece Helland</div>
+                                    <div class="Rjob">Enrollment Services Communications Manager at University of St. Thomas</div>
+                                </div>
+                                <div class="Rimage">
+                                    <img src="../Images/Aleece.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+            <!--Contact Info-->
+            <section id="Contact">
+                <div class="banner5">
+                    <div class="contactUs">
+                        <div class="ContactTitle">
+                            <h2>Contact me!</h2>
+                        </div>
+                        <div class="ContactBox">
+
+                            <!--Form-->
+                            <div class="Ccontact Cform">
+                                <h3>Let's get in Touch!</h3>
+
+                                <!--The form information-->
+                                <form action="https://formsubmit.co/fatran@stthomas.edu" method="post">
+                                    <div class="formBox">
+
+                                        <div class="row50">
+                                            <div class="inputBox">
+                                                <span>First Name <Font color="red">*</Font></span>
+                                                <input type="text" placeholder="John" name="FirstName" id="FirstName" required />
+                                            </div>
+
+                                            <div class="inputBox">
+                                                <span>Last Name <Font color="red">*</Font></span>
+                                                <input type="text" placeholder="Doe" name="LastName" id="LastName" required />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row50">
+                                            <div class="inputBox">
+                                                <span>Email <Font color="red">*</Font></span>
+                                                <input type="email" placeholder="johndoe@example.com" name="Email" id="Email" required />
+                                            </div>
+
+                                            <div class="inputBox">
+                                                <span>Mobile</span>
+                                                <input type="tel" placeholder="+1 (651) 123-4567" name="Phone" />
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row100">
+                                            <div class="inputBox">
+                                                <span>Message <Font color="red">*</Font></span>
+                                                <textarea placeholder="Write your message here" name="Message" required></textarea>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="row100">
+                                            <div class="inputBox">
+                                                <input type="hidden" name="_next" value="https://francistr.github.io/ConfirmationForm/ThankYou.html" />
+                                                <input type="hidden" name="_autoresponse" value="Hello! Thank you for reaching out! I will get back to you as soon as possible!" />
+                                                <input type="submit" value="Send" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+
+
+                            <!--INFO Card-->
+                            <div class="Ccontact Cinfo">
+                                <h3>Contact Info</h3>
+                                <div class="infoBox">
+
+                                    <div>
+                                        <span><ion-icon name="location"></ion-icon></span>
+                                        <p>United States</p>
+                                    </div>
+                                    <div>
+                                        <span><ion-icon name="mail"></ion-icon></span>
+                                        <a href="mailto:fatran@stthomas.edu">fatran@stthomas.edu</a>
+                                    </div>
+                                    
+                                    <!--Social media-->
+                                    <ul class="sci">
+                                        <li><a href="https://linkedin.com/in/francis-tran6832" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></li>
+                                        <li><a href="https://github.com/FrancisTR" target="_blank"><ion-icon name="logo-github"></ion-icon></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            <!-- Footer -->
+            <div class="banner6">
+                <footer>
+                    <ul class="Fmenu">
+                        <li><a href="#Home">Home</a></li>
+                        <li><a href="#About">About</a></li>
+                        <li><a href="#Skills">Skills</a></li>
+                        <li><a href="#Projects">Projects</a></li>
+                        <li><a href="#References">References</a></li>
+                        <li><a href="#Contact">Contact</a></li>
+                    </ul>
+                    <p>Updated since: July 4, 2023</p>
+                    <div class="FooterCred">
+                        <p>Hosted using GitHub Pages. See <a href="https://github.com/FrancisTR/FrancisTR.github.io" target="_blank">Website Repository.</a></p>
+                    </div>
+                </footer>
+            </div>
+
+
+
+            <!--Icon scripts -->
+            <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+            <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+        </main>
+    </body>
+</html>
