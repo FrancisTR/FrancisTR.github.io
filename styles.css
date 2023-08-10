@@ -488,8 +488,8 @@ button:hover{
     text-align: center;
 }
 .AboutImage img{
-    width: 75%;
-    height: 75%;
+    width: 300px;
+    height: 300px;
     border-radius: 25%;
     border: 10px solid orange;
 }
@@ -497,13 +497,29 @@ button:hover{
     .AboutContent{
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .AboutArticle .AchieveAward img{
+        width: 10%;
+        height: 10%;
+        object-fit: cover;
+        margin-top: 15px;
+        /* border: 1px solid red; */
+    }
+
+    .AboutImage img{
+        width: 75%;
+        height: 75%;
+        border-radius: 25%;
+        border: 10px solid orange;
+    }
+    
 }
 .AboutArticle{
     text-align: center;
 }
 .AboutArticle .AchieveAward img{
-    width: 10%;
-    height: 10%;
+    width: 50px;
+    height: 50px;
     object-fit: cover;
     margin-top: 15px;
     /* border: 1px solid red; */
