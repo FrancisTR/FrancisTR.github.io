@@ -1062,7 +1062,7 @@ button:hover{
 }
 
 /* Responsive */
-@media only screen and (max-width: 1335px){/* 991 */
+@media only screen and (max-width: 1135px){/* 991 */
 
     .contactUs{
         padding: 20px;
