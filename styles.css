@@ -343,8 +343,8 @@ button:hover{
         display: none;
     }
     .nav-link ion-icon{
-        min-width: 0.5rem;
-        font-size: 1.1rem; /* icon size */
+        min-width: 0.2rem;
+        font-size: 1rem; /* icon size */
     }
     
 }
