@@ -96,7 +96,7 @@ button:hover{
 .banner{ /*Background image Home*/
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6)), url(../Images/MainHomePage.gif);
+    background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6)), url(../Images/MainHomePage.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
