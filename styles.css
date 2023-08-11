@@ -1087,7 +1087,7 @@ button:hover{
 @media only screen and (max-width: 1135px){/* 991 */
 
     .contactUs{
-        padding: 6%;
+        padding: 20px;
     }
     .ContactBox{
         grid-template-columns: 1fr;
@@ -1106,7 +1106,7 @@ button:hover{
         width: 100%;
     }
     .Ccontact{
-        padding: 30px;
+        padding: 6%;
     }
     .Cmap{
         min-height: 300px;
