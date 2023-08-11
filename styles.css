@@ -349,6 +349,13 @@ button:hover{
     
 }
 
+@media only screen and (max-width: 400px){
+    .nav-link ion-icon{
+        min-width: 0.1rem;
+        font-size: 0.6rem; /* icon size */
+    }
+}
+
 /* Large Screen*/
 @media only screen and (min-width: 600px){
     .navbar{
