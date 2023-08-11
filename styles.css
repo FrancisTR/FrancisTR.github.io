@@ -349,7 +349,7 @@ button:hover{
     
 }
 
-@media only screen and (max-width: 400px){
+@media only screen and (max-width: 300px){
     .nav-link ion-icon{
         min-width: 0.1rem;
         font-size: 0.6rem; /* icon size */
