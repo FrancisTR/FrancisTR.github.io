@@ -158,7 +158,7 @@ button:hover{
 .banner5{ /*Background image for Contact*/
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.3), rgb(0, 0, 0, 0.3)), url(../Images/MainHomePage.gif);
+    background-image: linear-gradient(rgb(0, 0, 0, 0.3), rgb(0, 0, 0, 0.3)), url(../Images/MainHomePage.png);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
