@@ -499,8 +499,8 @@ button:hover{
     }
 
     .AboutArticle .AchieveAward img{
-        width: 10%;
-        height: 10%;
+        width: 10%!important;
+        height: 10%!important;
     }
 
     .AboutImage img{
