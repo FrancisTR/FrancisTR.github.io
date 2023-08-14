@@ -237,7 +237,7 @@ button:hover{
     width: 100%;
 }
 /* Last item to the bottom*/
-.nav-item:last-child(-n+2){
+.nav-item:nth-child(7){
     margin-top: auto;
 }
 
