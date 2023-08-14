@@ -241,6 +241,10 @@ button:hover{
     margin-top: auto;
 }
 
+#social-nav-item span ion-icon{
+    font-size: 18px;
+}
+
 .nav-link{
     display: flex;
     align-items: center;
