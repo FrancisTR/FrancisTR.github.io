@@ -316,7 +316,8 @@ button:hover{
         margin-top: 0;
     }
     
-    .NavLogo {
+    .NavLogo,
+    #social-nav-item{
         display: none;
     }
     
