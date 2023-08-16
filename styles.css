@@ -786,7 +786,7 @@ button:hover{
 }
 
 .details p a{
-    color: blueviolet;
+    color: #ba34eb;
     text-decoration: underline;
 }
 .details p a:hover{
@@ -1198,7 +1198,7 @@ footer .FooterCred{
     font-size: 12px;
 }
 footer .FooterCred a{
-    color: blueviolet;
+    color: #ba34eb;
     text-decoration: underline;
 }
 footer .FooterCred a:hover{
