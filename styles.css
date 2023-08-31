@@ -531,8 +531,26 @@ button:hover{
     color: white;
     text-align: left;
     text-decoration: none;
-    list-style-image: url(../Images/Badge.png);
+    list-style: none;
 }
+
+/* Set the list image as background image*/
+.AboutArticle ul li::before {
+    content: '';
+    display: inline-block;
+    margin-right: 10px;
+ 
+    /* Height of the list image*/
+    height: 10px;
+ 
+    /* Width of the list image*/
+    width: 10px;
+    background-image: url(../Images/Badge.png);
+}
+
+
+
+
 
 
 @media screen and (max-width: 950px){
