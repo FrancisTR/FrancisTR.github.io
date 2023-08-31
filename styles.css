@@ -531,21 +531,13 @@ button:hover{
     color: white;
     text-align: left;
     text-decoration: none;
-    list-style: none;
-}
 
-/* Set the list image as background image*/
-.AboutArticle ul li::before {
-    content: '';
-    display: inline-block;
-    margin-right: 10px;
- 
-    /* Height of the list image*/
-    height: 10px;
- 
-    /* Width of the list image*/
-    width: 10px;
+    list-style: none;
+    padding: 10px 40px;
     background-image: url("https://francistr.github.io/Images/Badge.png");
+    background-repeat: no-repeat;
+    background-position: left center;
+    background-size: 30px;
 }
 
 
