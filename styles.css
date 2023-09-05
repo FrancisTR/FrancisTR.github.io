@@ -237,7 +237,7 @@ button:hover{
     width: 100%;
 }
 /* Last item to the bottom*/
-.nav-item:nth-child(7){
+.nav-item:nth-child(6){
     margin-top: auto;
 }
 
@@ -269,42 +269,14 @@ button:hover{
     margin: 0 1.5rem;
     z-index: 1;
 }
-.navbar:hover .NavLogo ion-icon{
-    width: 16rem;
-    display: none;
-}
 .navbar:hover .link-text{
     display: block;
-}
-/* Main Logo */
-.NavLogo{
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-    text-align: center;
-    color: var(--text-secondary);
-    background: var(--bg-secondary);
-    font-size: 1.3rem; /* 1.5*/
-    letter-spacing: 0.3ch;
-    width: 100%;
-}
-.NavLogo:hover ion-icon{ /* Hide the main logo */
-    display: none;
-}
-.logo-text{ /* text animation For Francis Tran Text */
-    display: inline;
-    position: absolute;
-    left: -999px;
-    transition: var(--transition-speed);
 }
 .navTextAnimate{
     display: inline;
     position: absolute;
     left: -999px;
     transition: var(--transition-speed);
-}
-.navbar:hover .NavLogo ion-icon{
-    transform: rotate(-180deg);
 }
 
 
@@ -320,7 +292,6 @@ button:hover{
         margin-top: 0;
     }
     
-    .NavLogo,
     #social-nav-item{
         display: none;
     }
@@ -357,7 +328,7 @@ button:hover{
 @media only screen and (max-width: 300px){
     .nav-link ion-icon{
         min-width: 0.03rem;
-        font-size: 0.4rem; /* icon size */
+        font-size: 0.55rem; /* icon size */
     }
 }
 
@@ -375,14 +346,6 @@ button:hover{
     .navbar:hover .link-text{
         display: inline;
         
-    }
-
-    .navbar:hover .NavLogo ion-icon{
-        margin-left: 11rem;
-    }
-
-    .navbar:hover .logo-text{
-        left: 0px;
     }
     .navbar:hover .navTextAnimate{
         left: 80px;
@@ -470,6 +433,7 @@ button:hover{
     background-color: #1c1b29;
     padding: 25px 25px;
     border-radius: 25px;
+    border: 5px solid orange;
 }
 .AboutContent .AboutArticle h2{
     color: orange;
@@ -495,15 +459,13 @@ button:hover{
 }
 
 .AboutImage{
-    width: 69%;
+    width: 100%;
     margin: auto;
     text-align: center;
 }
 .AboutImage img{
-    width: 300px;
-    height: 300px;
-    border-radius: 25%;
-    border: 10px solid orange;
+    width: 380px;
+    height: 380px;
 }
 
 .AboutArticle{
@@ -722,40 +684,50 @@ button:hover{
 }
 
 .cards{
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px,1fr)); /* Size of the card*/
-    padding: 20px;
-    grid-gap: 40px;
-    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }
-.card{
+/* Individual cards */
+.card{ 
     background-color: #1c1b29;
+    width: 369px;
+    margin: 15px;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
+    border: 5px solid orange;
 }
 
+/* Images */
 .containerCard{
-    position: relative;
-    clip-path: polygon(0 0,100% 0,100% 85%, 0 100%);
+    /* clip-path: polygon(0 0,100% 0,100% 85%, 0 100%); */
+    height: 369px;
+    margin-bottom: 15px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 14px 14px 0 0;
 }
 
-.containerCard img{
-    width: 100%;
-    object-fit: cover;
-    display: block;
-    border-radius: 20px 20px 0 0;
+.projectImg-1{
+    background-image: url("./Images/RhythmSwipe.png");
+}
+.projectImg-2{
+    background-image: url("./Images/BombocabularyGame.png");
+}
+.projectImg-3{
+    background-image: url("./Images/BubbleChat.jpg");
 }
 
 .containerCard:after{
     content: "";
-    height: 100%;
+    height: 369px;
     width: 100%;
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 20px 20px 0 0;
-    opacity: 0.7;
-}
+    border-radius: 14px 14px 0 0;
+    opacity: 0.3;
+} 
 
 /* List of cards*/
 .card0>.containerCard:after,
@@ -764,7 +736,7 @@ button:hover{
 .card3>.containerCard:after{
     background-image: linear-gradient(
         135deg,
-        #0f4cc8fb,
+        orange,
         white
     );
 }
@@ -803,6 +775,13 @@ button:hover{
 .details p a:hover{
     color: orange;
 }
+
+@media only screen and (max-width: 600px){
+    .card{
+        width: auto;
+        margin: 15px 35px;
+    }
+}
 /* -------------------------------------------- */
 
 
@@ -840,6 +819,7 @@ button:hover{
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
     color: white;
+    border: 5px solid orange;
 }
 .Rwrapper .RBox i.RBookMark{
     font-size: 20px;
@@ -858,6 +838,13 @@ button:hover{
 .Rwrapper .RBox .Rinfo .Rname{
     font-size: 17px;
     font-weight: 600;
+}
+.Rname a{
+    font-size: 20px;
+    color: gray;
+}
+.Rname a:hover{
+    color: white;
 }
 .Rwrapper .RBox .Rinfo .Rjob{
     color: orange;
@@ -974,6 +961,7 @@ button:hover{
     background: #1c1b29;
     box-shadow: 0 5px 35px rgba(0,0,0,0.15);
     border-radius: 25px;
+    border: 5px solid orange;
 }
 
 .Ccontact h3{
@@ -1127,6 +1115,9 @@ button:hover{
     .Cmap{
         min-height: 300px;
         padding: 0;
+    }
+    .Cinfo .infoBox div a{
+        font-size: 1rem;
     }
 }
 

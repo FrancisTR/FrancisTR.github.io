@@ -16,14 +16,6 @@
         <nav class="navbar">
             <ul class="navbar-nav">
 
-                <!--Name-->
-                <li class="NavLogo">
-                    <a href="#Home" class="nav-link">
-                        <span class="link-text logo-text">Francis Tran</span>
-                        <ion-icon name="caret-forward-outline"></ion-icon>
-                    </a>
-                </li>
-
                 <!--About Me-->
                 <li class="nav-item">
                     <a href="#About" class="nav-link">
@@ -282,9 +274,7 @@
                     <div class="cards"> <!-- List of cards -->
 
                         <div class="card card0 hidden">
-                            <div class="containerCard">
-                                <img src="../Images/RhythmSwipe.png" alt="RhythmSwipe" draggable="false" />
-                            </div>
+                            <div class="containerCard projectImg-1"></div>
                             <div class="details">
                                 <h1>Rhythm Swipe Game</h1>
 
@@ -309,9 +299,7 @@
 
                         
                         <div class="card card1 hidden">
-                            <div class="containerCard">
-                                <img src="../Images/BombocabularyGame.png" alt="BomboGame" draggable="false" /> 
-                            </div>
+                            <div class="containerCard projectImg-2"></div>
                             <div class="details">
                                 <h1>Bombocabulary Game</h1>
 
@@ -327,16 +315,14 @@
                                 <a href='https://github.com/FrancisTR/Bombocabulary-Game' target="_blank"><button><ion-icon name="code-outline"></ion-icon> Source</button></a>
                                 <br>
                                 <p>
-                                    A dictionary guessing game that is built using React. The game uses a dictionary API that grabs the definition and lexical categories of a random word from the Oxford word list text document.
+                                    A word guessing game that consist of 1000 words, which one word is chosen at random for the user to guess. This game uses a dictionary API to display the word definition and lexical categories to the User Interface.
                                 </p>
                             </div>
                         </div>
 
 
                         <div class="card card2 hidden">
-                            <div class="containerCard">
-                                <img src="../Images/BubbleChat.jpg" alt="ChatRoom" draggable="false" />
-                            </div>
+                            <div class="containerCard projectImg-3"></div>
                             <div class="details">
                                 <h1>BubbleChat App</h1>
 
@@ -352,20 +338,19 @@
                                 <a href='https://github.com/FrancisTR/BubbleChat-App' target="_blank"><button><ion-icon name="code-outline"></ion-icon> Source</button></a>
                                 <br>
                                 <p>
-                                    A Python, Bootstrap chat application that uses Flask and Socket-IO.
+                                    A Flask chat application that allows to locally chat anyone within the same network. See the GitHub Source Code for more information and demonstration of the application.
                                 </p>
                             </div>
                         </div>
 
                         
-                        <div class="card card3 hidden">
+                        <!-- <div class="card card3 hidden">
                             <div class="containerCard">
                                 <img src="../Images/CRMProject.png" alt="CRMProject" draggable="false" />
                             </div>
                             <div class="details">
                                 <h1>CRM St. Thomas New College Applications</h1>
 
-                                <!--Code-->
                                 <img src="../Images/HTML5.png" alt="HTML" draggable="false" />
                                 <img src="../Images/CSS.png" alt="CSS" draggable="false" />
                                 <img src="../Images/JavaScript.png" alt="JS" draggable="false" />
@@ -380,7 +365,7 @@
                                     a dedication to my work and contribution to the new college application as a CRM Salesforce Intern at the University of St. Thomas.
                                 </p>
                             </div>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div>
@@ -408,7 +393,7 @@
                             </p>
                             <div class="Rcontent">
                                 <div class="Rinfo">
-                                    <div class="Rname">Mike Walter</div>
+                                    <div class="Rname">Mike Walter <a href="https://www.linkedin.com/in/mike-walter-5818a61" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></div>
                                     <div class="Rjob">Senior Salesforce Admin @ University at St. Thomas</div>
                                     <a href='../WebFiles/Mikepdf.html' target="_blank"><button><ion-icon name="document-outline"></ion-icon> View pdf</button></a>
                                 </div>
@@ -424,7 +409,7 @@
                             <p>“I served as a Linkages mentor for Francis during his first year at St Thomas where he showed great curiosity about our university and initiative when making applications and developing resumes, cover letters, etc. As an acquaintance into his second year, he demonstrated increased involvement on campus, seeing him at club events more frequently and endeavored into various projects and improved in his writing as I continued to provide writing assistance.”</p>
                             <div class="Rcontent">
                                 <div class="Rinfo">
-                                    <div class="Rname">Erick Castellanos</div>
+                                    <div class="Rname">Erick Castellanos <a href="https://www.linkedin.com/in/castellanoserick" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></div>
                                     <div class="Rjob">Community Outreach Coordinator at Great MN Schools</div>
                                 </div>
                                 <div class="Rimage">
@@ -440,7 +425,7 @@
                                 This effort was even more impressive given that he and his peers had to start their first semester of college in the midst of a global pandemic."</p>
                             <div class="Rcontent">
                                 <div class="Rinfo">
-                                    <div class="Rname">Fernando Sanchez</div>
+                                    <div class="Rname">Fernando Sanchez <a href="https://www.linkedin.com/in/fernandoksanchez" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></div>
                                     <div class="Rjob">Associate Professor of English in Professional Writing @ University of St. Thomas</div>
                                 </div>
                                 <div class="Rimage">
@@ -455,7 +440,7 @@
                             <p>“During Francis' time as a Salesforce CRM Intern at the University of St. Thomas I had the pleasure of interacting with him in my role as Senior Software Engineer. Francis had been tasked with building some interactive widgets for our Admissions Application portal. He dove into this task with enthusiasm and impressed the client, the Admissions department, with his innovation and creativity meeting their desired messaging and design. This task involved building front end Web interactions utilizing coding in HTML, JavaScript, and CSS. Francis was self-motivated to tackle these coding challenges, but also willing to seek guidance when he needed it. We met regularly to review his code and I was impressed with his ability to take constructive instruction but also at what he accomplished all on his own. Francis learns quickly, has an incredibly positive personality, is responsive to instruction, and collaborates well in a team. I have no doubt that Francis is up to any challenge set before him and will excel at any given task. He has my recommendation for any position he pursues.”</p>
                             <div class="Rcontent">
                                 <div class="Rinfo">
-                                    <div class="Rname">Thaddaeus Dahlberg</div>
+                                    <div class="Rname">Thaddaeus Dahlberg <a href="https://www.linkedin.com/in/thaddaeus" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></div>
                                     <div class="Rjob">Principal Software Engineer at University of St. Thomas</div>
                                 </div>
                                 <div class="Rimage">
@@ -474,7 +459,7 @@
                             </p>
                             <div class="Rcontent">
                                 <div class="Rinfo">
-                                    <div class="Rname">James Heaney</div>
+                                    <div class="Rname">James Heaney <a href="https://www.linkedin.com/in/james-heaney-0398bb14" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></div>
                                     <div class="Rjob">Java Developer at University of St. Thomas</div>
                                 </div>
                                 <div class="Rimage">
@@ -492,7 +477,7 @@
                             </p>
                             <div class="Rcontent">
                                 <div class="Rinfo">
-                                    <div class="Rname">Aleece Helland</div>
+                                    <div class="Rname">Aleece Helland <a href="https://www.linkedin.com/in/aleecehelland" target="_blank"><ion-icon name="logo-linkedin"></ion-icon></a></div>
                                     <div class="Rjob">Associate Director of Admissions at the Humphrey School of Public Affairs</div>
                                 </div>
                                 <div class="Rimage">
@@ -584,7 +569,7 @@
                                     </div>
                                     <div>
                                         <span><ion-icon name="mail"></ion-icon></span>
-                                        <a href="mailto:fatran@stthomas.edu">fatran@stthomas.edu</a>
+                                        <a class="contactMail" href="mailto:fatran@stthomas.edu">fatran@stthomas.edu</a>
                                     </div>
                                     
                                     <!--Social media-->
@@ -629,7 +614,7 @@
                         <li><a href="#References">References</a></li>
                         <li><a href="#Contact">Contact</a></li>
                     </ul>
-                    <p>Updated since: Aug 31, 2023</p>
+                    <p>Updated since: Sep 5, 2023</p>
                     <div class="FooterCred">
                         <p>Hosted using GitHub Pages. See <a href="https://github.com/FrancisTR/FrancisTR.github.io" target="_blank">Website Repository</a>.</p>
                     </div>
