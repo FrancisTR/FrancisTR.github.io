@@ -422,7 +422,7 @@ button:hover{
     font-weight: bold;
 }
 .AboutContent{
-    width: 85%;
+    width: 93%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 40px;
