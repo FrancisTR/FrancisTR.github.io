@@ -29,18 +29,17 @@ main{ /* Putting the nav side bar. THE WHOLE PAGE is affected*/
 button{
     background-color: transparent;
     color: white;
-    border: 2px solid blueviolet;
+    border: 4px solid blueviolet;
     text-decoration: none;
-    padding: 10px 30px;
-    border-radius: 5px;
-    font-size: 17px;
+    padding: .5em 1em;
+    border-radius: .5em;
+    font-size: 1em;
     font-weight: bold;
-    margin-top: 5px;
+    margin-top: .5em;
 
 }
 button:hover{
-    background-color: transparent;
-    border: 2px solid orange;
+    border: 4px solid orange;
     color: orange;
     transition: .4s;
     cursor: pointer;
