@@ -11,9 +11,9 @@ html{
 :root{
     font-size: 16px;
     font-family: sans-serif;
-    --text-primary: #b6b6b6;
-    --text-secondary: #ececec;
-    --bg-primary: #23232e;
+    --text-primary: white;
+    --text-secondary: orange;
+    --bg-primary: #001422;
     --bg-secondary: #141418;
     --transition-speed: 0.3s;
 }
@@ -31,7 +31,7 @@ button{
     color: white;
     border: 4px solid blueviolet;
     text-decoration: none;
-    padding: .5em 1em;
+    padding: .5em 1.5em;
     border-radius: .5em;
     font-size: 1em;
     font-weight: bold;
@@ -95,7 +95,7 @@ button:hover{
 .banner{ /*Background image Home*/
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.6), rgb(0, 0, 0, 0.6)), url(../Images/MainHomePage.png);
+    background-image: linear-gradient(#212128, #212128);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -120,7 +120,7 @@ button:hover{
 .banner2{ /*Background for Skills*/
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(#282d3d, #282d3d);
+    background-image: linear-gradient(#212128, #212128);
     background-size: cover;
     background-position: center;
 
@@ -145,7 +145,7 @@ button:hover{
 .banner4{ /*Background for Recommendation*/
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(#282d3d, #282d3d);
+    background-image: linear-gradient(#212128, #212128);
     background-size: cover;
     background-position: center;
 
@@ -157,7 +157,7 @@ button:hover{
 .banner5{ /*Background image for Contact*/
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(rgb(0, 0, 0, 0.3), rgb(0, 0, 0, 0.3)), url(../Images/MainHomePage.png);
+    background-image: linear-gradient(#212128, #212128);
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -222,6 +222,7 @@ button:hover{
     z-index: 169;
     transition: width 200ms ease;
     height: 100%;
+    border: 5px solid blueviolet;
 }
 .navbar-nav{
     list-style: none;
@@ -265,7 +266,7 @@ button:hover{
 .nav-link ion-icon{
     min-width: 2rem;
     font-size: 2rem; /* icon size */
-    margin: 0 1.5rem;
+    margin: 0 1.2rem;
     z-index: 1;
 }
 .navbar:hover .link-text{
@@ -390,7 +391,6 @@ button:hover{
 }
 .content h1{
     font-size: 70px;
-    color: orange;
 }
 /* -------------------------------------------- */
 
@@ -429,10 +429,10 @@ button:hover{
 }
 .AboutContent .AboutArticle{
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
-    background-color: #1c1b29;
+    background-color: var(--bg-primary);
     padding: 25px 25px;
     border-radius: 25px;
-    border: 5px solid orange;
+    border: 5px solid blueviolet;
 }
 .AboutContent .AboutArticle h2{
     color: orange;
@@ -459,6 +459,7 @@ button:hover{
 
 .AboutImage{
     width: 100%;
+    max-width: 30em;
     margin: auto;
     text-align: center;
 }
@@ -613,7 +614,7 @@ button:hover{
     justify-content: center;
     align-items: center;
     transition: .5s;
-    border: 5px solid orange;
+    border: 5px solid blueviolet;
 }
 .skillimg:after{ /* Gray Shade*/
     content: '';
@@ -689,12 +690,12 @@ button:hover{
 }
 /* Individual cards */
 .card{ 
-    background-color: #1c1b29;
+    background-color: var(--bg-primary);
     width: 369px;
     margin: 15px;
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
-    border: 5px solid orange;
+    border: 5px solid blueviolet;
 }
 
 /* Images */
@@ -814,11 +815,11 @@ button:hover{
 .Rwrapper .RBox{
     padding: 25px;
     width: calc(50% - 10px); /*33 and 10px */
-    background: #1c1b29;
+    background: var(--bg-primary);
     border-radius: 20px;
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
     color: white;
-    border: 5px solid orange;
+    border: 5px solid blueviolet;
 }
 .Rwrapper .RBox i.RBookMark{
     font-size: 20px;
@@ -863,7 +864,7 @@ button:hover{
     width: 75px;
     object-fit: cover;
     border-radius: 50%;
-    border: 5px solid orange;
+    border: 5px solid blueviolet;
 }
 
 @media (max-width: 1045px){
@@ -957,10 +958,10 @@ button:hover{
 }
 .Ccontact{
     padding: 40px;
-    background: #1c1b29;
+    background: var(--bg-primary);
     box-shadow: 0 5px 35px rgba(0,0,0,0.15);
     border-radius: 25px;
-    border: 5px solid orange;
+    border: 5px solid blueviolet;
 }
 
 .Ccontact h3{
@@ -1038,7 +1039,7 @@ button:hover{
 }
 /* Info */
 .Cinfo{
-    background: #1c1b29;
+    background: #001422;
 }
 .Cinfo h3{
     color: #fff;
@@ -1141,7 +1142,7 @@ button:hover{
 footer{
     position: relative;
     width: 100%;
-    background: #1c1b29;
+    background: #001422;
     min-height: 69px;
     padding: 20px 50px;
     display: flex;
