@@ -9,41 +9,36 @@
 button{
     background-color: transparent;
     color: white;
-    border: 2px solid blueviolet;
+    border: 5px solid rgb(0, 95, 190);
     text-decoration: none;
-    padding: 10px 30px;
-    border-radius: 5px;
-    font-size: 17px;
+    padding: .5em 1.5em;
+    border-radius: .5em;
+    font-size: 1em;
     font-weight: bold;
-    margin-top: 5px;
-
 }
 button:hover{
-    background-color: transparent;
-    border: 2px solid orange;
+    border: 5px solid orange;
     color: orange;
     transition: .4s;
     cursor: pointer;
 }
+.backbutton{
+    text-align: center;
+    margin: 1em;
+}
 
 
 
 
 
-body .Thankyou{
-    width: 100%;
-    min-height: 100vh;
-    background-image: linear-gradient(#282d3d, #282d3d);
-    background-size: cover;
-    background-position: center;
-
-    display: grid;
-    place-items: center center;
+body{
+    background-color: #212128;
 }
 
 .Thankyou h1{
     color: orange;
     text-align: center;
+    margin: 1em;
 }
 .Thankyou h4{
     color: white;
@@ -54,8 +49,8 @@ body .Thankyou{
     text-align: center;
 }
 .PikachuImage img{
-    width: 69%;
-    height: auto;
-    border-radius: 25px;
-    border: 4px solid orange;
+    width: 100%;
+    max-width: 20em;
+    border-radius: 1em;
+    border: 5px solid rgb(0, 95, 190);
 }

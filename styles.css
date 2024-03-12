@@ -36,7 +36,6 @@ button{
     font-size: 1em;
     font-weight: bold;
     margin-top: .5em;
-
 }
 button:hover{
     border: 5px solid orange;
@@ -991,7 +990,7 @@ button:hover{
 
 }
 .inputBox span{
-    color: orange;
+    color: white;
     margin-top: 10px;
     margin-bottom: 5px;
     font-weight: 500;
@@ -1016,20 +1015,18 @@ button:hover{
 .inputBox input[type="submit"]{
     background: transparent;
     color: white;
-    border: none;
     font-size: 1.1em;
-    max-width: 120px;
-    font-weight: 500;
-    cursor: pointer;
-    padding: 14px 15px;
-    border: 5px solid rgb(0, 95, 190);
     font-weight: bold;
+    cursor: pointer;
+    border: 5px solid rgb(0, 95, 190);
+    padding: .5em 1.5em;
+    border-radius: .5em;
 }
 
 .inputBox input[type="submit"]:hover{
-    background: transparent;
     border: 5px solid orange;
     color: orange;
+    transition: .4s;
 }
 
 
@@ -1061,11 +1058,11 @@ button:hover{
     margin-right: 15px;
 }
 .Cinfo .infoBox div p{
-    color: #fff;
+    color: orange;
     font-size: 1.1em;
 }
 .Cinfo .infoBox div a{
-    color: #fff;
+    color: orange;
     text-decoration: none;
     font-size: 1.1em;
 }

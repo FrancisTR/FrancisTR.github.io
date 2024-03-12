@@ -14,14 +14,14 @@ a:hover{
 }
 
 .LineBorder {
-    border-bottom: 5px solid cyan;
+    border-bottom: 5px solid rgb(0, 95, 190);
     margin-top: 5px;
     margin-bottom: 5px;
     width: 100%;
 }
 
 .ResumeContainer{
-    border: 5px solid orange;
+    border: 5px solid rgb(0, 95, 190);
 }
 
 .ResumeSection{

@@ -35,7 +35,7 @@ body{
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    border: 4px solid orange;
+    border: 5px solid rgb(0, 95, 190);
 }
 
 video{
@@ -46,5 +46,5 @@ video{
     justify-content: center;
     align-items: center;
     margin: 0 auto;
-    border: 4px solid orange;
+    border: 5px solid rgb(0, 95, 190);
 }
