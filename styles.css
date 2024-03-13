@@ -7,6 +7,7 @@
 }
 html{
     scroll-behavior: smooth;
+    background-color: #212128;
 }
 :root{
     font-size: 16px;
@@ -94,10 +95,6 @@ button:hover{
 .banner{ /*Background image Home*/
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(#212128, #212128);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 
     display: grid;
     place-items: center center;
@@ -107,9 +104,6 @@ button:hover{
 .banner1{ /*Background image for About*/
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(#212128, #212128);
-    background-size: cover;
-    background-position: center;
 
     display: grid;
     place-items: center center;
@@ -119,9 +113,6 @@ button:hover{
 .banner2{ /*Background for Skills*/
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(#212128, #212128);
-    background-size: cover;
-    background-position: center;
 
     display: grid;
     place-items: center center;
@@ -131,9 +122,6 @@ button:hover{
 .banner3{ /*Background image for Projects*/
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(#212128, #212128);
-    background-size: cover;
-    background-position: center;
 
     display: grid;
     place-items: center center;
@@ -144,9 +132,6 @@ button:hover{
 .banner4{ /*Background for Recommendation*/
     width: 100%;
     height: 100vh;
-    background-image: linear-gradient(#212128, #212128);
-    background-size: cover;
-    background-position: center;
 
     display: grid;
     place-items: center center;
@@ -156,10 +141,6 @@ button:hover{
 .banner5{ /*Background image for Contact*/
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(#212128, #212128);
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
 
     display: flex;
     justify-content: center;
@@ -171,9 +152,6 @@ button:hover{
 .banner6{ /*Footer*/
     width: 100%;
     height: 100vh;
-    /* background-image: linear-gradient(#0f4cc8fb, #0f4cc8fb); */
-    background-size: cover;
-    background-position: center;
 
     display: flex;
     justify-content: flex-end;
@@ -323,6 +301,50 @@ button:hover{
     
 }
 
+@media only screen and (max-height: 570px){
+
+    .navbar {
+        bottom: 0;
+        width: 100vw;
+        height: 5rem;
+    }
+    .nav-item:last-child{
+        margin-top: 0;
+    }
+    
+    #social-nav-item{
+        display: none;
+    }
+    
+    .navbar-nav {
+        flex-direction: row;
+    }
+    
+    .nav-link {
+        justify-content: center;
+    }
+    
+    main {
+        margin: 0;
+        margin-bottom: 5rem;
+    }
+
+    .link-text{
+        display: none;
+        align-items: center;
+        text-align: center;
+        position: absolute;
+    }
+    .navbar:hover .link-text{
+        display: none;
+    }
+    .nav-link ion-icon{
+        min-width: 0.2rem;
+        font-size: 1rem; /* icon size */
+    }
+    
+}
+
 @media only screen and (max-width: 300px){
     .nav-link ion-icon{
         min-width: 0.03rem;
@@ -331,7 +353,8 @@ button:hover{
 }
 
 /* Large Screen*/
-@media only screen and (min-width: 600px){
+@media only screen and (min-width: 600px)
+            and (min-height: 570px){
     .navbar{
         top: 0;
         width: 5rem;
@@ -428,7 +451,7 @@ button:hover{
 .AboutContent .AboutArticle{
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
     background-color: var(--bg-primary);
-    padding: 25px 25px;
+    padding: 1em .6em;
     border-radius: 25px;
     border: 5px solid rgb(0, 95, 190);
 }
