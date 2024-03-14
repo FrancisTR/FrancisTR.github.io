@@ -824,21 +824,29 @@ button:hover{
 
 /* Recommendations Page */
 .Rwrapper{
-    max-width: 1500px;
+    /* max-width: 1500px;
     padding: 0 20px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: space-between;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 20px; */
+    max-width: 1500px;
+    padding: 0 1em;
+    margin: 0 auto;
+    columns: 2;
+    column-gap: 1em;
 }
 .Rwrapper .RBox{
-    padding: 25px;
-    width: calc(50% - 10px); /*33 and 10px */
+    padding: 1em;
+    max-width: 50em;
     background: var(--bg-primary);
-    border-radius: 20px;
+    border-radius: 1em;
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
+
+    margin-bottom: 1em;
+    break-inside: avoid;
     color: white;
     border: 5px solid rgb(0, 95, 190);
 }
@@ -888,14 +896,18 @@ button:hover{
     border: 5px solid rgb(0, 95, 190);
 }
 
-@media (max-width: 1045px){
+/* @media (max-width: 1045px){
     .Rwrapper .RBox{
         width: calc(50% - 10px);
         margin: 10px 0;
     }
-}
+} */
 
 @media (max-width: 702px){
+    .Rwrapper{
+        columns: 1;
+    }
+
     .Rwrapper .RBox{
         width: 100%;
     }
