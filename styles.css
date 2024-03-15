@@ -22,6 +22,11 @@ main{ /* Putting the nav side bar. THE WHOLE PAGE is affected*/
     margin-left: 5rem;
 }
 
+@font-face {
+    font-family: "MarioFont";
+    src: url(/Fonts/RetroMario-Regular.otf);
+}
+
 
 
 
@@ -228,7 +233,7 @@ button:hover{
     color: var(--text-primary);
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
-    transition: var(--transition-speed);
+    transition: var(--transition-speed) ease-in-out;
 }
 .nav-link:hover{
     filter: grayscale(0%) opacity(1);
@@ -238,6 +243,9 @@ button:hover{
 .link-text{
     display: none;
     margin-left: 1rem; /* nav text placement */
+    font-size: 1.06em;
+    font-family: "MarioFont";
+    letter-spacing: 2px;
 }
 .nav-link ion-icon{
     min-width: 2rem;
@@ -411,8 +419,50 @@ button:hover{
     color: white;
 }
 .content h1{
-    font-size: 70px;
+    font-family: "MarioFont";
+    font-size: 5em;
+    letter-spacing: 5px;
+    animation: animateMyName 5s ease-in-out infinite;
 }
+
+@keyframes animateMyName{
+
+    0%{
+        color: white;
+        text-shadow: 0 0 3px #001422,
+        0 0 13px #001422,
+        0 0 26px #001422,
+        0 0 52px #001422,
+        0 0 104px #001422;
+    }
+
+    50%{
+        color: orange;
+        text-shadow: 0 0 3px rgb(0, 95, 190),
+        0 0 13px rgb(0, 95, 190),
+        0 0 26px rgb(0, 95, 190),
+        0 0 52px rgb(0, 95, 190),
+        0 0 104px rgb(0, 95, 190);
+    }
+
+    100%{
+        color: white;
+        text-shadow: 0 0 3px #001422,
+        0 0 13px #001422,
+        0 0 26px #001422,
+        0 0 52px #001422,
+        0 0 104px #001422;
+    }
+
+}
+
+/* Mobile view of the header */
+@media screen and (max-width: 360px){
+    .content h1{
+        font-size: 4em;
+    }
+}
+
 /* -------------------------------------------- */
 
 
