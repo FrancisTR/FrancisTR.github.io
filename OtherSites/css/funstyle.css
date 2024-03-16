@@ -38,7 +38,8 @@ body{
     border: 5px solid rgb(0, 95, 190);
 }
 
-video{
+video,
+iframe{
     max-width: 100%;
     max-height: 100%;
     margin-top: 25px!important;
@@ -47,4 +48,12 @@ video{
     align-items: center;
     margin: 0 auto;
     border: 5px solid rgb(0, 95, 190);
+}
+
+a{
+    color: #ba34eb;
+    text-decoration: underline;
+}
+a:hover{
+    color: orange;
 }

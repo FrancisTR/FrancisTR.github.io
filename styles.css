@@ -422,18 +422,18 @@ button:hover{
     font-family: "MarioFont";
     font-size: 5em;
     letter-spacing: 5px;
-    animation: animateMyName 5s ease-in-out infinite;
+    animation: animateMyName 15s ease-in-out infinite;
 }
 
 @keyframes animateMyName{
 
     0%{
-        color: white;
-        text-shadow: 0 0 3px #001422,
-        0 0 13px #001422,
-        0 0 26px #001422,
-        0 0 52px #001422,
-        0 0 104px #001422;
+        color: rgb(0, 95, 190);
+        text-shadow: 0 0 3px orange,
+        0 0 13px orange,
+        0 0 26px orange,
+        0 0 52px orange,
+        0 0 104px orange;
     }
 
     50%{
@@ -446,12 +446,12 @@ button:hover{
     }
 
     100%{
-        color: white;
-        text-shadow: 0 0 3px #001422,
-        0 0 13px #001422,
-        0 0 26px #001422,
-        0 0 52px #001422,
-        0 0 104px #001422;
+        color: rgb(0, 95, 190);
+        text-shadow: 0 0 3px orange,
+        0 0 13px orange,
+        0 0 26px orange,
+        0 0 52px orange,
+        0 0 104px orange;
     }
 
 }
