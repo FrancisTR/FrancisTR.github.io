@@ -5,6 +5,25 @@ body{
     text-decoration: none;
 }
 
+/* Button Style */
+button{
+    background-color: transparent;
+    color: white;
+    border: 5px solid rgb(0, 95, 190);
+    text-decoration: none;
+    padding: .5em 1.5em;
+    border-radius: .5em;
+    font-size: 1em;
+    font-weight: bold;
+    margin-top: .5em;
+}
+button:hover{
+    border: 5px solid orange;
+    color: orange;
+    transition: .4s;
+    cursor: pointer;
+}
+
 
 .FunTitle{
     text-align: center;

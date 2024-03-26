@@ -422,6 +422,7 @@ button:hover{
     font-family: "MarioFont";
     font-size: 5em;
     letter-spacing: 5px;
+    font-weight: lighter;
     animation: animateMyName 15s ease-in-out infinite;
 }
 
@@ -686,16 +687,6 @@ button:hover{
     align-items: center;
     transition: .5s;
     border: 5px solid rgb(0, 95, 190);
-}
-.skillimg:after{ /* Gray Shade*/
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 80px;
-    background: rgba(100, 100, 100, 0.5);
-    border-radius: 50px 0 0 50px;
 }
 
 .skill-title h3{
