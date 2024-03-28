@@ -244,7 +244,6 @@ button:hover{
     display: none;
     margin-left: 1rem; /* nav text placement */
     font-size: 1.06em;
-    font-family: "MarioFont";
     letter-spacing: 2px;
 }
 .nav-link ion-icon{
@@ -263,14 +262,30 @@ button:hover{
     transition: var(--transition-speed);
 }
 
+#checkNav{
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 3rem;
+    cursor: pointer;
+    display: none;
+}
+.NavHamburger{
+    position: relative;
+    color: white;
+    width: 100%;
+    height: 2.8rem;
+    display: none;
+    left: 40%;
+}
 
 /* Small screen */
 @media only screen and (max-width: 600px){
 
     .navbar {
-        bottom: 0;
-        width: 100vw;
-        height: 5rem;
+        top: 0;
+        width: 100%;
+        height: 3rem;
     }
     .nav-item:last-child{
         margin-top: 0;
@@ -279,42 +294,58 @@ button:hover{
     #social-nav-item{
         display: none;
     }
-    
+    #checkNav{
+        display: block;
+        opacity: 0;
+    }
+    .NavHamburger{
+        display: block;
+    }
     .navbar-nav {
-        flex-direction: row;
+        position: relative;
+        top: -999%;
+        transition: all .5s;
+        z-index: -1;
     }
     
-    .nav-link {
+    /* .nav-link {
         justify-content: center;
-    }
+    } */
     
     main {
         margin: 0;
-        margin-bottom: 5rem;
+        margin-top: 3rem;
     }
-
+    .nav-item{
+        margin-top: -0.1em;
+        background-color: var(--bg-primary);
+    }
+    #checkNav:checked ~ .navbar-nav {
+        top: -3%;
+    }
     .link-text{
-        display: none;
         align-items: center;
         text-align: center;
-        position: absolute;
     }
-    .navbar:hover .link-text{
+    /* .navbar:hover .link-text{
         display: none;
+    } */
+
+    .navTextAnimate{
+        left: 5em;
     }
     .nav-link ion-icon{
         min-width: 0.2rem;
-        font-size: 1rem; /* icon size */
+        font-size: 3rem; /* icon size */
     }
     
 }
-
 @media only screen and (max-height: 570px){
 
     .navbar {
-        bottom: 0;
-        width: 100vw;
-        height: 5rem;
+        top: 0;
+        width: 100%;
+        height: 3rem;
     }
     .nav-item:last-child{
         margin-top: 0;
@@ -323,42 +354,61 @@ button:hover{
     #social-nav-item{
         display: none;
     }
-    
+    #checkNav{
+        display: block;
+        opacity: 0;
+    }
+    .NavHamburger{
+        display: block;
+    }
     .navbar-nav {
-        flex-direction: row;
+        position: relative;
+        top: -999%;
+        transition: all .5s;
+        z-index: -1;
     }
     
-    .nav-link {
+    /* .nav-link {
         justify-content: center;
-    }
+    } */
     
     main {
         margin: 0;
-        margin-bottom: 5rem;
+        margin-top: 3rem;
     }
-
+    .nav-item{
+        margin-top: -0.1em;
+        background-color: var(--bg-primary);
+    }
+    #checkNav:checked ~ .navbar-nav {
+        top: -3%;
+    }
     .link-text{
-        display: none;
         align-items: center;
         text-align: center;
-        position: absolute;
     }
-    .navbar:hover .link-text{
+    /* .navbar:hover .link-text{
         display: none;
+    } */
+
+    .navTextAnimate{
+        left: 5em;
     }
+
     .nav-link ion-icon{
         min-width: 0.2rem;
-        font-size: 1rem; /* icon size */
+        font-size: 2.5rem; /* icon size */
     }
     
 }
-
 @media only screen and (max-width: 300px){
     .nav-link ion-icon{
-        min-width: 0.03rem;
-        font-size: 0.55rem; /* icon size */
+        min-width: 0.1rem;
+        font-size: 1rem;
     }
 }
+
+
 
 /* Large Screen*/
 @media only screen and (min-width: 600px)
