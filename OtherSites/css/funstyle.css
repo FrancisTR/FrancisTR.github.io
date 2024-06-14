@@ -42,6 +42,15 @@ button:hover{
     font-weight: 400;
 }
 
+.FunSocialMedia{
+    display: block;
+    justify-content: center;
+    text-align: center;
+}
+.FunSocialMedia button{
+    margin-top: 2em;
+}
+
 .FunShowcase{
     margin-top: 50px;
     margin-bottom: 70px;
