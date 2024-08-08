@@ -41,11 +41,12 @@ button{
     border-radius: .5em;
     font-size: 1em;
     font-weight: bold;
+    transition: .1s;
 }
 button:hover{
     border: 5px solid orange;
     color: orange;
-    transition: .4s;
+    transition: .1s;
     cursor: pointer;
 }
 
@@ -232,7 +233,7 @@ button:hover{
     color: var(--text-primary);
     text-decoration: none;
     filter: grayscale(100%) opacity(0.7);
-    transition: var(--transition-speed) ease-in-out;
+    /* transition: var(--transition-speed) ease-in-out; */
 }
 .nav-link:hover{
     filter: grayscale(0%) opacity(1);
@@ -551,7 +552,7 @@ button:hover{
 .AboutContent .AboutArticle{
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
     background-color: var(--bg-primary);
-    padding: 1em .6em;
+    padding: 1em .9em;
     border-radius: 25px;
     border: 5px solid rgb(0, 95, 190);
 }
@@ -808,6 +809,49 @@ button:hover{
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
     border: 5px solid rgb(0, 95, 190);
 }
+
+.ResumeFeature{
+    position: absolute;
+    top: -15px;
+    left: -15px;
+    width: 150px;
+    height: 150px;
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.ResumeFeature::before{
+    content: 'Resume Featured';
+    position: absolute;
+    width: 150%;
+    height: 40px;
+    background-color: orange;
+    transform: rotate(-45deg) translateY(-20px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: rgb(0, 95, 190);
+    font-size: .8em;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.70);
+}
+.ResumeFeature::after{
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 10px;
+    height: 10px;
+    background: rgb(217, 141, 0);
+    z-index: -1;
+    box-shadow: 140px -140px rgb(217, 141, 0);
+}
+
+
+
 
 /* Images */
 .containerCard{

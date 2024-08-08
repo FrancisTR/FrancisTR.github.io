@@ -15,12 +15,12 @@ button{
     border-radius: .5em;
     font-size: 1em;
     font-weight: bold;
-    margin-top: .5em;
+    transition: .1s;
 }
 button:hover{
     border: 5px solid orange;
     color: orange;
-    transition: .4s;
+    transition: .1s;
     cursor: pointer;
 }
 
