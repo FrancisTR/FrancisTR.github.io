@@ -7,21 +7,55 @@ body{
 
 /* Button Style */
 button{
-    background-color: transparent;
-    color: white;
-    border: 5px solid rgb(0, 95, 190);
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    vertical-align: middle;
     text-decoration: none;
-    padding: .5em 1.5em;
-    border-radius: .5em;
-    font-size: 1em;
-    font-weight: bold;
-    transition: .1s;
+    font-size: inherit;
+    font-family: inherit;
+
+    padding: 1em 2em;
+    border: 2px solid rgb(18, 180, 255);
+    border-radius: 0.75em;
+    font-weight: 700;
+    color: white;
+    text-transform: uppercase;
+    background: rgb(0, 95, 190);
+    transform-style: preserve-3d;
+    transition: .15s cubic-bezier(0, 0, .6, 1);
+}
+
+button::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    background: rgb(18, 180, 255);
+    box-shadow: 0 0 0 2px rgb(18, 180, 255);
+    transform: translate3d(0, .50em, -1em);
+    transition: .15s cubic-bezier(0, 0, .6, 1);
 }
 button:hover{
-    border: 5px solid orange;
-    color: orange;
-    transition: .1s;
-    cursor: pointer;
+    transform: translate(0, .25em);
+}
+
+button:hover::before{
+    box-shadow: 0 0 0 2px rgb(160, 225, 255);
+    transform: translate3d(0, .25em, -1em);
+}
+button:active{
+    background: orange;
+    transform: translate(0, .50em);
+}
+button:active::before{
+    transform: translate3d(0, 0, -1em);
 }
 
 
