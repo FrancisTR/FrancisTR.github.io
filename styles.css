@@ -726,7 +726,9 @@ button:active::before{
 .skill-box{
     padding: 1rem;
     color: #ddd;
-    /* border: 1px solid red; */
+    border-radius: 20px;
+    background-color: var(--bg-primary);
+    border: 5px solid rgb(0, 95, 190);
 }
 .skill-title{
     display: flex;
@@ -745,7 +747,6 @@ button:active::before{
     width: 0;
     height: 4px;
     border-radius: 2px 0 0 2px;
-    
     transition: .5s;
 }
 .skill-title:before{
@@ -756,7 +757,6 @@ button:active::before{
     width: 0;
     height: 4px;
     border-radius: 0 2px 2px 0;
-    
     transition: .5s;
 }
 
@@ -764,13 +764,12 @@ button:active::before{
     width: 90px;
     height: 90px;
     position: relative;
-    border-radius: 45px;
+    border-radius: 20px;
     background-color: #fff;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: .5s;
-    border: 5px solid rgb(0, 95, 190);
 }
 
 .skill-title h3{
