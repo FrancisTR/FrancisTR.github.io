@@ -142,7 +142,7 @@ button:active::before{
 
 .banner1{ /*Background image for About*/
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
     display: grid;
     place-items: center center;
@@ -179,7 +179,7 @@ button:active::before{
 
 .banner5{ /*Background image for Contact*/
     width: 100%;
-    min-height: 100vh;
+    height: 100vh;
 
     display: flex;
     justify-content: center;
@@ -562,7 +562,6 @@ button:active::before{
 /* about page */
 .AboutContainer{
     width: 100%;
-    min-height: 100vh;
 }
 .AboutContainer .AboutTitle{
     width: 100%;
@@ -587,7 +586,7 @@ button:active::before{
     box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.2);
     background-color: var(--bg-primary);
     padding: 1em .9em;
-    border-radius: 25px;
+    border-radius: 1em;
     border: 5px solid rgb(0, 95, 190);
 }
 .AboutContent .AboutArticle h2{
@@ -627,50 +626,11 @@ button:active::before{
 .AboutArticle{
     text-align: center;
 }
-.AboutArticle .AchieveAward img{
-    width: 50px;
-    height: 50px;
-    object-fit: cover;
-    margin-top: 15px;
-    /* border: 1px solid red; */
-}
-.AboutArticle .AchieveAward{
-    display: flex;
-    justify-content: center;
-    font-weight: bold;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.AboutArticle .AchieveAward p{
-    color: orange;
-}
-
-.AboutArticle ul li{
-    color: white;
-    text-align: left;
-    text-decoration: none;
-
-    list-style: none;
-    padding: 10px 40px;
-    background-image: url("https://francistr.github.io/Images/Badge.png");
-    background-repeat: no-repeat;
-    background-position: left center;
-    background-size: 30px;
-}
-
-
-
-
 
 
 @media screen and (max-width: 950px){
     .AboutContent{
         grid-template-columns: repeat(1, 1fr);
-    }
-
-    .AboutArticle .AchieveAward img{
-        width: 10%!important;
-        height: 10%!important;
     }
 
     .AboutImage img{
@@ -726,7 +686,7 @@ button:active::before{
 .skill-box{
     padding: 1rem;
     color: #ddd;
-    border-radius: 20px;
+    border-radius: 1em;
     background-color: var(--bg-primary);
     border: 5px solid rgb(0, 95, 190);
 }
@@ -764,7 +724,7 @@ button:active::before{
     width: 90px;
     height: 90px;
     position: relative;
-    border-radius: 20px;
+    border-radius: 1em;
     background-color: #fff;
     display: flex;
     justify-content: center;
@@ -838,7 +798,7 @@ button:active::before{
     background-color: var(--bg-primary);
     width: 369px;
     margin: 15px;
-    border-radius: 20px;
+    border-radius: 1em;
     box-shadow: 0 0 30px rgba(0,0,0,0.18);
     border: 5px solid rgb(0, 95, 190);
 }
@@ -893,7 +853,7 @@ button:active::before{
     margin-bottom: 15px;
     background-size: cover;
     background-position: center;
-    border-radius: 14px 14px 0 0;
+    border-radius: .69em .69em 0 0;
 }
 
 .projectImg-1{
@@ -917,7 +877,7 @@ button:active::before{
     position: absolute;
     top: 0;
     left: 0;
-    border-radius: 14px 14px 0 0;
+    border-radius: .69em .69em 0 0;
     opacity: 0.3;
 } 
 
@@ -995,14 +955,6 @@ button:active::before{
 
 /* Recommendations Page */
 .Rwrapper{
-    /* max-width: 1500px;
-    padding: 0 20px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px; */
     max-width: 1500px;
     padding: 0 1em;
     margin: 0 auto;
@@ -1056,23 +1008,16 @@ button:active::before{
     height: 75px;
     width: 75px;
     background: blueviolet;
-    border-radius: 50%;
+    border-radius: 1em;
     
 }
 .RBox .Rcontent .Rimage img{
     height: 75px;
     width: 75px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 1em;
     border: 5px solid rgb(0, 95, 190);
 }
-
-/* @media (max-width: 1045px){
-    .Rwrapper .RBox{
-        width: calc(50% - 10px);
-        margin: 10px 0;
-    }
-} */
 
 @media (max-width: 702px){
     .Rwrapper{
@@ -1122,7 +1067,6 @@ button:active::before{
     padding: 40px 100px;
 }
 .contactUs .ContactTitle{
-
     width: 100%;
     display: flex;
     align-items: center;
@@ -1164,7 +1108,7 @@ button:active::before{
     padding: 40px;
     background: var(--bg-primary);
     box-shadow: 0 5px 35px rgba(0,0,0,0.15);
-    border-radius: 25px;
+    border-radius: 1em;
     border: 5px solid rgb(0, 95, 190);
 }
 
@@ -1226,13 +1170,13 @@ button:active::before{
     cursor: pointer;
     border: 5px solid rgb(0, 95, 190);
     padding: .5em 1.5em;
-    border-radius: .5em;
+    border-radius: 1em;
+    transition: .4s;
 }
 
 .inputBox input[type="submit"]:hover{
     border: 5px solid orange;
     color: orange;
-    transition: .4s;
 }
 
 
@@ -1260,7 +1204,7 @@ button:active::before{
     justify-content: center;
     align-items: center;
     font-size: 1.5em;
-    border-radius: 50%;
+    border-radius: .5em;
     margin-right: 15px;
 }
 .Cinfo .infoBox div p{
