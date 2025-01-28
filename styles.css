@@ -561,7 +561,7 @@ button:active::before{
 
 /* about page */
 .AboutContainer{
-    width: 100%;
+    max-width: 80em;
 }
 .AboutContainer .AboutTitle{
     width: 100%;
