@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 50% 10%;
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 50% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 50% 10%;
+    --primary: 221.2 83.2% 53.3%;
+    --primary-foreground: 210 40% 98%;
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 221.2 83.2% 53.3%;
+    --radius: 1rem;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 210 40% 98%;
+    --card: 222.2 50% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 222.2 50% 10%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 193 100% 50%;
+    /* Changed to Squirtle blue*/
+    --primary-foreground: 222.2 47.4% 11.2%;
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 0 0% 100%;
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 224.3 76.3% 48%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+body {
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  background-attachment: fixed;
+}
+
+.nav-indicator {
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 1rem;
+  height: 1px;
+  width: 2rem;
+  background-color: #64748b;
+  transition: all 0.15s ease-in-out;
+}
+
+.group:hover .nav-indicator,
+.group:focus-within .nav-indicator {
+  width: 4rem;
+  height: 2px;
+  background-color: #0d1426;
+}
+
+.nav-indicator.active,
+.group .nav-indicator.active {
+  width: 4rem;
+  height: 2px;
+  background-color: #0d1426;
+}
+
+.dark .group:hover .nav-indicator,
+.dark .group:focus-within .nav-indicator {
+  background-color: #e2e8f0;
+}
+
+.dark .nav-indicator.active,
+.dark .group .nav-indicator.active {
+  background-color: #e2e8f0;
+}
+
+.shiny {
+  font-weight: bold;
+  background: linear-gradient(90deg, #00ccff, #cef5ff, #00ccff);
+  background-size: 200% auto;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    background-position: 200% center;
+  }
+
+  100% {
+    background-position: -200% center;
+  }
+}
