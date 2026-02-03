@@ -27,22 +27,69 @@ export default function Blog() {
   const [error, setError] = useState<string | null>(null)
 
   useEffect(() => {
-    // Ensure fresh data on GitHub Pages by disabling cache and adding a cache-busting param
-    const url = new URL('https://dev.to/api/articles');
-    url.searchParams.set('username', 'francistrdev');
-    url.searchParams.set('per_page', '3'); // Show the top 3 recent
-    url.searchParams.set('t', String(Date.now())); // cache-buster per visit
+    // Poll every 10s and ensure fresh data on GitHub Pages
+    let isUnmounted = false;
+    let currentController: AbortController | null = null;
 
-    fetch(url.toString(), { cache: 'no-store' })
-      .then(res => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.json();
+    const fetchArticles = () => {
+      // Abort any in-flight request before starting a new one (prevents overlaps on slow networks)
+      currentController?.abort();
+      currentController = new AbortController();
+
+      const url = new URL('https://dev.to/api/articles');
+      url.searchParams.set('username', 'francistrdev');
+      url.searchParams.set('per_page', '3'); // Show the top 3 recent
+      url.searchParams.set('t', String(Date.now())); // cache-buster per request
+
+      fetch(url.toString(), {
+        cache: 'no-store',
+        signal: currentController.signal,
       })
-      .then(setArticles)
-      .catch(err => setError(String(err)));
+        .then(res => {
+          if (!res.ok) throw new Error(`HTTP ${res.status}`);
+          return res.json();
+        })
+        .then(data => {
+          if (isUnmounted) return;
+          setArticles(data);
+          setError(null); // clear any prior error on success
+        })
+        .catch(err => {
+          if (isUnmounted) return;
+          // Ignore abort errors during cleanup or rapid polling
+          if ((err as any)?.name === 'AbortError') return;
+          // Log transient errors; avoid flipping UI to "No Post yet!"
+          console.error('Failed to fetch articles:', err);
+        });
+    };
+
+    // Initial load
+    fetchArticles();
+    // Poll every 10 seconds
+    const intervalId = setInterval(fetchArticles, 10_000);
+
+    return () => {
+      isUnmounted = true;
+      clearInterval(intervalId);
+      currentController?.abort();
+    };
   }, []);
 
-  if (error) return <p>No Post yet!</p>;
+  if (error) return (
+    <section id="blog" className="scroll-mt-16 lg:mt-16">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-background/0 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
+        <h2 className="shiny text-xl font-bold uppercase tracking-widest lg:sr-only">
+          Blog
+        </h2>
+      </div>
+      <div className="flex flex-col gap-4 mb-8">
+        <h2 className="shiny hidden text-3xl font-bold lg:block lg:text-start">
+          Blog
+        </h2>
+      </div>
+      <p>No posts yet. Come back later!</p>
+    </section>
+  )
   return (
     <section id="blog" className="scroll-mt-16 lg:mt-16">
       <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-background/0 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
