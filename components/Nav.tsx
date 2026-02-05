@@ -53,7 +53,7 @@ export default function Nav() {
         </p>
         <ul className="flex flex-row gap-6 mt-4">
           <a
-            href="mailto:fatran@stthomas.edu"
+            href="mailto:xst-tran6832@stthomas.edu"
             target="_blank"
             rel="noopener noreferrer"
           >
