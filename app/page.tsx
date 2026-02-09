@@ -1,5 +1,6 @@
 "use client";
 import ThemeScheduler from "@/components/ui/ThemeScheduler";
+import ClickBurst from "@/components/ui/ClickBurst";
 import Head from "next/head";
 import Nav from "@/components/Nav";
 import ExpCard from "@/components/ExpCards";
@@ -45,6 +46,7 @@ export default function Home() {
           },
         ]}
       />
+      <ClickBurst />
       <Head>
         <style jsx global>{`
           body {
