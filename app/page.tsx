@@ -27,10 +27,11 @@ const windows: ThemeWindow[] = [
 
   //     "--card-main-bg": "0, 49%, 10%",
   //     "--skills-card-bg": "hsl(0, 49%, 10%)",
+
   //     "--click-color-1": "rgb(21, 183, 21)",
   //     "--click-color-2": "rgb(255, 122, 122)",
 
-  //     "--custom-cursor": "url('/cursorImg/IceCream.ico') 16 16, auto"
+  //     "--custom-cursor": "url('/cursorImg/ChristmasTree.ico') 16 16, auto"
   //   },
   // },
 
@@ -99,6 +100,9 @@ const windows: ThemeWindow[] = [
 
       "--card-main-bg": "0, 49%, 10%",
       "--skills-card-bg": "hsl(0, 49%, 10%)",
+
+      "--click-color-1": "rgb(21, 183, 21)",
+      "--click-color-2": "rgb(255, 122, 122)",
 
       "--custom-cursor": "url('/cursorImg/ChristmasTree.ico') 16 16, auto"
     },
