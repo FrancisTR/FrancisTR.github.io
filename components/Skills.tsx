@@ -1,6 +1,4 @@
-
 'use client';
-
 import React, { useEffect, useRef } from 'react';
 
 type PhysicsConfig = {
@@ -12,12 +10,12 @@ type PhysicsConfig = {
   colors: string[];
 
   // Physics tuning
-  gravity?: number;               // 0..1 (1 ~ earth)
+  gravity?: number; // 0..1 (1 ~ earth)
   radiusRange?: [number, number]; // px
-  restitution?: number;           // bounciness 0..1
-  friction?: number;              // surface friction
-  frictionAir?: number;           // air drag (0..~0.05)
-  pixelRatio?: number;            // default: devicePixelRatio
+  restitution?: number; // bounciness 0..1
+  friction?: number; // surface friction
+  frictionAir?: number; // air drag (0..~0.05)
+  pixelRatio?: number; // default: devicePixelRatio
 
   // Shake intensity when user scrolls (0.0005..0.01 typical)
   shakeForce?: number;
@@ -25,11 +23,10 @@ type PhysicsConfig = {
 
 type Skill = {
   name: string;
-  src: string;         // icon path
-  palette: string[];   // ball colors for this skill
+  src: string; // icon path
+  palette: string[]; // ball colors for this skill
   options?: Omit<PhysicsConfig, 'colors'>;
 };
-
 
 function PhysicsCanvas({
   logoSrc,
@@ -65,8 +62,6 @@ function PhysicsCanvas({
         Composite,
         Bodies,
         Body,
-        Mouse,
-        MouseConstraint,
         Events,
       } = Matter;
 
@@ -82,7 +77,7 @@ function PhysicsCanvas({
         frictionAir: config.frictionAir ?? 0.002,
         pixelRatio:
           config.pixelRatio ??
-          (typeof window !== 'undefined' ? window.devicePixelRatio || 1 : 1),
+          (typeof window !== 'undefined' ? window.devicePixelRatio ?? 1 : 1),
         shakeForce: config.shakeForce ?? 0.002, // gentle jostle on scroll
       };
 
@@ -116,7 +111,6 @@ function PhysicsCanvas({
       const makeWalls = () => {
         const t = 40; // wall thickness (thick prevents tunneling)
         const half = t / 2;
-
         const walls = [
           Bodies.rectangle(width / 2, -half, width, t, {
             isStatic: true,
@@ -145,7 +139,7 @@ function PhysicsCanvas({
 
       let walls = makeWalls();
 
-      //Balls
+      // Balls
       const randInt = (a: number, b: number) =>
         Math.floor(Math.random() * (b - a + 1)) + a;
 
@@ -158,7 +152,6 @@ function PhysicsCanvas({
         const x = randInt(r + 4, width - r - 4);
         const y = randInt(r + 4, Math.max(r + 4, Math.floor(height * 0.35)));
         const color = cfg.colors[randInt(0, cfg.colors.length - 1)];
-
         const ball = Bodies.circle(x, y, r, {
           restitution: cfg.restitution,
           friction: cfg.friction,
@@ -174,19 +167,9 @@ function PhysicsCanvas({
         Composite.add(engine.world, ball);
       }
 
-      // Drag behavior (bounded)
-      // We keep wall collisions ON while dragging.
-      // Additionally, we clamp positions every tick so dragged balls
-      // cannot be pulled outside the box visually or physically.
-      const mouse = Mouse.create(render.canvas);
-      const mouseConstraint = MouseConstraint.create(engine, {
-        mouse,
-        constraint: { stiffness: 0.2, render: { visible: false } },
-      });
-      Composite.add(engine.world, mouseConstraint);
-      (render as any).mouse = mouse;
+      // Mouse/drag interaction removed to prevent touch scroll conflicts on mobile.
 
-      //Allow page scroll while over the canvas
+      // Allow page scroll while over the canvas
       const enableWheelScrollPassThrough = (canvas: HTMLCanvasElement) => {
         // Let the browser do native vertical panning on touch.
         canvas.style.touchAction = 'pan-y';
@@ -206,8 +189,8 @@ function PhysicsCanvas({
         };
 
         canvas.addEventListener('wheel', onWheel as EventListener, opts);
-        canvas.addEventListener('mousewheel', onWheel as EventListener, opts);       // legacy
-        canvas.addEventListener('DOMMouseScroll', onWheel as EventListener, opts);   // Firefox legacy
+        canvas.addEventListener('mousewheel', onWheel as EventListener, opts); // legacy
+        canvas.addEventListener('DOMMouseScroll', onWheel as EventListener, opts); // Firefox legacy
         canvas.addEventListener('touchmove', onTouchMove as EventListener, opts);
 
         return () => {
@@ -235,6 +218,7 @@ function PhysicsCanvas({
         if (nx !== b.position.x || ny !== b.position.y) {
           // Move inside and damp outward velocity to avoid jitter
           Body.setPosition(b, { x: nx, y: ny });
+
           const vx = b.velocity.x;
           const vy = b.velocity.y;
 
@@ -251,7 +235,7 @@ function PhysicsCanvas({
         }
       };
 
-      // Clamp every tick: ensures NO ball escapes (even while dragging or due to shake)
+      // Clamp every tick: ensures NO ball escapes (even while shaking)
       Events.on(engine, 'afterUpdate', () => {
         for (const b of balls) clampInside(b);
       });
@@ -264,20 +248,22 @@ function PhysicsCanvas({
 
         const onScroll = () => {
           const now = performance.now();
-          const dy = window.scrollY - lastY;     // px
-          const dt = Math.max(8, now - lastT);   // ms
+          const dy = window.scrollY - lastY; // px
+          const dt = Math.max(8, now - lastT); // ms
           lastY = window.scrollY;
           lastT = now;
 
           const v = Math.max(-1, Math.min(1, dy / dt)); // px/ms clamp
-
           // Tiny force so it feels like a jostle, not chaos
           const fy = cfg.shakeForce * v;
           const fx = cfg.shakeForce * v * (Math.random() * 0.6 - 0.3);
 
           for (const b of balls) {
             Body.applyForce(b, b.position, { x: fx, y: fy });
-            Body.setAngularVelocity(b, b.angularVelocity + (Math.random() * 0.02 - 0.01));
+            Body.setAngularVelocity(
+              b,
+              b.angularVelocity + (Math.random() * 0.02 - 0.01),
+            );
           }
         };
 
@@ -357,11 +343,6 @@ function PhysicsCanvas({
   );
 }
 
-
-
-
-
-
 export default function Skills() {
   // Per-tile palettes (customize freely)
   const skills: Skill[] = [
@@ -412,7 +393,7 @@ export default function Skills() {
             <PhysicsCanvas
               logoSrc={s.src}
               logoAlt={`${s.name} logo`}
-              config={{ ...baseConfig, colors: s.palette, ...(s.options || {}) }}
+              config={{ ...baseConfig, colors: s.palette, ...(s.options ?? {}) }}
               className="h-40 sm:h-44 md:h-48" // or "aspect-square"
             />
 
