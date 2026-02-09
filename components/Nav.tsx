@@ -45,8 +45,8 @@ export default function Nav() {
         <h1 className="text-5xl font-bold lg:text-start">
           Francis Tran
         </h1>
-        <h2 className="text-2xl lg:text-start shiny custom-cursor">
-          Full-Stack AI Engineer
+        <h2 className="text-2xl lg:text-start shiny">
+          <span className="custom-cursor">Full-Stack AI Engineer</span>
         </h2>
         <p className="text-lg lg:text-start text-muted-foreground">
           Software Engineering graduate from the University of St. Thomas with 4+ years of overall experience.
