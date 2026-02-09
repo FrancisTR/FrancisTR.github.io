@@ -18,8 +18,8 @@ const inter = Inter({ subsets: ["latin"] });
 const windows: ThemeWindow[] = [
   // Testing
   {
-    start: new Date(2026, 1, 9, 13, 51, 0, 0),      // inclusive
-    end: new Date(2026, 1, 9, 13, 52, 0, 0),     // exclusive
+    start: new Date(2026, 1, 9, 13, 55, 0, 0),      // inclusive
+    end: new Date(2026, 1, 9, 13, 56, 0, 0),     // exclusive
     vars: {
       "--shiny-color": "#285800",
       "--shiny-color-light": "#cef5ff",
