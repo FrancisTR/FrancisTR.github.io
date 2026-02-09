@@ -27,6 +27,8 @@ const windows: ThemeWindow[] = [
 
       "--card-main-bg": "0, 49%, 10%",
       "--skills-card-bg": "hsl(0, 49%, 10%)",
+      "--click-color-1": "rgb(21, 183, 21)",
+      "--click-color-2": "rgb(255, 122, 122)",
     },
   },
 
@@ -41,6 +43,9 @@ const windows: ThemeWindow[] = [
 
       "--card-main-bg": "319, 49%, 10%",
       "--skills-card-bg": "hsl(319, 49%, 10%)",
+
+      "--click-color-1": "rgb(255, 0, 221)",
+      "--click-color-2": "rgb(255, 191, 250)",
     },
   },
   { // St. Patrick's Day (March 17th)
@@ -54,6 +59,9 @@ const windows: ThemeWindow[] = [
 
       "--card-main-bg": "122, 49%, 10%",
       "--skills-card-bg": "hsl(122, 49%, 10%)",
+
+      "--click-color-1": "rgb(0, 255, 13)",
+      "--click-color-2": "rgba(159, 255, 162, 0.93)",
     },
   },
   { // Halloween (October 31st)
@@ -67,6 +75,9 @@ const windows: ThemeWindow[] = [
 
       "--card-main-bg": "38, 49%, 10%",
       "--skills-card-bg": "hsl(38, 49%, 10%)",
+      
+      "--click-color-1": "rgb(255, 166, 0)",
+      "--click-color-2": "rgb(255, 212, 125)",
     },
   },
   { // Christmas (December 25th)
@@ -113,10 +124,12 @@ export default function Home() {
 
           "--card-main-bg": "222.2 50% 10%",
           "--skills-card-bg": "#0C1426",
+          "--click-color-1": "rgb(255, 255, 255)",
+          "--click-color-2": "rgb(255, 255, 255)",
         }}
         tickMs={1000}
         strict={true}
-        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color"]}
+        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color", "--card-main-bg", "--skills-card-bg", "--click-color-1", "--click-color-2"]}
         debug={false}       // <-- watch the console to verify ranges
         mode="local"       // or "utc" if your schedule is authored in UTC
       />

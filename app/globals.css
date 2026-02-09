@@ -17,6 +17,10 @@
 
   /* Skills card */
   --skills-card-bg: #0C1426;
+
+  /* Click colors */
+  --click-color-1: rgb(255, 255, 255);
+  --click-color-2: rgb(255, 255, 255);
 }
 
 
@@ -133,7 +137,7 @@ body {
   left: 50%;
   top: -22px;
   width: 1px;
-  border-left: 1px solid beige;
+  border-left: 2px solid var(--click-color-1);
   animation: vert 0.25s linear;
 }
 
@@ -142,7 +146,7 @@ body {
   left: 50%;
   bottom: -22px;
   width: 1px;
-  border-left: 1px solid beige;
+  border-left: 2px solid var(--click-color-1);
   animation: vert 0.25s linear;
 }
 
@@ -151,7 +155,7 @@ body {
   left: -6px;
   top: 11px;
   height: 1px;
-  border-bottom: 1px solid beige;
+  border-bottom: 2px solid var(--click-color-1);
   animation: horiz 0.25s linear;
 }
 
@@ -160,7 +164,7 @@ body {
   right: -6px;
   top: 11px;
   height: 1px;
-  border-bottom: 1px solid beige;
+  border-bottom: 2px solid var(--click-color-1);
   animation: horiz 0.25s linear;
 }
 
@@ -170,7 +174,7 @@ body {
   top: -11px;
   rotate: 45deg;
   height: 1px;
-  border-bottom: 1px solid beige;
+  border-bottom: 2px solid var(--click-color-2);
   animation: horiz 0.25s linear;
 }
 .click-burst li:nth-child(6) {
@@ -178,7 +182,7 @@ body {
   top: -11px;
   rotate: -45deg;
   height: 1px;
-  border-bottom: 1px solid beige;
+  border-bottom: 2px solid var(--click-color-2);
   animation: horiz 0.25s linear;
 }
 .click-burst li:nth-child(7) {
@@ -186,7 +190,7 @@ body {
   bottom: -11px;
   rotate: -45deg;
   height: 1px;
-  border-bottom: 1px solid beige;
+  border-bottom: 2px solid var(--click-color-2);
   animation: horiz 0.25s linear;
 }
 .click-burst li:nth-child(8) {
@@ -194,11 +198,11 @@ body {
   bottom: -11px;
   rotate: 45deg;
   height: 1px;
-  border-bottom: 1px solid beige;
+  border-bottom: 2px solid var(--click-color-2);
   animation: horiz 0.25s linear;
 }
 
-/* Keyframes from the post */
+/* Keyframes for mouse click */
 @keyframes vert {
   from { height: 22px; }
   to   { height: 0px; }
