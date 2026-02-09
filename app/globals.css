@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Change Theme based on holidays */
+
 @layer base {
   .dark {
     --background: 0 0% 0%;

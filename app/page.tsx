@@ -34,12 +34,17 @@ export default function Home() {
     <>
       <ThemeScheduler
         windows={[
-          {
+          { // Testing
+            start: "2026-02-9T00:00:00",
+            end: "2026-02-10T00:00:00",
+            className: "Portfolio-Testing",
+          },
+          { // Valentine's Day
             start: "2026-02-14T00:00:00",
             end: "2026-02-15T00:00:00",
             className: "Portfolio-valentines-day",
           },
-          {
+          { // Christmas
             start: "2026-12-25T00:00:00",
             end: "2026-12-26T00:00:00",
             className: "Portfolio-christmas",
