@@ -16,18 +16,55 @@ const inter = Inter({ subsets: ["latin"] });
 // new Date(2026, 1, 9, 0, 0, 0, 0)
 // Year, Month, day, hours, minutes, seconds, milliseconds
 const windows: ThemeWindow[] = [
-  // Testing
-  {
-    start: new Date(new Date().getFullYear(), 1, 9, 13, 58, 0, 0),      // inclusive
-    end: new Date(new Date().getFullYear(), 1, 9, 13, 59, 0, 0),     // exclusive
+  { // Testing
+    start: new Date(new Date().getFullYear(), 11, 25, 0, 0, 0, 0),
+    end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
     vars: {
-      "--shiny-color": "#285800",
-      "--shiny-color-light": "#cef5ff",
+      "--shiny-color": "hsl(120, 79%, 40%)",
+      "--shiny-color-light": "#ff7a7a",
 
-      "--primary-main-color": "193 100% 50%",
+      "--primary-main-color": "46, 100%, 50%",
+    },
+  },
 
-      "--card-main-bg": "222.2 50% 10%",
-      "--skills-card-bg": "#0C1426",
+  { // Valentine's Day (February 14th)
+    start: new Date(new Date().getFullYear(), 1, 14, 0, 0, 0, 0),
+    end: new Date(new Date().getFullYear(), 1, 15, 0, 0, 0, 0),
+    vars: {
+      "--shiny-color": "#ff00dd",
+      "--shiny-color-light": "#ffcefb",
+
+      "--primary-main-color": "340, 60%, 70%",
+    },
+  },
+  { // St. Patrick's Day (March 17th)
+    start: new Date(new Date().getFullYear(), 2, 17, 0, 0, 0, 0),
+    end: new Date(new Date().getFullYear(), 2, 18, 0, 0, 0, 0),
+    vars: {
+      "--shiny-color": "#00ff0dee",
+      "--shiny-color-light": "#c7ffca",
+
+      "--primary-main-color": "128, 60%, 70%",
+    },
+  },
+  { // Halloween (October 31st)
+    start: new Date(new Date().getFullYear(), 9, 31, 0, 0, 0, 0),
+    end: new Date(new Date().getFullYear(), 9, 31, 0, 0, 0, 0),
+    vars: {
+      "--shiny-color": "#ffa600ee",
+      "--shiny-color-light": "#6e5b36ee",
+
+      "--primary-main-color": "39, 100%, 50%, 0.93",
+    },
+  },
+  { // Christmas (December 25th)
+    start: new Date(new Date().getFullYear(), 11, 25, 0, 0, 0, 0),
+    end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
+    vars: {
+      "--shiny-color": "hsl(120, 79%, 40%)",
+      "--shiny-color-light": "#ff7a7a",
+
+      "--primary-main-color": "46, 100%, 50%",
     },
   },
 ];
@@ -64,7 +101,7 @@ export default function Home() {
         }}
         tickMs={1000}
         strict={true}
-        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color", "--card-main-bg", "--skills-card-bg"]}
+        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color"]}
         debug={false}       // <-- watch the console to verify ranges
         mode="local"       // or "utc" if your schedule is authored in UTC
       />
