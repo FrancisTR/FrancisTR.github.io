@@ -1,4 +1,3 @@
-// BodySpark.tsx
 import { useEffect } from "react";
 
 /**
