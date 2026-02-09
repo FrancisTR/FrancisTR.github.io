@@ -3,17 +3,26 @@
 @tailwind utilities;
 
 /* Change Theme based on holidays */
+/* Default Variables */
+:root {
+  /* Titles */
+  --shiny-color: #00ccff;
+  --shiny-color-light: #cef5ff;
+
+  /* Skills card */
+  --skills-card-bg: #0C1426;
+}
+
 
 @layer base {
   .dark {
     --background: 0 0% 0%;
     --foreground: 210 40% 98%;
-    --card: 222.2 50% 10%;
+    --card: 222.2 50% 10%; /* Change the background of the card based on holiday */
     --card-foreground: 210 40% 98%;
     --popover: 222.2 50% 10%;
     --popover-foreground: 210 40% 98%;
-    --primary: 193 100% 50%;
-    /* Changed to Squirtle blue*/
+    --primary: 193 100% 50%; /* Sub titles Color change based on holiday */
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -26,7 +35,7 @@
     --border: 217.2 32.6% 17.5%;
     --input: 217.2 32.6% 17.5%;
     --ring: 224.3 76.3% 48%;
-    --radius: 1rem;
+    --radius: .5rem;
   }
 }
 

@@ -398,7 +398,7 @@ export default function Skills() {
             />
 
             {/* Label inside the same card (clean, simple) */}
-            <div className="p-4 bg-[#0C1426]">
+            <div className="p-4 bg-[var(--skills-card-bg)]">
               <p className="text-center text-sm font-medium text-foreground">
                 {s.name}
               </p>

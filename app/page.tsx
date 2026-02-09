@@ -1,5 +1,5 @@
 "use client";
-import ThemeScheduler from "@/components/ui/ThemeScheduler";
+import ThemeScheduler, { ThemeWindow } from "@/components/ui/ThemeScheduler";
 import ClickBurst from "@/components/ui/ClickBurst";
 import Head from "next/head";
 import Nav from "@/components/Nav";
@@ -12,6 +12,30 @@ import { useEffect, useRef } from "react";
 import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
+
+
+const windows: ThemeWindow[] = [
+  // Valentine’s Day — change accent + bg + fg
+  {
+    start: "2026-02-14T00:00:00",
+    end: "2026-02-15T00:00:00",
+    vars: {
+      "--bg": "#fff1f2",
+      "--fg": "#9f1239",
+      "--accent": "#e11d48",
+    },
+  },
+  // St. Patrick’s — green palette
+  {
+    start: "2026-03-17T00:00:00",
+    end: "2026-03-18T00:00:00",
+    vars: {
+      "--bg": "#ecfdf5",
+      "--fg": "#065f46",
+      "--accent": "#10b981",
+    },
+  },
+];
 
 export default function Home() {
   const auraRef = useRef<HTMLDivElement>(null);
@@ -33,23 +57,17 @@ export default function Home() {
   return (
     <>
       <ThemeScheduler
-        windows={[
-          { // Testing
-            start: "2026-02-9T00:00:00",
-            end: "2026-02-10T00:00:00",
-            className: "Portfolio-Testing",
-          },
-          { // Valentine's Day
-            start: "2026-02-14T00:00:00",
-            end: "2026-02-15T00:00:00",
-            className: "Portfolio-valentines-day",
-          },
-          { // Christmas
-            start: "2026-12-25T00:00:00",
-            end: "2026-12-26T00:00:00",
-            className: "Portfolio-christmas",
-          },
-        ]}
+        windows={windows}
+        defaults={{
+          "--bg": "#ffffff",
+          "--fg": "#0f172a",
+          "--accent": "#2563eb",
+        }}
+        tickMs={1000}
+        // Set strict=true if you want to ensure no stale inline vars linger.
+        // If you do, list every var you might set in any window/defaults:
+        strict={true}
+        allKeys={["--bg", "--fg", "--accent"]}
       />
       <ClickBurst />
       <Head>
