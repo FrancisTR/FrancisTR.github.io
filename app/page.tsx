@@ -1,4 +1,5 @@
 "use client";
+import ThemeScheduler from "@/components/ui/ThemeScheduler";
 import Head from "next/head";
 import Nav from "@/components/Nav";
 import ExpCard from "@/components/ExpCards";
@@ -30,6 +31,20 @@ export default function Home() {
 
   return (
     <>
+      <ThemeScheduler
+        windows={[
+          {
+            start: "2026-02-14T00:00:00",
+            end: "2026-02-15T00:00:00",
+            className: "Portfolio-valentines-day",
+          },
+          {
+            start: "2026-12-25T00:00:00",
+            end: "2026-12-26T00:00:00",
+            className: "Portfolio-christmas",
+          },
+        ]}
+      />
       <Head>
         <style jsx global>{`
           body {
