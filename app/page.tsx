@@ -17,13 +17,16 @@ const inter = Inter({ subsets: ["latin"] });
 // Year, Month, day, hours, minutes, seconds, milliseconds
 const windows: ThemeWindow[] = [
   { // Testing
-    start: new Date(new Date().getFullYear(), 11, 25, 0, 0, 0, 0),
+    start: new Date(new Date().getFullYear(), 1, 0, 0, 0, 0, 0),
     end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
     vars: {
       "--shiny-color": "hsl(120, 79%, 40%)",
       "--shiny-color-light": "#ff7a7a",
 
-      "--primary-main-color": "46, 100%, 50%",
+      "--primary-main-color": "120, 79%, 40%",
+
+      "--card-main-bg": "0, 49%, 10%",
+      "--skills-card-bg": "hsl(0, 49%, 10%)",
     },
   },
 
@@ -32,19 +35,25 @@ const windows: ThemeWindow[] = [
     end: new Date(new Date().getFullYear(), 1, 15, 0, 0, 0, 0),
     vars: {
       "--shiny-color": "#ff00dd",
-      "--shiny-color-light": "#ffcefb",
+      "--shiny-color-light": "rgb(255, 191, 250)",
 
-      "--primary-main-color": "340, 60%, 70%",
+      "--primary-main-color": "305, 100%, 88%",
+
+      "--card-main-bg": "319, 49%, 10%",
+      "--skills-card-bg": "hsl(319, 49%, 10%)",
     },
   },
   { // St. Patrick's Day (March 17th)
     start: new Date(new Date().getFullYear(), 2, 17, 0, 0, 0, 0),
     end: new Date(new Date().getFullYear(), 2, 18, 0, 0, 0, 0),
     vars: {
-      "--shiny-color": "#00ff0dee",
-      "--shiny-color-light": "#c7ffca",
+      "--shiny-color": "#00ff0dd0",
+      "--shiny-color-light": "rgba(159, 255, 162, 0.93)",
 
-      "--primary-main-color": "128, 60%, 70%",
+      "--primary-main-color": "122, 100%, 81%, 0.93",
+
+      "--card-main-bg": "122, 49%, 10%",
+      "--skills-card-bg": "hsl(122, 49%, 10%)",
     },
   },
   { // Halloween (October 31st)
@@ -52,9 +61,12 @@ const windows: ThemeWindow[] = [
     end: new Date(new Date().getFullYear(), 9, 31, 0, 0, 0, 0),
     vars: {
       "--shiny-color": "#ffa600ee",
-      "--shiny-color-light": "#6e5b36ee",
+      "--shiny-color-light": "#ffd47dee",
 
-      "--primary-main-color": "39, 100%, 50%, 0.93",
+      "--primary-main-color": "40, 100%, 75%, 0.93",
+
+      "--card-main-bg": "38, 49%, 10%",
+      "--skills-card-bg": "hsl(38, 49%, 10%)",
     },
   },
   { // Christmas (December 25th)
@@ -64,7 +76,10 @@ const windows: ThemeWindow[] = [
       "--shiny-color": "hsl(120, 79%, 40%)",
       "--shiny-color-light": "#ff7a7a",
 
-      "--primary-main-color": "46, 100%, 50%",
+      "--primary-main-color": "120, 79%, 40%",
+
+      "--card-main-bg": "0, 49%, 10%",
+      "--skills-card-bg": "hsl(0, 49%, 10%)",
     },
   },
 ];
