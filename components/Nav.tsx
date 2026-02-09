@@ -45,7 +45,7 @@ export default function Nav() {
         <h1 className="text-5xl font-bold lg:text-start">
           Francis Tran
         </h1>
-        <h2 className="text-2xl lg:text-start shiny">
+        <h2 className="text-2xl lg:text-start shiny custom-cursor">
           Full-Stack AI Engineer
         </h2>
         <p className="text-lg lg:text-start text-muted-foreground">

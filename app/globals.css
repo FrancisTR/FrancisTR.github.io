@@ -21,6 +21,12 @@
   /* Click colors */
   --click-color-1: rgb(255, 255, 255);
   --click-color-2: rgb(255, 255, 255);
+
+  --custom-cursor: url('/cursorImg/IceCream.ico') 16 16, auto
+}
+
+.custom-cursor {
+  cursor: var(--custom-cursor);
 }
 
 

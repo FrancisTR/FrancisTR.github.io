@@ -16,21 +16,23 @@ const inter = Inter({ subsets: ["latin"] });
 // new Date(2026, 1, 9, 0, 0, 0, 0)
 // Year, Month, day, hours, minutes, seconds, milliseconds
 const windows: ThemeWindow[] = [
-  { // Testing
-    start: new Date(new Date().getFullYear(), 1, 0, 0, 0, 0, 0),
-    end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
-    vars: {
-      "--shiny-color": "hsl(120, 79%, 40%)",
-      "--shiny-color-light": "#ff7a7a",
+  // { // Testing Purposes
+  //   start: new Date(new Date().getFullYear(), 1, 0, 0, 0, 0, 0),
+  //   end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
+  //   vars: {
+  //     "--shiny-color": "hsl(120, 79%, 40%)",
+  //     "--shiny-color-light": "#ff7a7a",
 
-      "--primary-main-color": "120, 79%, 40%",
+  //     "--primary-main-color": "120, 79%, 40%",
 
-      "--card-main-bg": "0, 49%, 10%",
-      "--skills-card-bg": "hsl(0, 49%, 10%)",
-      "--click-color-1": "rgb(21, 183, 21)",
-      "--click-color-2": "rgb(255, 122, 122)",
-    },
-  },
+  //     "--card-main-bg": "0, 49%, 10%",
+  //     "--skills-card-bg": "hsl(0, 49%, 10%)",
+  //     "--click-color-1": "rgb(21, 183, 21)",
+  //     "--click-color-2": "rgb(255, 122, 122)",
+
+  //     "--custom-cursor": "url('/cursorImg/IceCream.ico') 16 16, auto"
+  //   },
+  // },
 
   { // Valentine's Day (February 14th)
     start: new Date(new Date().getFullYear(), 1, 14, 0, 0, 0, 0),
@@ -46,6 +48,8 @@ const windows: ThemeWindow[] = [
 
       "--click-color-1": "rgb(255, 0, 221)",
       "--click-color-2": "rgb(255, 191, 250)",
+
+      "--custom-cursor": "url('/cursorImg/Heart.ico') 16 16, auto"
     },
   },
   { // St. Patrick's Day (March 17th)
@@ -62,6 +66,8 @@ const windows: ThemeWindow[] = [
 
       "--click-color-1": "rgb(0, 255, 13)",
       "--click-color-2": "rgba(159, 255, 162, 0.93)",
+
+      "--custom-cursor": "url('/cursorImg/Clover.ico') 16 16, auto"
     },
   },
   { // Halloween (October 31st)
@@ -78,6 +84,8 @@ const windows: ThemeWindow[] = [
       
       "--click-color-1": "rgb(255, 166, 0)",
       "--click-color-2": "rgb(255, 212, 125)",
+
+      "--custom-cursor": "url('/cursorImg/Pumpkin.ico') 16 16, auto"
     },
   },
   { // Christmas (December 25th)
@@ -91,6 +99,8 @@ const windows: ThemeWindow[] = [
 
       "--card-main-bg": "0, 49%, 10%",
       "--skills-card-bg": "hsl(0, 49%, 10%)",
+
+      "--custom-cursor": "url('/cursorImg/ChristmasTree.ico') 16 16, auto"
     },
   },
 ];
@@ -126,10 +136,11 @@ export default function Home() {
           "--skills-card-bg": "#0C1426",
           "--click-color-1": "rgb(255, 255, 255)",
           "--click-color-2": "rgb(255, 255, 255)",
+          "--custom-cursor": "url('/cursorImg/IceCream.ico') 16 16, auto"
         }}
         tickMs={1000}
         strict={true}
-        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color", "--card-main-bg", "--skills-card-bg", "--click-color-1", "--click-color-2"]}
+        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color", "--card-main-bg", "--skills-card-bg", "--click-color-1", "--click-color-2", "--custom-cursor"]}
         debug={false}       // <-- watch the console to verify ranges
         mode="local"       // or "utc" if your schedule is authored in UTC
       />
