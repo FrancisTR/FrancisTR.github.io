@@ -13,26 +13,21 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
-
+// new Date(2026, 1, 9, 0, 0, 0, 0)
+// Year, Month, day, hours, minutes, seconds, milliseconds
 const windows: ThemeWindow[] = [
-  // Valentine’s Day — change accent + bg + fg
+  // Testing
   {
-    start: "2026-02-14T00:00:00",
-    end: "2026-02-15T00:00:00",
+    start: new Date(2026, 1, 9, 12, 53, 0, 0),      // inclusive
+    end: new Date(2026, 1, 9, 12, 54, 0, 0),     // exclusive
     vars: {
-      "--bg": "#fff1f2",
-      "--fg": "#9f1239",
-      "--accent": "#e11d48",
-    },
-  },
-  // St. Patrick’s — green palette
-  {
-    start: "2026-03-17T00:00:00",
-    end: "2026-03-18T00:00:00",
-    vars: {
-      "--bg": "#ecfdf5",
-      "--fg": "#065f46",
-      "--accent": "#10b981",
+      "--shiny-color": "#285800",
+      "--shiny-color-light": "#cef5ff",
+
+      "--primary-main-color": "193 100% 50%",
+
+      "--card-main-bg": "222.2 50% 10%",
+      "--skills-card-bg": "#0C1426",
     },
   },
 ];
@@ -59,15 +54,19 @@ export default function Home() {
       <ThemeScheduler
         windows={windows}
         defaults={{
-          "--bg": "#ffffff",
-          "--fg": "#0f172a",
-          "--accent": "#2563eb",
+          "--shiny-color": "#00ccff",
+          "--shiny-color-light": "#cef5ff",
+
+          "--primary-main-color": "193 100% 50%",
+
+          "--card-main-bg": "222.2 50% 10%",
+          "--skills-card-bg": "#0C1426",
         }}
         tickMs={1000}
-        // Set strict=true if you want to ensure no stale inline vars linger.
-        // If you do, list every var you might set in any window/defaults:
         strict={true}
-        allKeys={["--bg", "--fg", "--accent"]}
+        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color", "--card-main-bg", "--skills-card-bg"]}
+        debug={false}       // <-- watch the console to verify ranges
+        mode="local"       // or "utc" if your schedule is authored in UTC
       />
       <ClickBurst />
       <Head>

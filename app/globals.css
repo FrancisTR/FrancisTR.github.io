@@ -9,6 +9,12 @@
   --shiny-color: #00ccff;
   --shiny-color-light: #cef5ff;
 
+  /* sub-titles */
+  --primary-main-color: 193 100% 50%;
+
+  /* Card itself */
+  --card-main-bg: 222.2 50% 10%;
+
   /* Skills card */
   --skills-card-bg: #0C1426;
 }
@@ -18,11 +24,11 @@
   .dark {
     --background: 0 0% 0%;
     --foreground: 210 40% 98%;
-    --card: 222.2 50% 10%; /* Change the background of the card based on holiday */
+    --card: var(--card-main-bg); /* Change the background of the card based on holiday */
     --card-foreground: 210 40% 98%;
     --popover: 222.2 50% 10%;
     --popover-foreground: 210 40% 98%;
-    --primary: 193 100% 50%; /* Sub titles Color change based on holiday */
+    --primary: var(--primary-main-color); /* Sub titles Color change based on holiday */
     --primary-foreground: 222.2 47.4% 11.2%;
     --secondary: 217.2 32.6% 17.5%;
     --secondary-foreground: 210 40% 98%;
@@ -93,7 +99,7 @@ body {
 
 .shiny {
   font-weight: bold;
-  background: linear-gradient(90deg, #00ccff, #cef5ff, #00ccff);
+  background: linear-gradient(90deg, var(--shiny-color), var(--shiny-color-light), var(--shiny-color));
   background-size: 200% auto;
   color: transparent;
   background-clip: text;
