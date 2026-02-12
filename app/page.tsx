@@ -128,6 +128,7 @@ export default function Home() {
 
   return (
     <>
+      <ClickBurst />
       <ThemeScheduler
         windows={windows}
         defaults={{
@@ -148,7 +149,6 @@ export default function Home() {
         debug={false}       // <-- watch the console to verify ranges
         mode="local"       // or "utc" if your schedule is authored in UTC
       />
-      <ClickBurst />
       <Head>
         <style jsx global>{`
           body {
