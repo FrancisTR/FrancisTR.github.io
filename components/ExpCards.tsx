@@ -13,7 +13,7 @@ import { MoveRight } from "lucide-react";
 const jobPositions = [
   {
     timeline: "May 2022 — Present",
-    currentPosition: "CRM Student Salesforce Intern",
+    currentPosition: "CRM Salesforce Student Administrator",
     place: "University of St. Thomas",
     previousPositions: [""],
     description:
@@ -99,7 +99,8 @@ export default function ExpCard() {
             </CardHeader>
             <CardContent className="flex flex-col p-0">
               <p className="text-primary font-bold">
-                {job.currentPosition} @ {job.place}
+                <p>{job.currentPosition}</p>
+                <p className="text-slate-400">{job.place}</p>
               </p>
               {job.previousPositions.map((position, index) => (
                 <p key={index} className="text-slate-400 text-sm font-bold">
