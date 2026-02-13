@@ -99,8 +99,7 @@ export default function ExpCard() {
             </CardHeader>
             <CardContent className="flex flex-col p-0">
               <p className="text-primary font-bold">
-                <p>{job.currentPosition}</p>
-                <p className="text-slate-400">{job.place}</p>
+                {job.currentPosition} @ {job.place}
               </p>
               {job.previousPositions.map((position, index) => (
                 <p key={index} className="text-slate-400 text-sm font-bold">

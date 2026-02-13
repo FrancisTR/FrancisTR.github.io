@@ -2,6 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin} from "lucide-react";
 import { FaDev } from "react-icons/fa";
+import { SiCodewars } from "react-icons/si";
 import useActiveSection from "@/hooks/useActiveSection";
 
 type NavItem = {
@@ -86,6 +87,15 @@ export default function Nav() {
           >
             <Button variant="outline" size="icon">
               <FaDev className="h-[1.2rem] w-[1.2rem]" />
+            </Button>
+          </a>
+          <a
+            href="https://www.codewars.com/users/FrancisTRDev"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Button variant="outline" size="icon">
+              <SiCodewars className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>
         </ul>
