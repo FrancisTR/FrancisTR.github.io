@@ -1,8 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Mail, Github, Linkedin} from "lucide-react";
-import { FaDev } from "react-icons/fa";
-import { SiHackerrank } from "react-icons/si";
+import { FaDev, FaHackerrank } from "react-icons/fa";
 import useActiveSection from "@/hooks/useActiveSection";
 
 type NavItem = {
@@ -95,7 +94,7 @@ export default function Nav() {
             rel="noopener noreferrer"
           >
             <Button variant="outline" size="icon">
-              <SiHackerrank className="h-[1.2rem] w-[1.2rem]" />
+              <FaHackerrank className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>
         </ul>
