@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { MoveUpRight } from "lucide-react";
+import { Badge, MoveUpRight } from "lucide-react";
 
 type DevToUser = {
   name?: string
@@ -19,7 +19,17 @@ type DevBlog = {
   url: string
   user: DevToUser
   cover_image: string
+  published_timestamp: string
+  positive_reactions_count: number
   description: string
+}
+
+export function formatDate(isoString: string | number | Date) {
+  return new Date(isoString).toLocaleDateString("en-US", {
+    month: "short",
+    day: "numeric",
+    year: "numeric",
+  });
 }
 
 export default function Blog() {
@@ -124,10 +134,12 @@ export default function Blog() {
                 />
               </CardHeader>
               <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
-                <p className="text-primary font-bold">
+                <p className="text-lg text-primary font-bold">
                   {a.title}{" "}
                   <MoveUpRight className="ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
                 </p>
+                <p className="text-sm text-primary">Date Published: <span className='text-white'>{formatDate(a.published_timestamp)}</span></p>
+                <p className="text-sm text-muted-foreground">👍{a.positive_reactions_count}</p>
                 <CardDescription className="py-3 text-muted-foreground">
                   {a.description}
                 </CardDescription>
