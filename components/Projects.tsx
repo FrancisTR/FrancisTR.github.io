@@ -12,7 +12,7 @@ import { MoveUpRight } from "lucide-react";
 
 const jobProjects = [
   {
-    imagePath: "/UnknownProject.png",
+    imagePath: "/ClassifierAI.png",
     title: "ClassifierAI",
     description:
       "A Google Chrome Extension that performs image classification to determine if the images are AI-generated in the google image tab.",
@@ -26,25 +26,38 @@ const jobProjects = [
     link: "https://github.com/FrancisTR/ClassifierAI",
   },
   {
-    imagePath: "/UnknownProject.png",
-    title: "PokeMarket",
+    imagePath: "/RhythmSwipe.png",
+    title: "Rhythm Swipe",
     description:
-      "A Full-Stack application that shows the values for each card in the market. Uses Machine Learning to predict the value of the card.",
+      "A p5.js game where the goal is to collect all gems while following the beat of the music.",
     skills: [
-      "Coming Soon",
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "p5.js",
     ],
-    link: "",
+    link: "https://github.com/FrancisTR/Rhythm-Swipe",
   },
-  {
-    imagePath: "/UnknownProject.png",
-    title: "Lunar Landing RL Research",
-    description:
-      "A research project to see which RL algorithms performs the fastest.",
-    skills: [
-      "Coming Soon",
-    ],
-    link: "",
-  },
+  // {
+  //   imagePath: "/UnknownProject.png",
+  //   title: "PokeMarket",
+  //   description:
+  //     "A Full-Stack application that shows the values for each card in the market. Uses Machine Learning to predict the value of the card.",
+  //   skills: [
+  //     "Coming Soon",
+  //   ],
+  //   link: "",
+  // },
+  // {
+  //   imagePath: "/UnknownProject.png",
+  //   title: "Lunar Landing RL Research",
+  //   description:
+  //     "A research project to see which RL algorithms performs the fastest.",
+  //   skills: [
+  //     "Coming Soon",
+  //   ],
+  //   link: "",
+  // },
 ];
 
 export default function Projects() {
@@ -77,7 +90,7 @@ export default function Projects() {
                   width={1920}
                   height={1080}
                   priority
-                  className="bg-[#141414] mt-2 border border-muted-foreground rounded-[0.5rem]"
+                  className="bg-[#141414] mt-2 border border-muted-foreground"
                 />
               </CardHeader>
               <CardContent className="flex flex-col p-0 w-full lg:w-2/3">

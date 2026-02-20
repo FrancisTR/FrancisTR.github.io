@@ -7,7 +7,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
-import { Badge, MoveUpRight } from "lucide-react";
+import { MoveUpRight } from "lucide-react";
 
 type DevToUser = {
   name?: string
@@ -129,7 +129,7 @@ export default function Blog() {
                   alt={`Screenshot of ${a.title}`}
                   width={1920}
                   height={1080}
-                  className="bg-[#141414] mt-2 border border-muted-foreground rounded-[0.5rem] w-full h-auto"
+                  className="bg-[#141414] mt-2 border border-muted-foreground w-full h-auto"
                   loading="eager"
                 />
               </CardHeader>
