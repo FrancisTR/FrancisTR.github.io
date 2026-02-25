@@ -1,6 +1,6 @@
 "use client";
 import { Button } from "@/components/ui/button";
-import { Mail, Github, Linkedin} from "lucide-react";
+import { Mail, MailOpen, Github, Linkedin } from "lucide-react";
 import { FaDev, FaHackerrank } from "react-icons/fa";
 import useActiveSection from "@/hooks/useActiveSection";
 
@@ -57,8 +57,9 @@ export default function Nav() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Button variant="outline" size="icon">
-              <Mail className="h-[1.2rem] w-[1.2rem]" />
+            <Button variant="outline" size="icon" className="relative group">
+              <Mail className="h-[1.2rem] w-[1.2rem] transition-opacity duration-150 opacity-100 group-hover:opacity-0 pointer-events-none" />
+              <MailOpen className="h-[1.2rem] w-[1.2rem] absolute inset-0 m-auto transition-opacity duration-150 opacity-0 group-hover:opacity-100 pointer-events-none" />
             </Button>
           </a>
           <a
