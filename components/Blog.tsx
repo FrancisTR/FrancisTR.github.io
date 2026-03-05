@@ -138,8 +138,9 @@ export default function Blog() {
                   {a.title}{" "}
                   <MoveUpRight className="ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
                 </p>
-                <p className="text-sm text-primary">Date Published: <span className='text-white'>{formatDate(a.published_timestamp)}</span></p>
-                <p className="text-sm text-muted-foreground">👍{a.positive_reactions_count}</p>
+                <p className="text-sm text-primary">
+                  <span className='text-white'>📅 {formatDate(a.published_timestamp)} 👍{a.positive_reactions_count}</span>
+                </p>
                 <CardDescription className="py-3 text-muted-foreground">
                   {a.description}
                 </CardDescription>
