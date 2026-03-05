@@ -136,7 +136,6 @@ export default function Blog() {
               <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
                 <p className="text-lg text-primary font-bold">
                   {a.title}{" "}
-                  <MoveUpRight className="ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
                 </p>
                 <p className="text-sm text-primary">
                   <span className='text-white'>📅 {formatDate(a.published_timestamp)} 👍{a.positive_reactions_count}</span>
@@ -145,6 +144,7 @@ export default function Blog() {
                   {a.description}
                 </CardDescription>
               </CardContent>
+              <MoveUpRight className="text-primary font-bold ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
             </Card>
           </a>
         ))}

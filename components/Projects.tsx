@@ -14,6 +14,8 @@ const jobProjects = [
   {
     imagePath: "/ClassifierAI.png",
     title: "ClassifierAI",
+    type: "Personal Project",
+    stars: "https://img.shields.io/github/stars/FrancisTR/classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
       "A Google Chrome Extension that performs image classification to determine if the images are AI-generated in the google image tab.",
     skills: [
@@ -28,6 +30,8 @@ const jobProjects = [
   {
     imagePath: "/RhythmSwipe.png",
     title: "Rhythm Swipe",
+    type: "Personal Project",
+    stars: "https://img.shields.io/github/stars/FrancisTR/Rhythm-Swipe?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
       "A p5.js game where the goal is to collect all gems while following the beat of the music.",
     skills: [
@@ -37,6 +41,24 @@ const jobProjects = [
       "p5.js",
     ],
     link: "https://github.com/FrancisTR/Rhythm-Swipe",
+  },
+  {
+    imagePath: "/Forem.png",
+    title: "Forem (Dev.to)",
+    type: "Open-Source Contributor",
+    stars: "https://img.shields.io/github/stars/forem/forem?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    description:
+      "An open-source blogging platform where communities can come together to share ideas and stories.",
+    skills: [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "Ruby on Rails",
+      "Preact",
+      "Redis",
+      "PostgreSQL",
+    ],
+    link: "https://github.com/forem/forem/commits/main/?author=FrancisTRAlt",
   },
   // {
   //   imagePath: "/UnknownProject.png",
@@ -96,17 +118,21 @@ export default function Projects() {
               <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
                 <p className="text-primary font-bold">
                   {project.title}{" "}
-                  <MoveUpRight className="ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
+                </p>
+                <p className="text-sm font-medium mb-1 bg-cyan-500/20 text-cyan-500 w-max px-5 py-2 rounded mt-1">
+                  {project.type}{" "}
+                  <img className="inline-block ml-1" src={project.stars} alt="GitHub Stars" />
                 </p>
                 <CardDescription className="py-3 text-muted-foreground">
                   {project.description}
                 </CardDescription>
-                <CardFooter className="p-0 flex flex-wrap gap-2">
+                <CardFooter className="p-0 flex flex-wrap gap-2 mb-5">
                   {project.skills.map((skill, index) => (
                     <Badge key={index}>{skill}</Badge>
                   ))}
                 </CardFooter>
               </CardContent>
+              <MoveUpRight className="text-primary font-bold ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
             </Card>
           </a>
         ))}
