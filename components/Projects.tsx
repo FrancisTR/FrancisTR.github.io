@@ -58,7 +58,7 @@ const jobProjects = [
       "Redis",
       "PostgreSQL",
     ],
-    link: "https://github.com/forem/forem/commits/main/?author=FrancisTRAlt",
+    link: "https://github.com/forem/forem/pulls?q=author%3AFrancisTRAlt",
   },
   // {
   //   imagePath: "/UnknownProject.png",
