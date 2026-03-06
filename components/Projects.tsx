@@ -119,10 +119,12 @@ export default function Projects() {
                 <p className="text-primary font-bold">
                   {project.title}{" "}
                 </p>
-                <p className="text-sm font-medium mb-1 bg-cyan-500/20 text-cyan-500 w-max px-5 py-2 rounded mt-1">
-                  {project.type}{" "}
-                  <img className="inline-block ml-1" src={project.stars} alt="GitHub Stars" />
-                </p>
+                <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium bg-cyan-500/20 text-cyan-500 px-5 py-2 rounded my-1">
+                  <p>{project.type}</p>
+                  <p>
+                    <img src={project.stars} alt="GitHub Stars" className="w-auto" />
+                  </p>
+                </div>
                 <CardDescription className="py-3 text-muted-foreground">
                   {project.description}
                 </CardDescription>
