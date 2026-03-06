@@ -15,7 +15,7 @@ const jobProjects = [
     imagePath: "/ClassifierAI.png",
     title: "ClassifierAI",
     type: "Personal Project",
-    stars: "https://img.shields.io/github/stars/FrancisTR/classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    stars: "https://img.shields.io/github/stars/FrancisTR/Classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
       "A Google Chrome Extension that performs image classification to determine if the images are AI-generated in the google image tab.",
     skills: [
@@ -119,7 +119,7 @@ export default function Projects() {
                 <p className="text-primary font-bold">
                   {project.title}{" "}
                 </p>
-                <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium bg-cyan-500/20 text-cyan-500 px-5 py-2 rounded my-1">
+                <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium bg-cyan-500/20 text-cyan-500 px-2 py-1 rounded">
                   <p>{project.type}</p>
                   <p>
                     <img src={project.stars} alt="GitHub Stars" className="w-auto" />
