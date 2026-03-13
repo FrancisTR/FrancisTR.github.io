@@ -12,20 +12,22 @@ import { MoveUpRight } from "lucide-react";
 
 const jobProjects = [
   {
-    imagePath: "/ClassifierAI.png",
-    title: "ClassifierAI",
-    type: "Personal Project",
-    stars: "https://img.shields.io/github/stars/FrancisTR/Classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    imagePath: "/Forem.png",
+    title: "Forem (Dev.to)",
+    type: "Open-Source Contributor",
+    stars: "https://img.shields.io/github/stars/forem/forem?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
-      "A Google Chrome Extension that performs image classification to determine if the images are AI-generated in the google image tab.",
+      "An open-source blogging platform where communities can come together to share ideas and stories.",
     skills: [
       "HTML",
       "CSS",
       "JavaScript",
-      "Bootstrap",
-      "ml5.js",
+      "Ruby on Rails",
+      "Preact",
+      "Redis",
+      "PostgreSQL",
     ],
-    link: "https://github.com/FrancisTR/ClassifierAI",
+    link: "https://github.com/forem/forem/pulls?q=author:FrancisTRAlt+is:merged",
   },
   {
     imagePath: "/RhythmSwipe.png",
@@ -43,22 +45,20 @@ const jobProjects = [
     link: "https://github.com/FrancisTR/Rhythm-Swipe",
   },
   {
-    imagePath: "/Forem.png",
-    title: "Forem (Dev.to)",
-    type: "Open-Source Contributor",
-    stars: "https://img.shields.io/github/stars/forem/forem?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    imagePath: "/ClassifierAI.png",
+    title: "ClassifierAI",
+    type: "Personal Project",
+    stars: "https://img.shields.io/github/stars/FrancisTR/Classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
-      "An open-source blogging platform where communities can come together to share ideas and stories.",
+      "A Google Chrome Extension that performs image classification to determine if the images are AI-generated in the google image tab.",
     skills: [
       "HTML",
       "CSS",
       "JavaScript",
-      "Ruby on Rails",
-      "Preact",
-      "Redis",
-      "PostgreSQL",
+      "Bootstrap",
+      "ml5.js",
     ],
-    link: "https://github.com/forem/forem/pulls?q=author%3AFrancisTRAlt",
+    link: "https://github.com/FrancisTR/ClassifierAI",
   },
   // {
   //   imagePath: "/UnknownProject.png",
