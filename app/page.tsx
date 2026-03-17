@@ -13,6 +13,44 @@ import { Inter } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
+// Easter date helpers (Western/Gregorian)
+function getWesternEaster(year: number): Date {
+  // Meeus/Jones/Butcher algorithm
+  const a = year % 19;
+  const b = Math.floor(year / 100);
+  const c = year % 100;
+  const d = Math.floor(b / 4);
+  const e = b % 4;
+  const f = Math.floor((b + 8) / 25);
+  const g = Math.floor((b - f + 1) / 3);
+  const h = (19 * a + b - d - g + 15) % 30;
+  const i = Math.floor(c / 4);
+  const k = c % 4;
+  const l = (32 + 2 * e + 2 * i - h - k) % 7;
+  const m = Math.floor((a + 11 * h + 22 * l) / 451);
+  const month = Math.floor((h + l - 7 * m + 114) / 31); // 3=March, 4=April
+  const day = 1 + ((h + l - 7 * m + 114) % 31);
+
+  // Local midnight to match ThemeScheduler mode="local"
+  return new Date(year, month - 1, day, 0, 0, 0, 0);
+}
+
+function startOfDay(d: Date): Date {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate(), 0, 0, 0, 0);
+}
+
+function addDays(d: Date, days: number): Date {
+  const copy = new Date(d);
+  copy.setDate(copy.getDate() + days);
+  return startOfDay(copy);
+}
+
+// Precompute Easter Sunday for the current year
+const YEAR = new Date().getFullYear();
+const EASTER_SUNDAY = getWesternEaster(YEAR);
+const DAY_AFTER_EASTER = addDays(EASTER_SUNDAY, 1); // exclusive end
+
+
 // new Date(2026, 1, 9, 0, 0, 0, 0)
 // Year, Month, day, hours, minutes, seconds, milliseconds
 const windows: ThemeWindow[] = [
@@ -20,18 +58,18 @@ const windows: ThemeWindow[] = [
   //   start: new Date(new Date().getFullYear(), 1, 0, 0, 0, 0, 0),
   //   end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
   //   vars: {
-  //     "--shiny-color": "hsl(120, 79%, 40%)",
-  //     "--shiny-color-light": "#ff7a7a",
+  //     "--shiny-color": "#92fbff",
+  //     "--shiny-color-light": "#d0c0ff",
 
-  //     "--primary-main-color": "120, 79%, 40%",
+  //     "--primary-main-color": "205, 70%, 78%",
 
-  //     "--card-main-bg": "0, 49%, 10%",
-  //     "--skills-card-bg": "hsl(0, 49%, 10%)",
+  //     "--card-main-bg": "275, 45%, 12%",
+  //     "--skills-card-bg": "hsl(275, 45%, 12%)",
 
-  //     "--click-color-1": "rgb(21, 183, 21)",
-  //     "--click-color-2": "rgb(255, 122, 122)",
+  //     "--click-color-1": "rgb(255, 196, 232)",
+  //     "--click-color-2": "rgb(255, 241, 153)",
 
-  //     "--custom-cursor": "url('/cursorImg/ChristmasTree.ico') 16 16, auto"
+  //     "--custom-cursor": "url('/cursorImg/Egg.ico') 16 16, auto"
   //   },
   // },
 
@@ -71,6 +109,24 @@ const windows: ThemeWindow[] = [
       "--custom-cursor": "url('/cursorImg/Clover.ico') 16 16, auto"
     },
   },
+  { // Easter Sunday (single day)
+    start: EASTER_SUNDAY, // local midnight at Easter Sunday
+    end: DAY_AFTER_EASTER, // ends at Monday 00:00
+    vars: {
+      "--shiny-color": "#92fbff",
+      "--shiny-color-light": "#d0c0ff",
+
+      "--primary-main-color": "205, 70%, 78%",
+
+      "--card-main-bg": "275, 45%, 12%",
+      "--skills-card-bg": "hsl(275, 45%, 12%)",
+
+      "--click-color-1": "rgb(255, 196, 232)",
+      "--click-color-2": "rgb(255, 241, 153)",
+
+      "--custom-cursor": "url('/cursorImg/Egg.ico') 16 16, auto"
+    },
+  },
   { // Halloween (October 31st)
     start: new Date(new Date().getFullYear(), 9, 31, 0, 0, 0, 0),
     end: new Date(new Date().getFullYear(), 9, 31, 0, 0, 0, 0),
@@ -82,7 +138,7 @@ const windows: ThemeWindow[] = [
 
       "--card-main-bg": "38, 49%, 10%",
       "--skills-card-bg": "hsl(38, 49%, 10%)",
-      
+
       "--click-color-1": "rgb(255, 166, 0)",
       "--click-color-2": "rgb(255, 212, 125)",
 
