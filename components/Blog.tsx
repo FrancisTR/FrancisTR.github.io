@@ -122,7 +122,7 @@ export default function Blog() {
             rel="noopener noreferrer"
             className="hover:cursor-pointer"
           >
-            <Card className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent hover:border dark:lg:hover:border-t-blue-900 dark:lg:hover:bg-slate-800/50 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-100/50 lg:hover:border-t-blue-200">
+            <Card className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent hover:border dark:lg:hover:border-t-cyan-900 dark:lg:hover:bg-slate-800/50 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-100/50 lg:hover:border-t-cyan-200">
               <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0">
                 <img
                   src={(a.cover_image && a.cover_image.trim()) || "./Fallback.png"}
