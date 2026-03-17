@@ -6,6 +6,7 @@ export type ThemeWindow = {
   start: string | Date;                 // allow Date or string
   end: string | Date;                   // end is exclusive
   vars: Record<`--${string}`, string>;  // CSS variables to set while active
+  notificationPopUp: string;
 };
 
 type Props = {

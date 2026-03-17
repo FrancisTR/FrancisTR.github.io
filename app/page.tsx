@@ -10,6 +10,8 @@ import Contact from "@/components/Blog";
 import Footer from "@/components/Footer";
 import { useEffect, useRef } from "react";
 import { Inter } from "next/font/google";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,8 +32,6 @@ function getWesternEaster(year: number): Date {
   const m = Math.floor((a + 11 * h + 22 * l) / 451);
   const month = Math.floor((h + l - 7 * m + 114) / 31); // 3=March, 4=April
   const day = 1 + ((h + l - 7 * m + 114) % 31);
-
-  // Local midnight to match ThemeScheduler mode="local"
   return new Date(year, month - 1, day, 0, 0, 0, 0);
 }
 
@@ -50,124 +50,108 @@ const YEAR = new Date().getFullYear();
 const EASTER_SUNDAY = getWesternEaster(YEAR);
 const DAY_AFTER_EASTER = addDays(EASTER_SUNDAY, 1); // exclusive end
 
+// Extend ThemeWindow with id and optional notification message
+type HolidayWindow = ThemeWindow & {
+  id: string;
+  notificationPopUp?: string;
+};
 
-// new Date(2026, 1, 9, 0, 0, 0, 0)
-// Year, Month, day, hours, minutes, seconds, milliseconds
-const windows: ThemeWindow[] = [
-  // { // Testing Purposes
-  //   start: new Date(new Date().getFullYear(), 1, 0, 0, 0, 0, 0),
-  //   end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
-  //   vars: {
-  //     "--shiny-color": "#92fbff",
-  //     "--shiny-color-light": "#d0c0ff",
-
-  //     "--primary-main-color": "205, 70%, 78%",
-
-  //     "--card-main-bg": "275, 45%, 12%",
-  //     "--skills-card-bg": "hsl(275, 45%, 12%)",
-
-  //     "--click-color-1": "rgb(255, 196, 232)",
-  //     "--click-color-2": "rgb(255, 241, 153)",
-
-  //     "--custom-cursor": "url('/cursorImg/Egg.ico') 16 16, auto"
-  //   },
-  // },
-
-  { // Valentine's Day (February 14th)
-    start: new Date(new Date().getFullYear(), 1, 14, 0, 0, 0, 0),
-    end: new Date(new Date().getFullYear(), 1, 15, 0, 0, 0, 0),
+// Year, Month (0-based), Day, Hours, Minutes, Seconds, Milliseconds
+const windows: HolidayWindow[] = [
+  {
+    // Valentine's Day (February 14th)
+    id: "valentines",
+    start: new Date(YEAR, 1, 14, 0, 0, 0, 0),
+    end: new Date(YEAR, 1, 15, 0, 0, 0, 0),
     vars: {
       "--shiny-color": "#ff00dd",
       "--shiny-color-light": "rgb(255, 191, 250)",
-
       "--primary-main-color": "305, 100%, 88%",
-
       "--card-main-bg": "319, 49%, 10%",
       "--skills-card-bg": "hsl(319, 49%, 10%)",
-
       "--click-color-1": "rgb(255, 0, 221)",
       "--click-color-2": "rgb(255, 191, 250)",
-
-      "--custom-cursor": "url('/cursorImg/Heart.ico') 16 16, auto"
+      "--custom-cursor": "url('/cursorImg/Heart.ico') 16 16, auto",
     },
+    notificationPopUp: "❤️ Happy Valentine's Day!",
   },
-  { // St. Patrick's Day (March 17th)
-    start: new Date(new Date().getFullYear(), 2, 17, 0, 0, 0, 0),
-    end: new Date(new Date().getFullYear(), 2, 18, 0, 0, 0, 0),
+  {
+    // St. Patrick's Day (March 17th)
+    id: "st-patricks",
+    start: new Date(YEAR, 2, 17, 0, 0, 0, 0),
+    end: new Date(YEAR, 2, 18, 0, 0, 0, 0),
     vars: {
       "--shiny-color": "#00ff0dd0",
       "--shiny-color-light": "rgba(159, 255, 162, 0.93)",
-
       "--primary-main-color": "122, 100%, 81%, 0.93",
-
       "--card-main-bg": "122, 49%, 10%",
       "--skills-card-bg": "hsl(122, 49%, 10%)",
-
       "--click-color-1": "rgb(0, 255, 13)",
       "--click-color-2": "rgba(159, 255, 162, 0.93)",
-
-      "--custom-cursor": "url('/cursorImg/Clover.ico') 16 16, auto"
+      "--custom-cursor": "url('/cursorImg/Clover.ico') 16 16, auto",
     },
+    notificationPopUp: "🍀 Happy St. Patrick's Day!",
   },
-  { // Easter Sunday (single day)
+  {
+    // Easter Sunday (single day)
+    id: "easter",
     start: EASTER_SUNDAY, // local midnight at Easter Sunday
     end: DAY_AFTER_EASTER, // ends at Monday 00:00
     vars: {
       "--shiny-color": "#92fbff",
       "--shiny-color-light": "#d0c0ff",
-
       "--primary-main-color": "205, 70%, 78%",
-
       "--card-main-bg": "275, 45%, 12%",
       "--skills-card-bg": "hsl(275, 45%, 12%)",
-
       "--click-color-1": "rgb(255, 196, 232)",
       "--click-color-2": "rgb(255, 241, 153)",
-
-      "--custom-cursor": "url('/cursorImg/Egg.ico') 16 16, auto"
+      "--custom-cursor": "url('/cursorImg/Egg.ico') 16 16, auto",
     },
+    notificationPopUp: "🐣 Happy Easter!",
   },
-  { // Halloween (October 31st)
-    start: new Date(new Date().getFullYear(), 9, 31, 0, 0, 0, 0),
-    end: new Date(new Date().getFullYear(), 9, 31, 0, 0, 0, 0),
+  {
+    // Halloween (October 31st) — FIXED end date to Nov 1
+    id: "halloween",
+    start: new Date(YEAR, 9, 31, 0, 0, 0, 0), // Oct is 9
+    end: new Date(YEAR, 10, 1, 0, 0, 0, 0), // Nov 1 (next day midnight)
     vars: {
       "--shiny-color": "#ffa600ee",
       "--shiny-color-light": "#ffd47dee",
-
       "--primary-main-color": "40, 100%, 75%, 0.93",
-
       "--card-main-bg": "38, 49%, 10%",
       "--skills-card-bg": "hsl(38, 49%, 10%)",
-
       "--click-color-1": "rgb(255, 166, 0)",
       "--click-color-2": "rgb(255, 212, 125)",
-
-      "--custom-cursor": "url('/cursorImg/Pumpkin.ico') 16 16, auto"
+      "--custom-cursor": "url('/cursorImg/Pumpkin.ico') 16 16, auto",
     },
+    notificationPopUp: "👻 Happy Halloween!",
   },
-  { // Christmas (December 25th)
-    start: new Date(new Date().getFullYear(), 11, 25, 0, 0, 0, 0),
-    end: new Date(new Date().getFullYear(), 11, 26, 0, 0, 0, 0),
+  {
+    // Christmas (December 25th)
+    id: "christmas",
+    start: new Date(YEAR, 11, 25, 0, 0, 0, 0),
+    end: new Date(YEAR, 11, 26, 0, 0, 0, 0),
     vars: {
       "--shiny-color": "hsl(120, 79%, 40%)",
       "--shiny-color-light": "#ff7a7a",
-
       "--primary-main-color": "120, 79%, 40%",
-
       "--card-main-bg": "0, 49%, 10%",
       "--skills-card-bg": "hsl(0, 49%, 10%)",
-
       "--click-color-1": "rgb(21, 183, 21)",
       "--click-color-2": "rgb(255, 122, 122)",
-
-      "--custom-cursor": "url('/cursorImg/ChristmasTree.ico') 16 16, auto"
+      "--custom-cursor": "url('/cursorImg/ChristmasTree.ico') 16 16, auto",
     },
+    notificationPopUp: "🎄 Merry Christmas!",
   },
 ];
 
 export default function Home() {
   const auraRef = useRef<HTMLDivElement>(null);
 
+  // Prevent duplicate toasts in React Strict Mode during development
+  const shownRef = useRef(false);
+
+  // Track the mouse to update aura vars (existing behavior)
   useEffect(() => {
     const updateAuraPosition = (e: MouseEvent) => {
       if (auraRef.current) {
@@ -176,34 +160,75 @@ export default function Home() {
       }
     };
     window.addEventListener("pointermove", updateAuraPosition);
-
     return () => {
       window.removeEventListener("pointermove", updateAuraPosition);
     };
   }, []);
 
+  // Show toast only when a holiday window is active; no popup otherwise
+  useEffect(() => {
+    if (shownRef.current) return; // guard for Strict Mode double-invoke
+    const now = new Date();
+    const active = windows.find(
+      (w) => now >= w.start && now < w.end && !!w.notificationPopUp
+    );
+    if (!active) return;
+
+    shownRef.current = true;
+
+    toast(active.notificationPopUp!, {
+      position: "top-center",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: false,
+      progress: undefined,
+      theme: "dark",
+    });
+  }, []);
+
   return (
     <>
+      <ToastContainer
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss={false}
+        draggable={false}
+        pauseOnHover={false}
+        theme="dark"
+        style={{ zIndex: 2147483647 }} // ensure it's on top of everything
+      />
       <ClickBurst />
       <ThemeScheduler
         windows={windows}
         defaults={{
           "--shiny-color": "#00ccff",
           "--shiny-color-light": "#cef5ff",
-
           "--primary-main-color": "193 100% 50%",
-
           "--card-main-bg": "222.2 50% 10%",
           "--skills-card-bg": "#0C1426",
           "--click-color-1": "rgb(255, 255, 255)",
           "--click-color-2": "rgb(255, 255, 255)",
-          "--custom-cursor": "url('/cursorImg/IceCream.ico') 16 16, auto"
         }}
         tickMs={1000}
         strict={true}
-        allKeys={["--shiny-color", "--shiny-color-light", "--primary-main-color", "--card-main-bg", "--skills-card-bg", "--click-color-1", "--click-color-2", "--custom-cursor"]}
-        debug={false}       // <-- watch the console to verify ranges
-        mode="local"       // or "utc" if your schedule is authored in UTC
+        allKeys={[
+          "--shiny-color",
+          "--shiny-color-light",
+          "--primary-main-color",
+          "--card-main-bg",
+          "--skills-card-bg",
+          "--click-color-1",
+          "--click-color-2",
+          "--custom-cursor",
+        ]}
+        debug={false}
+        mode="local"
       />
       <Head>
         <style jsx global>{`
