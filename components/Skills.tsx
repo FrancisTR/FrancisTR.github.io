@@ -353,7 +353,7 @@ export default function Skills() {
     { name: 'React', src: './React.png', palette: ['#61DAFB', '#38BDF8', '#22D3EE', '#06B6D4'] },
     { name: 'Tailwind CSS', src: './Tailwind.webp', palette: ['#06B6D4', '#22D3EE', '#7DD3FC', '#A5F3FC'] },
     { name: 'Next.js', src: './Nextjs.png', palette: ['#111827', '#4B5563', '#9CA3AF', '#D1D5DB'] },
-    { name: 'SupaBase', src: './Supabase.png', palette: ['#3ECF8E', '#10B981', '#34D399', '#6EE7B7'] },
+    { name: 'Supabase', src: './Supabase.png', palette: ['#3ECF8E', '#10B981', '#34D399', '#6EE7B7'] },
     { name: 'Salesforce', src: './Salesforce.png', palette: ['#00A1E0', '#33C3F0', '#60A5FA', '#93C5FD'] },
   ];
 
