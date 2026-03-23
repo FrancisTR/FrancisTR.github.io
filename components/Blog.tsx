@@ -139,8 +139,7 @@ export default function Blog() {
       </div>
       <>
         {filteredArticles.map(a => {
-          const pinLabel = PINNED_TITLES[a.title]; // shows label if the title is pinned
-          const isRecentTop3 = recentTop3Ids.includes(a.id);
+          const pinLabel = PINNED_TITLES[a.title]; // shows label of Pinned
           return (
             <a
               key={a.id}
