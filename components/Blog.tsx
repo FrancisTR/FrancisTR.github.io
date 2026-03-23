@@ -33,7 +33,7 @@ export function formatDate(isoString: string | number | Date) {
 }
 
 const PINNED_TITLES: Record<string, string> = {
-  "I used Google Gemini for the First Time. A Deep Analysis of my Experience so far! ✨": "⭐ Winner of the Google Gemini: Writing Challenge"
+  "I used Google Gemini for the First Time. A Deep Analysis of my Experience so far! ✨": "🏆 Winner of the Google Gemini: Writing Challenge"
 };
 
 export default function Blog() {
