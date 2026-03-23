@@ -150,11 +150,12 @@ export default function Blog() {
               className="hover:cursor-pointer"
             >
               <Card
-                className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent hover:border dark:lg:hover:border-t-cyan-900 dark:lg:hover:bg-slate-800/50 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-100/50 lg:hover:border-t-cyan-200"
+                // Make the image sit on TOP by keeping a vertical layout
+                className="group p-6 mb-8 flex flex-col w-full min-h-fit gap-0 border-transparent hover:border dark:lg:hover:border-t-cyan-900 dark:lg:hover:bg-slate-800/50 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-100/50 lg:hover:border-t-cyan-200"
                 data-pinned={pinLabel ? 'true' : 'false'}
                 aria-label={pinLabel ? `Pinned: ${pinLabel}` : undefined}
               >
-                <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0">
+                <CardHeader className="h-full w-full mb-4 p-0">
                   <img
                     src={(a.cover_image && a.cover_image.trim()) || "./Fallback.png"}
                     alt={`Screenshot of ${a.title}`}
@@ -164,7 +165,7 @@ export default function Blog() {
                     loading="eager"
                   />
                 </CardHeader>
-                <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
+                <CardContent className="flex flex-col p-0 w-full">
                   <p className="text-lg text-primary font-bold">
                     <span className="inline-flex items-center gap-2 flex-wrap align-middle">
                       {pinLabel && (
