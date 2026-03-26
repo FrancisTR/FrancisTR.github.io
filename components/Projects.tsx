@@ -26,6 +26,8 @@ const jobProjects = [
       "Preact",
       "Redis",
       "PostgreSQL",
+      "Sidekiq",
+      "Puma",
     ],
     link: "https://github.com/forem/forem/pulls?q=author:FrancisTRAlt+is:merged",
   },
