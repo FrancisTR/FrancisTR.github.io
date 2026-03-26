@@ -254,7 +254,6 @@ function PhysicsCanvas({
           lastT = now;
 
           const v = Math.max(-1, Math.min(1, dy / dt)); // px/ms clamp
-          // Tiny force so it feels like a jostle, not chaos
           const fy = cfg.shakeForce * v;
           const fx = cfg.shakeForce * v * (Math.random() * 0.6 - 0.3);
 
@@ -330,7 +329,7 @@ function PhysicsCanvas({
       ref={containerRef}
       /* This div is the *card box* — the canvas fills to the border.
          No padding here so balls reach the visible edges (but remain inside). */
-      className={`relative w-full overflow-hidden ${className}`}
+      className={`relative w-full overflow-hidden ${className} rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur-md supports-[backdrop-filter]:backdrop-blur-md supports-[backdrop-filter]:bg-white/10 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.15),0_8px_24px_rgba(0,0,0,0.08)]`}
     >
       {/* Centered logo; pointer-events:none so you can drag balls beneath it */}
       <img
