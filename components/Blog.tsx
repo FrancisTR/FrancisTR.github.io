@@ -19,6 +19,7 @@ type DevBlog = {
   url: string
   user: DevToUser
   cover_image: string
+  social_image: string
   published_timestamp: string
   positive_reactions_count: number
   description: string
@@ -156,7 +157,7 @@ export default function Blog() {
               >
                 <CardHeader className="h-full w-full mb-4 p-0">
                   <img
-                    src={(a.cover_image && a.cover_image.trim()) || "./Fallback.png"}
+                    src={(a.cover_image && a.cover_image.trim()) || a.social_image && a.social_image.trim() || "./Fallback.png"}
                     alt={`Screenshot of ${a.title}`}
                     width={1920}
                     height={1080}
