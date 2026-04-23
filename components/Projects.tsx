@@ -8,9 +8,23 @@ import {
   CardHeader,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MoveUpRight } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { BookOpen, ExternalLink, Github } from "lucide-react";
 
-const jobProjects = [
+type ProjectItem = {
+  imagePath: string;
+  title: string;
+  type: string;
+  stars: string;
+  description: string;
+  skills: string[];
+  demoLink?: string;
+  repoLink?: string;
+  devtoLink?: string;
+  repoPrivate?: boolean;
+};
+
+const jobProjects: ProjectItem[] = [
   {
     imagePath: "/Forem.png",
     title: "Forem (Dev.to)",
@@ -29,22 +43,26 @@ const jobProjects = [
       "Sidekiq",
       "Puma",
     ],
-    link: "https://github.com/forem/forem/pulls?q=author:FrancisTRAlt+is:merged",
+    repoLink: "https://github.com/forem/forem/pulls?q=author:FrancisTRAlt+is:merged",
   },
   {
-    imagePath: "/RhythmSwipe.png",
-    title: "Rhythm Swipe",
+    imagePath: "/EasyPollVote.png",
+    title: "EasyPollVote",
     type: "Personal Project",
-    stars: "https://img.shields.io/github/stars/FrancisTR/Rhythm-Swipe?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    stars: "Private Repo",
     description:
-      "Developed a rhythm-based game using p5.js where players collect gems in sync with music beats. Features dynamic gameplay mechanics and responsive design.",
+      "A full stack Next.js application where users can create polls and share them without requiring an account. Results update in real time. Repo is currently private.",
     skills: [
       "HTML",
       "CSS",
-      "JavaScript",
-      "p5.js",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "Next.js",
+      "Supabase",
     ],
-    link: "https://github.com/FrancisTR/Rhythm-Swipe",
+    demoLink: "https://easypollvote.vercel.app/",
+    devtoLink: "https://dev.to/francistrdev/series/38450",
   },
   {
     imagePath: "/ClassifierAI.png",
@@ -60,7 +78,7 @@ const jobProjects = [
       "Bootstrap",
       "ml5.js",
     ],
-    link: "https://github.com/FrancisTR/ClassifierAI",
+    repoLink: "https://github.com/FrancisTR/ClassifierAI",
   },
   // {
   //   imagePath: "/UnknownProject.png",
@@ -99,46 +117,74 @@ export default function Projects() {
       </div>
       <>
         {jobProjects.map((project, index) => (
-          <a
+          <Card
             key={index}
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:cursor-pointer"
+            className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border border-transparent bg-background shadow-sm dark:bg-slate-900/80"
           >
-            <Card className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent hover:border dark:lg:hover:border-t-cyan-900 dark:lg:hover:bg-slate-800/50 lg:hover:shadow-[inset_0_1px_0_0_rgba(148,163,184,0.1)] lg:hover:drop-shadow-lg lg:hover:bg-slate-100/50 lg:hover:border-t-cyan-200">
-              <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0">
-                <Image
-                  src={project.imagePath}
-                  alt={`Screenshot of ${project.title}`}
-                  width={1920}
-                  height={1080}
-                  priority
-                  className="bg-[#141414] mt-2 border border-muted-foreground"
-                />
-              </CardHeader>
-              <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
-                <p className="text-primary font-bold">
-                  {project.title}{" "}
-                </p>
-                <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium bg-cyan-500/20 text-cyan-500 px-2 py-1 rounded">
-                  <p>{project.type}</p>
-                  <p>
+            <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0">
+              <Image
+                src={project.imagePath}
+                alt={`Screenshot of ${project.title}`}
+                width={1920}
+                height={1080}
+                priority
+                className="bg-[#141414] mt-2 border border-muted-foreground"
+              />
+            </CardHeader>
+            <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
+              <p className="text-primary font-bold">
+                {project.title}{" "}
+              </p>
+              <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium bg-cyan-500/20 text-cyan-500 px-2 py-1 rounded">
+                <p>{project.type}</p>
+                <p>
+                  {typeof project.stars === "string" && project.stars.startsWith("http") ? (
                     <img src={project.stars} alt="GitHub Stars" className="w-auto" />
-                  </p>
-                </div>
-                <CardDescription className="py-3 text-muted-foreground">
-                  {project.description}
-                </CardDescription>
-                <CardFooter className="p-0 flex flex-wrap gap-2 mb-5">
-                  {project.skills.map((skill, index) => (
-                    <Badge key={index}>{skill}</Badge>
-                  ))}
-                </CardFooter>
-              </CardContent>
-              <MoveUpRight className="text-primary font-bold ml-1 inline-block h-5 w-5 shrink-0 transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 motion-reduce:transition-none" />
-            </Card>
-          </a>
+                  ) : (
+                    <span className="font-semibold">{project.stars}</span>
+                  )}
+                </p>
+              </div>
+              <CardDescription className="py-3 text-muted-foreground">
+                {project.description}
+              </CardDescription>
+              <div className="flex flex-wrap gap-2 mt-4">
+                {project.demoLink && (
+                  <Button asChild size="sm">
+                    <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                      <ExternalLink className="mr-2 h-4 w-4" />
+                      View Project
+                    </a>
+                  </Button>
+                )}
+                {project.repoLink ? (
+                  <Button asChild variant="outline" size="sm">
+                    <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                      <Github className="mr-2 h-4 w-4" />
+                      View Repo
+                    </a>
+                  </Button>
+                ) : project.repoPrivate ? (
+                  <span className="inline-flex items-center rounded-md border border-muted px-3 py-2 text-sm text-muted-foreground">
+                    Repo Private
+                  </span>
+                ) : null}
+                {project.devtoLink && (
+                  <Button asChild variant="ghost" size="sm">
+                    <a href={project.devtoLink} target="_blank" rel="noopener noreferrer">
+                      <BookOpen className="mr-2 h-4 w-4" />
+                      View on Dev.to
+                    </a>
+                  </Button>
+                )}
+              </div>
+              <CardFooter className="p-0 flex flex-wrap gap-2 mt-5">
+                {project.skills.map((skill, index) => (
+                  <Badge key={index}>{skill}</Badge>
+                ))}
+              </CardFooter>
+            </CardContent>
+          </Card>
         ))}
       </>
     </section>
