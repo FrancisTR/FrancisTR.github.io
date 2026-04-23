@@ -17,9 +17,7 @@ const jobPositions = [
     place: "University of St. Thomas",
     previousPositions: [""],
     description:
-      ` Engaging with stakeholders to document issues, define project requirements, and implement solutions for various applications and
-      pioneered the front-end development of interactive widgets with the collaboration of the Department of Admissions to 
-      enhance the UI/UX of the college application system.`,
+      `Engaging with stakeholders to document issues, define project requirements, and implement solutions for various applications. Pioneered the front-end development of interactive widgets in collaboration with the Department of Admissions to enhance the UI/UX of the college application system.`,
     skills: [
       "Salesforce",
       "HTML",
@@ -40,9 +38,7 @@ const jobPositions = [
     place: "Games For Love",
     previousPositions: [""],
     description:
-      `Led a team to develop video games for young audiences using Godot each month and 
-      responsible for enhancing UI/UX design for the organization itch.io page 
-      to attract more users for the monthly game jam.`,
+      `Led a team to develop video games for young audiences using Godot each month and was responsible for enhancing UI/UX design for the organization's itch.io page to attract more users for the monthly game jam.`,
     skills: [
       "Godot",
       "HTML",
@@ -63,8 +59,7 @@ const jobPositions = [
     place: "University of St. Thomas",
     previousPositions: [""],
     description:
-      `Tutored Computer Science students for a one-on-one guidance to improve problem-solving skills 
-      and assist students in coding assignments.`,
+      `Provided one-on-one tutoring for Computer Science students to improve problem-solving skills and assist with coding assignments.`,
     skills: [
       "Python",
       "Problem-Solving",

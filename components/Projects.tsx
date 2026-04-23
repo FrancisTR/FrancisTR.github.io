@@ -52,7 +52,7 @@ const jobProjects = [
     type: "Personal Project",
     stars: "https://img.shields.io/github/stars/FrancisTR/Classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
-      "A Google Chrome Extension that performs image classification to determine if the images are AI-generated in the google image tab.",
+      "A Google Chrome Extension that performs image classification to determine if images are AI-generated in the Google Images tab.",
     skills: [
       "HTML",
       "CSS",
