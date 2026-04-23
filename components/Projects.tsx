@@ -31,7 +31,7 @@ const jobProjects: ProjectItem[] = [
     type: "Open-Source Contributor",
     stars: "https://img.shields.io/github/stars/forem/forem?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
-      "Contributed to Forem, an open-source blogging platform that powers communities like DEV.to. Implemented features and bug fixes to enhance platform functionality and user experience.",
+      "An open-source blogging platform that powers communities like DEV.to. Implemented features and bug fixes to enhance platform functionality and user experience.",
     skills: [
       "HTML",
       "CSS",
