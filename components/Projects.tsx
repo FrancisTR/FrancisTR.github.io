@@ -17,7 +17,7 @@ const jobProjects = [
     type: "Open-Source Contributor",
     stars: "https://img.shields.io/github/stars/forem/forem?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
-      "An open-source blogging platform where communities can come together to share ideas and stories.",
+      "Contributed to Forem, an open-source blogging platform that powers communities like DEV.to. Implemented features and bug fixes to enhance platform functionality and user experience.",
     skills: [
       "HTML",
       "CSS",
@@ -37,7 +37,7 @@ const jobProjects = [
     type: "Personal Project",
     stars: "https://img.shields.io/github/stars/FrancisTR/Rhythm-Swipe?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
-      "A p5.js game where the goal is to collect all gems while following the beat of the music.",
+      "Developed a rhythm-based game using p5.js where players collect gems in sync with music beats. Features dynamic gameplay mechanics and responsive design.",
     skills: [
       "HTML",
       "CSS",
@@ -52,7 +52,7 @@ const jobProjects = [
     type: "Personal Project",
     stars: "https://img.shields.io/github/stars/FrancisTR/Classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
-      "A Google Chrome Extension that performs image classification to determine if images are AI-generated in the Google Images tab.",
+      "Built a Chrome extension that uses machine learning (ml5.js) to classify images in Google Images search results and detect AI-generated content. Utilizes Bootstrap for UI and integrates with browser APIs.",
     skills: [
       "HTML",
       "CSS",
