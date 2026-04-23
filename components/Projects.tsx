@@ -36,6 +36,7 @@ const jobProjects: ProjectItem[] = [
       "HTML",
       "CSS",
       "JavaScript",
+      "TypeScript",
       "Ruby on Rails",
       "Preact",
       "Redis",
