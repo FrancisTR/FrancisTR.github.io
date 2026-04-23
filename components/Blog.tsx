@@ -80,12 +80,9 @@ export default function Blog() {
 
     // Initial load
     fetchArticles();
-    // Poll every 10 seconds
-    const intervalId = setInterval(fetchArticles, 10_000);
 
     return () => {
       isUnmounted = true;
-      clearInterval(intervalId);
       currentController?.abort();
     };
   }, []);

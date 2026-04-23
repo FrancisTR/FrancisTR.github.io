@@ -24,11 +24,23 @@ export const metadata: Metadata = {
     description:
       "Francis Tran is a Full-Stack Engineer with 4+ years of experience.",
     url: "https://francistr.github.io",
-    // images: [
-    //   {
-    //     url: "./???",
-    //   },
-    // ],
+    images: [
+      {
+        url: "/OGavatar.png",
+        width: 1200,
+        height: 630,
+        alt: "Francis Tran - Full-Stack Engineer",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Francis Tran",
+    description: "Francis Tran is a Full-Stack Engineer with 4+ years of professional experience.",
+    images: ["/OGavatar.png"],
+  },
+  other: {
+    "theme-color": "#000000",
   },
 };
 

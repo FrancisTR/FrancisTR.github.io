@@ -67,11 +67,11 @@ export default function Nav() {
       <div className="flex flex-col gap-4 lg:pr-20 mt-2">
         <h1 className="text-5xl font-bold lg:text-start">Francis Tran</h1>
         <h2 className="text-2xl lg:text-start shiny">
-          <span className="custom-cursor">Full-Stack AI Engineer</span>
+          <span className="custom-cursor">Full-Stack Engineer</span>
         </h2>
         <p className="text-lg lg:text-start text-muted-foreground">
           Software Engineering graduate from the University of St. Thomas with 4+
-          years of overall experience.
+          years of overall professional experience.
         </p>
         <ul className="flex flex-row gap-6 mt-4">
           <a href="mailto:xst-tran6832@stthomas.edu" target="_blank" rel="noopener noreferrer">
