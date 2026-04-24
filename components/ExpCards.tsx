@@ -34,7 +34,7 @@ const jobPositions = [
   },
   {
     timeline: "June 2024 — June 2025",
-    currentPosition: "Software Developer",
+    currentPosition: "Software Developer Intern",
     place: "Games For Love",
     previousPositions: [""],
     description:
@@ -96,7 +96,7 @@ export default function ExpCard() {
                   {job.currentPosition}
                 </p>
                 <p className="text-sm text-muted-foreground font-medium">
-                  @ {job.place}
+                  {job.place}
                 </p>
               </div>
             </CardHeader>
