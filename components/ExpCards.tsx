@@ -87,26 +87,28 @@ export default function ExpCard() {
             key={index}
             className="p-6 mb-8 lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent"
           >
-            <CardHeader className="h-full w-full p-0">
-              <CardTitle className="text-base text-slate-400 whitespace-nowrap">
-                {job.timeline}
-              </CardTitle>
-            </CardHeader>
-            <CardContent className="flex flex-col p-0">
-              <p className="text-primary font-bold">
-                {job.currentPosition} @ {job.place}
-              </p>
-              {job.previousPositions.map((position, index) => (
-                <p key={index} className="text-slate-400 text-sm font-bold">
-                  {position}
+            <CardHeader className="p-0 mb-4 border-l-2 border-primary pl-4">
+              <div className="flex flex-col gap-1.5">
+                <span className="text-xs text-muted-foreground font-medium uppercase tracking-widest">
+                  {job.timeline}
+                </span>
+                <p className="text-lg lg:text-xl text-primary font-bold group-hover:text-primary transition-colors">
+                  {job.currentPosition}
                 </p>
-              ))}
-              <CardDescription className="py-3 text-muted-foreground">
+                <p className="text-sm text-muted-foreground font-medium">
+                  @ {job.place}
+                </p>
+              </div>
+            </CardHeader>
+            <CardContent className="p-0">
+              <CardDescription className="py-3 text-muted-foreground leading-relaxed">
                 {job.description}
               </CardDescription>
-              <CardFooter className="p-0 flex flex-wrap gap-2">
+              <CardFooter className="p-0 flex flex-wrap gap-2 pt-3">
                 {job.skills.map((skill, index) => (
-                  <Badge key={index}>{skill}</Badge>
+                  <Badge key={index} variant="secondary">
+                    {skill}
+                  </Badge>
                 ))}
               </CardFooter>
             </CardContent>

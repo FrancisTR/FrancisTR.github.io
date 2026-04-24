@@ -120,7 +120,7 @@ export default function Projects() {
         {jobProjects.map((project, index) => (
           <Card
             key={index}
-            className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border border-transparent bg-background shadow-sm dark:bg-slate-900/80"
+            className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent bg-background shadow-sm dark:bg-slate-900/80"
           >
             <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0">
               <Image
@@ -129,11 +129,11 @@ export default function Projects() {
                 width={1920}
                 height={1080}
                 priority
-                className="bg-[#141414] mt-2 border border-muted-foreground"
+                className="bg-[#141414] mt-2 border border-muted-foreground/20 rounded-lg overflow-hidden"
               />
             </CardHeader>
             <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
-              <p className="text-primary font-bold">
+              <p className="text-primary font-bold text-xl lg:text-2xl">
                 {project.title}{" "}
               </p>
               <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium bg-cyan-500/20 text-cyan-500 px-2 py-1 rounded">
@@ -179,9 +179,9 @@ export default function Projects() {
                   </Button>
                 )}
               </div>
-              <CardFooter className="p-0 flex flex-wrap gap-2 mt-5">
+              <CardFooter className="p-0 flex flex-wrap gap-2 pt-3">
                 {project.skills.map((skill, index) => (
-                  <Badge key={index}>{skill}</Badge>
+                  <Badge key={index} variant="secondary">{skill}</Badge>
                 ))}
               </CardFooter>
             </CardContent>

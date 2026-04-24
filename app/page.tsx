@@ -151,6 +151,35 @@ export default function Home() {
   // Prevent duplicate toasts in React Strict Mode during development
   const shownRef = useRef(false);
 
+  // Check for holiday testing parameter
+  const getForcedHoliday = () => {
+    if (typeof window === 'undefined') return null;
+    const urlParams = new URLSearchParams(window.location.search);
+    const holidayParam = urlParams.get('holiday');
+    if (holidayParam && windows.some(w => w.id === holidayParam)) {
+      return windows.find(w => w.id === holidayParam) || null;
+    }
+    return null;
+  };
+
+  // Get active windows (forced holiday takes precedence for testing)
+  const getActiveWindows = () => {
+    const forcedHoliday = getForcedHoliday();
+    if (forcedHoliday) {
+      // For testing, create a window that starts now and ends in 24 hours
+      const now = new Date();
+      const tomorrow = new Date(now.getTime() + 24 * 60 * 60 * 1000);
+      return [{
+        ...forcedHoliday,
+        start: now,
+        end: tomorrow,
+      }];
+    }
+    return windows;
+  };
+
+  const activeWindows = getActiveWindows();
+
   // Track the mouse to update aura vars (existing behavior)
   useEffect(() => {
     const updateAuraPosition = (e: MouseEvent) => {
@@ -169,7 +198,8 @@ export default function Home() {
   useEffect(() => {
     if (shownRef.current) return; // guard for Strict Mode double-invoke
     const now = new Date();
-    const active = windows.find(
+    const forcedHoliday = getForcedHoliday();
+    const active = forcedHoliday || windows.find(
       (w) => now >= w.start && now < w.end && !!w.notificationPopUp
     );
     if (!active) return;
@@ -205,7 +235,7 @@ export default function Home() {
       />
       <ClickBurst />
       <ThemeScheduler
-        windows={windows}
+        windows={activeWindows}
         defaults={{
           "--shiny-color": "#00ccff",
           "--shiny-color-light": "#cef5ff",

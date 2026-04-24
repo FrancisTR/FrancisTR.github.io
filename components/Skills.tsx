@@ -372,8 +372,8 @@ export default function Skills() {
         </h2>
       </div>
 
-      <div className="mb-8">
-        <h2 className="shiny hidden text-3xl font-bold lg:block">Skills</h2>
+      <div className="flex flex-col gap-4 mb-8">
+        <h2 className="shiny hidden text-3xl font-bold lg:block lg:text-start">Skills</h2>
       </div>
 
       <ul role="list" className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6">
