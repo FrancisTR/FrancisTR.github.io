@@ -120,7 +120,7 @@ export default function ExpCard() {
           className="inline-flex items-center font-medium leading-tight text-foreground hover:text-primary transition-colors group"
           href="/Francis_Tran_Resume.pdf" target="_blank"
         >
-          <span className="border-b border-transparent pb-px transition hover:border-primary motion-reduce:transition-none">
+          <span className="border-transparent pb-px transition hover:border-primary motion-reduce:transition-none">
             View Full Resume
           </span>
           <MoveRight className="ml-1 inline-block h-5 w-5 shrink-0 -translate-y-px transition-transform group-hover:translate-x-2 group-focus-visible:translate-x-2 motion-reduce:transition-none" />
