@@ -6,6 +6,7 @@ import {
   CardDescription,
   CardFooter,
   CardHeader,
+  CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -120,9 +121,9 @@ export default function Projects() {
         {jobProjects.map((project, index) => (
           <Card
             key={index}
-            className="border border-border/60 bg-card/70 backdrop-blur shadow-sm group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 bg-background shadow-sm dark:bg-slate-900/80"
+            className="relative overflow-hidden border border-border/60 bg-card/70 backdrop-blur shadow-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 dark:bg-slate-900/60 dark:hover:bg-slate-900/60"
           >
-            <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0">
+            <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0 overflow-hidden rounded-lg">
               <Image
                 src={project.imagePath}
                 alt={`Screenshot of ${project.title}`}
@@ -133,10 +134,10 @@ export default function Projects() {
               />
             </CardHeader>
             <CardContent className="flex flex-col p-0 w-full lg:w-2/3">
-              <p className="text-primary font-bold text-xl lg:text-2xl">
-                {project.title}{" "}
-              </p>
-              <div className="flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium bg-cyan-500/20 text-cyan-500 px-2 py-1 rounded">
+              <CardTitle className="text-primary text-xl lg:text-2xl">
+                {project.title}
+              </CardTitle>
+              <div className="inline-flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium border border-primary/15 bg-primary/5 text-primary px-3 py-2 rounded-full">
                 <p>{project.type}</p>
                 <p>
                   {typeof project.stars === "string" && project.stars.startsWith("http") ? (
@@ -179,7 +180,7 @@ export default function Projects() {
                   </Button>
                 )}
               </div>
-              <CardFooter className="p-0 flex flex-wrap gap-2 pt-3">
+              <CardFooter className="p-0 flex flex-wrap gap-2 pt-4">
                 {project.skills.map((skill, index) => (
                   <Badge key={index} variant="secondary">{skill}</Badge>
                 ))}

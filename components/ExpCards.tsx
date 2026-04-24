@@ -85,7 +85,7 @@ export default function ExpCard() {
         {jobPositions.map((job, index) => (
           <Card
             key={index}
-            className="p-6 mb-8 lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border border-border/60 bg-card/70 backdrop-blur shadow-sm"
+            className="p-6 mb-8 lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border border-border/60 bg-card/70 backdrop-blur shadow-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 dark:bg-slate-900/60 dark:hover:bg-slate-900/60"
           >
             <CardHeader className="p-0 mb-4 border-l-2 border-primary pl-4">
               <div className="flex flex-col gap-1.5">
