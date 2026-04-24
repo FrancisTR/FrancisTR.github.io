@@ -36,7 +36,7 @@ export function formatDate(isoString: string | number | Date) {
 
 const PINNED_TITLES: Record<string, string> = {
   "I used Google Gemini for the First Time. A Deep Analysis of my Experience so far! ✨":
-    "🏆 Winner of the Google Gemini: Writing Challenge",
+    `🏆 Winner of the "Google Gemini: Writing Challenge"`,
 };
 
 const FALLBACK_IMAGE =
@@ -264,8 +264,7 @@ export default function Blog() {
                             className="
                               inline-flex items-center gap-1
                               bg-amber-200/25 text-amber-700 dark:text-amber-300
-                              ring-1 ring-amber-300/60
-                              px-2 py-0.5 text-[11px] uppercase tracking-wide rounded-full
+                              ring-1 ring-amber-300/60 p-2 text-[11px] uppercase tracking-wide rounded-sm
                             "
                             title={pinLabel}
                             aria-label={`Pinned: ${pinLabel}`}
@@ -291,7 +290,7 @@ export default function Blog() {
                       📅 {formatDate(a.published_timestamp)}
                     </span>
                     <span className="flex items-center gap-1">
-                      👍 {a.positive_reactions_count}
+                      👍{a.positive_reactions_count}
                     </span>
                   </div>
 
