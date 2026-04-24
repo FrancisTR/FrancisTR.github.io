@@ -53,6 +53,7 @@ export default function ClickBurst() {
         const tx = Math.cos(angle) * distance;
         const ty = Math.sin(angle) * distance;
 
+        
         // Set CSS variables for the animation
         spark.style.setProperty("--tx", `${tx}px`);
         spark.style.setProperty("--ty", `${ty}px`);
