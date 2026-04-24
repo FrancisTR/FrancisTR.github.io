@@ -120,7 +120,7 @@ export default function Projects() {
         {jobProjects.map((project, index) => (
           <Card
             key={index}
-            className="group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 border-transparent bg-background shadow-sm dark:bg-slate-900/80"
+            className="border border-border/60 bg-card/70 backdrop-blur shadow-sm group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 bg-background shadow-sm dark:bg-slate-900/80"
           >
             <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0">
               <Image
