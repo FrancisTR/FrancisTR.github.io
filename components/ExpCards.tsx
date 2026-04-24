@@ -115,9 +115,9 @@ export default function ExpCard() {
           </Card>
         ))}
       </>
-      <div className="mt-12 pl-6">
+      <div className="mt-12 flex">
         <a
-          className="inline-flex items-center font-medium leading-tight text-foreground group"
+          className="inline-flex items-center font-medium leading-tight text-foreground hover:text-primary transition-colors group"
           href="/Francis_Tran_Resume.pdf" target="_blank"
         >
           <span className="border-b border-transparent pb-px transition hover:border-primary motion-reduce:transition-none">
