@@ -152,6 +152,7 @@ export default function Home() {
   const shownRef = useRef(false);
 
   // Check for holiday testing parameter
+  //Ex: http://localhost:3000/?holiday=valentines
   const getForcedHoliday = () => {
     if (typeof window === 'undefined') return null;
     const urlParams = new URLSearchParams(window.location.search);
