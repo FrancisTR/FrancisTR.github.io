@@ -1,30 +1,35 @@
 'use client';
 import React, { useEffect, useRef } from 'react';
 
+// Constants
+const WALL_THICKNESS = 40;
+const WALL_PADDING = 2;
+const BALL_SPAWN_HEIGHT_RATIO = 0.35;
+const CAT_BALL = 0x0001;
+const CAT_WALL = 0x0002;
+const SCROLL_VELOCITY_CLAMP = 1;
+const ANGULAR_VELOCITY_JITTER = 0.02;
+const MIN_DIMENSION = 10;
+const SCROLL_SHAKE_THROTTLE = 16; // ~60fps throttling (ms)
+const OPTIMAL_PIXEL_RATIO = 1.5; // Balance between clarity and performance
+
 type PhysicsConfig = {
-  // Random ball count per tile
   minBalls?: number;
   maxBalls?: number;
-
-  // Per-tile color palette (required)
   colors: string[];
-
-  // Physics tuning
-  gravity?: number; // 0..1 (1 ~ earth)
-  radiusRange?: [number, number]; // px
-  restitution?: number; // bounciness 0..1
-  friction?: number; // surface friction
-  frictionAir?: number; // air drag (0..~0.05)
-  pixelRatio?: number; // default: devicePixelRatio
-
-  // Shake intensity when user scrolls (0.0005..0.01 typical)
+  gravity?: number;
+  radiusRange?: [number, number];
+  restitution?: number;
+  friction?: number;
+  frictionAir?: number;
+  pixelRatio?: number;
   shakeForce?: number;
 };
 
 type Skill = {
   name: string;
-  src: string; // icon path
-  palette: string[]; // ball colors for this skill
+  src: string;
+  palette: string[];
   options?: Omit<PhysicsConfig, 'colors'>;
 };
 
@@ -32,7 +37,7 @@ function PhysicsCanvas({
   logoSrc,
   logoAlt,
   config,
-  className = 'h-40 sm:h-44 md:h-48', // tweak height or use "aspect-square"
+  className = 'h-40 sm:h-44 md:h-48',
 }: {
   logoSrc: string;
   logoAlt: string;
@@ -65,26 +70,24 @@ function PhysicsCanvas({
         Events,
       } = Matter;
 
-      //Config (sensible defaults)
+      // Config with performance optimizations
       const cfg: Required<PhysicsConfig> = {
-        minBalls: config.minBalls ?? 6,
-        maxBalls: config.maxBalls ?? 12,
+        minBalls: config.minBalls ?? 5,
+        maxBalls: config.maxBalls ?? 8,
         colors: config.colors.length ? config.colors : ['#3b82f6', '#22c55e', '#ef4444'],
         gravity: config.gravity ?? 1,
-        radiusRange: config.radiusRange ?? [8, 18],
-        restitution: config.restitution ?? 0.9,
-        friction: config.friction ?? 0.04,
-        frictionAir: config.frictionAir ?? 0.002,
-        pixelRatio:
-          config.pixelRatio ??
-          (typeof window !== 'undefined' ? window.devicePixelRatio ?? 1 : 1),
-        shakeForce: config.shakeForce ?? 0.002, // gentle jostle on scroll
+        radiusRange: config.radiusRange ?? [10, 16],
+        restitution: config.restitution ?? 0.85,
+        friction: config.friction ?? 0.05,
+        frictionAir: config.frictionAir ?? 0.003,
+        pixelRatio: Math.min(OPTIMAL_PIXEL_RATIO, typeof window !== 'undefined' ? window.devicePixelRatio ?? 1 : 1),
+        shakeForce: config.shakeForce ?? 0.002,
       };
 
       // Size to bounding box
       const rect = el.getBoundingClientRect();
-      let width = Math.max(10, Math.floor(rect.width));
-      let height = Math.max(10, Math.floor(rect.height));
+      let width = Math.max(MIN_DIMENSION, Math.floor(rect.width));
+      let height = Math.max(MIN_DIMENSION, Math.floor(rect.height));
 
       // Engine, renderer, runner (Matter)
       const engine = Engine.create();
@@ -99,17 +102,16 @@ function PhysicsCanvas({
           background: 'transparent',
           wireframes: false,
           pixelRatio: cfg.pixelRatio,
+          enableSleeping: true,
         },
       });
 
       const runner = Runner.create();
+      runner.enableSleeping = true;
 
       // Walls (keep balls inside)
-      const CAT_BALL = 0x0001;
-      const CAT_WALL = 0x0002;
-
       const makeWalls = () => {
-        const t = 40; // wall thickness (thick prevents tunneling)
+        const t = WALL_THICKNESS;
         const half = t / 2;
         const walls = [
           Bodies.rectangle(width / 2, -half, width, t, {
@@ -149,14 +151,14 @@ function PhysicsCanvas({
 
       for (let i = 0; i < count; i++) {
         const r = randInt(rmin, rmax);
-        const x = randInt(r + 4, width - r - 4);
-        const y = randInt(r + 4, Math.max(r + 4, Math.floor(height * 0.35)));
+        const x = randInt(r + WALL_PADDING, width - r - WALL_PADDING);
+        const y = randInt(r + WALL_PADDING, Math.max(r + WALL_PADDING, Math.floor(height * BALL_SPAWN_HEIGHT_RATIO)));
         const color = cfg.colors[randInt(0, cfg.colors.length - 1)];
         const ball = Bodies.circle(x, y, r, {
           restitution: cfg.restitution,
           friction: cfg.friction,
           frictionAir: cfg.frictionAir,
-          collisionFilter: { category: CAT_BALL, mask: CAT_BALL | CAT_WALL }, // always collide with walls
+          collisionFilter: { category: CAT_BALL, mask: CAT_BALL | CAT_WALL },
           render: {
             fillStyle: color,
             strokeStyle: 'rgba(0,0,0,0.08)',
@@ -166,8 +168,6 @@ function PhysicsCanvas({
         balls.push(ball);
         Composite.add(engine.world, ball);
       }
-
-      // Mouse/drag interaction removed to prevent touch scroll conflicts on mobile.
 
       // Allow page scroll while over the canvas
       const enableWheelScrollPassThrough = (canvas: HTMLCanvasElement) => {
@@ -204,25 +204,23 @@ function PhysicsCanvas({
       // Enable scroll pass-through now that the canvas exists
       detachScrollPassThrough = enableWheelScrollPassThrough(render.canvas);
 
-      // Helper: keep a body fully inside the rectangle [0..width]x[0..height]
+      // Keep a body fully inside the rectangle [0..width]x[0..height]
       const clampInside = (b: Matter.Body) => {
         const r = (b as any).circleRadius ?? 12;
-        const minX = r + 1;
-        const maxX = width - r - 1;
-        const minY = r + 1;
-        const maxY = height - r - 1;
+        const minX = r + WALL_PADDING;
+        const maxX = width - r - WALL_PADDING;
+        const minY = r + WALL_PADDING;
+        const maxY = height - r - WALL_PADDING;
 
         const nx = Math.min(maxX, Math.max(minX, b.position.x));
         const ny = Math.min(maxY, Math.max(minY, b.position.y));
 
         if (nx !== b.position.x || ny !== b.position.y) {
-          // Move inside and damp outward velocity to avoid jitter
           Body.setPosition(b, { x: nx, y: ny });
 
           const vx = b.velocity.x;
           const vy = b.velocity.y;
 
-          // Zero out velocity pointing outside the box
           const outLeft = b.position.x <= minX && vx < 0;
           const outRight = b.position.x >= maxX && vx > 0;
           const outTop = b.position.y <= minY && vy < 0;
@@ -235,25 +233,38 @@ function PhysicsCanvas({
         }
       };
 
-      // Clamp every tick: ensures NO ball escapes (even while shaking)
+      // Clamp every tick: ensures no ball escapes
       Events.on(engine, 'afterUpdate', () => {
         for (const b of balls) clampInside(b);
       });
 
-      // Shake on scroll
-      // Apply a small impulse to all balls based on scroll velocity.
+      // Shake on scroll with throttling and motion preference
       const addScrollShakeListeners = () => {
         let lastY = window.scrollY;
         let lastT = performance.now();
+        let lastShakeT = performance.now();
+        const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         const onScroll = () => {
           const now = performance.now();
-          const dy = window.scrollY - lastY; // px
-          const dt = Math.max(8, now - lastT); // ms
+          
+          // Skip shake on reduced motion preference
+          if (prefersReducedMotion) {
+            return;
+          }
+          
+          // Throttle shake updates for consistent performance
+          if (now - lastShakeT < SCROLL_SHAKE_THROTTLE) {
+            return;
+          }
+          lastShakeT = now;
+
+          const dy = window.scrollY - lastY;
+          const dt = Math.max(8, now - lastT);
           lastY = window.scrollY;
           lastT = now;
 
-          const v = Math.max(-1, Math.min(1, dy / dt)); // px/ms clamp
+          const v = Math.max(-SCROLL_VELOCITY_CLAMP, Math.min(SCROLL_VELOCITY_CLAMP, dy / dt));
           const fy = cfg.shakeForce * v;
           const fx = cfg.shakeForce * v * (Math.random() * 0.6 - 0.3);
 
@@ -261,7 +272,7 @@ function PhysicsCanvas({
             Body.applyForce(b, b.position, { x: fx, y: fy });
             Body.setAngularVelocity(
               b,
-              b.angularVelocity + (Math.random() * 0.02 - 0.01),
+              b.angularVelocity + (Math.random() * ANGULAR_VELOCITY_JITTER - ANGULAR_VELOCITY_JITTER / 2),
             );
           }
         };
@@ -278,28 +289,31 @@ function PhysicsCanvas({
 
       removeScrollHandlers = addScrollShakeListeners();
 
-      /* Start */
+      // Start simulation
       Render.run(render);
       Runner.run(runner, engine);
 
-      /* Resize sync */
+      // Sync canvas size on container resize with debouncing
+      let resizeTimeout: NodeJS.Timeout | null = null;
       const onResize = () => {
-        const r = el.getBoundingClientRect();
-        width = Math.max(10, Math.floor(r.width));
-        height = Math.max(10, Math.floor(r.height));
+        if (resizeTimeout) clearTimeout(resizeTimeout);
+        resizeTimeout = setTimeout(() => {
+          const r = el.getBoundingClientRect();
+          width = Math.max(MIN_DIMENSION, Math.floor(r.width));
+          height = Math.max(MIN_DIMENSION, Math.floor(r.height));
 
-        render.canvas.width = width * cfg.pixelRatio;
-        render.canvas.height = height * cfg.pixelRatio;
-        render.canvas.style.width = `${width}px`;
-        render.canvas.style.height = `${height}px`;
-        render.options.width = width;
-        render.options.height = height;
+          render.canvas.width = width * cfg.pixelRatio;
+          render.canvas.height = height * cfg.pixelRatio;
+          render.canvas.style.width = `${width}px`;
+          render.canvas.style.height = `${height}px`;
+          render.options.width = width;
+          render.options.height = height;
 
-        Composite.remove(engine.world, walls);
-        walls = makeWalls();
+          Composite.remove(engine.world, walls);
+          walls = makeWalls();
 
-        // Also clamp current balls so none sit outside after resize
-        for (const b of balls) clampInside(b);
+          for (const b of balls) clampInside(b);
+        }, 150);
       };
 
       resizeObs = new ResizeObserver(onResize);
@@ -312,14 +326,19 @@ function PhysicsCanvas({
       if (removeScrollHandlers) removeScrollHandlers();
       if (detachScrollPassThrough) detachScrollPassThrough();
 
-      // Best-effort teardown: remove the canvas;
-      // Matter objects will be GC'd after render/runner stop.
       const el = containerRef.current;
       const canvas = el?.querySelector('canvas');
       try {
         canvas?.remove();
       } catch {
-        /* no-op */
+        // no-op
+      }
+      
+      // Clear any pending engine/render instances
+      try {
+        render.context?.clearRect(0, 0, render.canvas.width, render.canvas.height);
+      } catch {
+        // no-op
       }
     };
   }, [config]);
@@ -327,11 +346,8 @@ function PhysicsCanvas({
   return (
     <div
       ref={containerRef}
-      /* This div is the *card box* — the canvas fills to the border.
-         No padding here so balls reach the visible edges (but remain inside). */
-      className={`relative w-full overflow-hidden ${className} rounded-xl bg-white/10 dark:bg-white/5 backdrop-blur-md supports-[backdrop-filter]:backdrop-blur-md supports-[backdrop-filter]:bg-white/10 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.15),0_8px_24px_rgba(0,0,0,0.08)]`}
+      className={`relative w-full overflow-hidden rounded-xl border border-white/10 ${className} bg-white/10 dark:bg-white/5 backdrop-blur-md supports-[backdrop-filter]:bg-white/10 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.15),0_8px_24px_rgba(0,0,0,0.08)]`}
     >
-      {/* Centered logo; pointer-events:none so you can drag balls beneath it */}
       <img
         src={logoSrc}
         alt={logoAlt}
@@ -343,7 +359,6 @@ function PhysicsCanvas({
 }
 
 export default function Skills() {
-  // Per-tile palettes (customize freely)
   const skills: Skill[] = [
     { name: 'Python', src: './Python.png', palette: ['#3776AB', '#FFE873', '#306998', '#FFCA3A'] },
     { name: 'HTML', src: './html.webp', palette: ['#E34F26', '#F06529', '#F29C6B', '#FF7A45'] },
@@ -356,7 +371,6 @@ export default function Skills() {
     { name: 'Salesforce', src: './Salesforce.png', palette: ['#00A1E0', '#33C3F0', '#60A5FA', '#93C5FD'] },
   ];
 
-  // Global defaults; override per skill via `options` if desired
   const baseConfig: Omit<PhysicsConfig, 'colors'> = {
     minBalls: 6,
     maxBalls: 12,
@@ -365,42 +379,32 @@ export default function Skills() {
     restitution: 0.9,
     friction: 0.04,
     frictionAir: 0.002,
-    shakeForce: 0.002, // increase for stronger jostle on scroll
+    shakeForce: 0.002,
   };
 
   return (
     <section id="skills" className="scroll-mt-16" data-section="skills">
-      {/* Sticky header for accessibility (unchanged) */}
-      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen bg-background/0 px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:sr-only lg:relative lg:top-auto lg:mx-auto lg:w-full lg:px-0 lg:py-0 lg:opacity-0">
-        <h2 className="shiny text-xl font-bold uppercase tracking-widest lg:sr-only">
+      <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:static lg:mb-0 lg:w-auto lg:px-0 lg:py-0 lg:backdrop-blur-none">
+        <h2 className="shiny text-xl font-bold uppercase tracking-widest lg:hidden">
           Skills
         </h2>
       </div>
 
-      <div className="mb-8 flex flex-col gap-4">
-        <h2 className="shiny hidden text-3xl font-bold lg:block lg:text-start">Skills</h2>
+      <div className="mb-8">
+        <h2 className="shiny hidden text-3xl font-bold lg:block">Skills</h2>
       </div>
 
-      {/* Responsive grid: 2 cols on tiny screens, 3 cols from sm+ */}
       <ul role="list" className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:gap-6">
         {skills.map((s) => (
-          <li
-            key={s.name}
-            className="group overflow-hidden rounded-xl border transition-shadow hover:shadow-md"
-          >
-            {/* Physics area fills up to the border */}
+          <li key={s.name} className="overflow-hidden rounded-xl border border-white/10 transition-shadow hover:shadow-md">
             <PhysicsCanvas
               logoSrc={s.src}
               logoAlt={`${s.name} logo`}
               config={{ ...baseConfig, colors: s.palette, ...(s.options ?? {}) }}
-              className="h-40 sm:h-44 md:h-48" // or "aspect-square"
+              className="h-40 sm:h-44 md:h-48"
             />
-
-            {/* Label inside the same card (clean, simple) */}
-            <div className="p-4 bg-[var(--skills-card-bg)]">
-              <p className="text-center text-sm font-medium text-foreground">
-                {s.name}
-              </p>
+            <div className="px-4 py-3">
+              <p className="text-center text-sm font-medium">{s.name}</p>
             </div>
           </li>
         ))}
