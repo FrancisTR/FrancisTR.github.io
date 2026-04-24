@@ -137,7 +137,7 @@ export default function Projects() {
               <CardTitle className="text-primary text-xl lg:text-2xl">
                 {project.title}
               </CardTitle>
-              <div className="inline-flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium border border-primary/15 bg-primary/5 text-primary px-3 py-2 rounded-full">
+              <div className="inline-flex flex-col md:flex-row items-center justify-between gap-3 text-sm font-medium border border-primary/15 bg-primary/5 text-primary px-3 py-2 rounded-sm">
                 <p>{project.type}</p>
                 <p>
                   {typeof project.stars === "string" && project.stars.startsWith("http") ? (
