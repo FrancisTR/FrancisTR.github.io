@@ -1,49 +1,76 @@
 import { useEffect } from "react";
 
 /**
- * Click anywhere on the page to spawn a temporary <ul> with 8 <li> "sparks"
- * positioned and animated by CSS. Removed after 250ms.
+ * Click anywhere on the page to spawn animated sparks that burst outward.
+ * Sparks fade out and disappear after animation completes.
  */
 export default function ClickBurst() {
   useEffect(() => {
+    const SPARK_COUNT = 12;
+    const ANIMATION_DURATION = 600;
+
+    // Inject CSS animation if not already present
+    if (!document.getElementById("click-burst-styles")) {
+      const style = document.createElement("style");
+      style.id = "click-burst-styles";
+      style.textContent = `
+        @keyframes spark-burst {
+          0% {
+            opacity: 1;
+            transform: translate(0, 0);
+          }
+          100% {
+            opacity: 0;
+            transform: translate(var(--tx), var(--ty));
+          }
+        }
+        
+        .spark {
+          position: fixed;
+          pointer-events: none;
+          width: 4px;
+          height: 4px;
+          background: currentColor;
+          border-radius: 50%;
+          animation: spark-burst ${ANIMATION_DURATION}ms ease-out forwards;
+          will-change: transform, opacity;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+
     const onClick = (event: MouseEvent) => {
-      let ul = document.createElement("ul");
-      ul.className = "click-burst";
-      
-      // Absolutely position at the mouse and center the UL on that point
-      ul.style.position = "absolute";
-      ul.style.left = `${event.pageX}px`;
-      ul.style.top = `${event.pageY}px`;
-      ul.style.transform = "translate(-50%, -50%)";
+      const { clientX, clientY } = event;
 
-      // Size of the effect area (tweak as you like)
-      ul.style.width = "3em";
-      ul.style.height = "1.5em";
+      // Create sparks in all directions
+      for (let i = 0; i < SPARK_COUNT; i++) {
+        const spark = document.createElement("div");
+        spark.className = "spark";
 
-      // Housekeeping
-      ul.style.listStyle = "none";
-      ul.style.padding = "0";
-      ul.style.margin = "0";           // no margin hacks needed
-      ul.style.pointerEvents = "none"; // don't block clicks
-      ul.style.zIndex = "9999";        // on top of everything
+        // Random angle and distance for each spark
+        const angle = (Math.random() * Math.PI * 2);
+        const distance = 50 + Math.random() * 100;
+        const tx = Math.cos(angle) * distance;
+        const ty = Math.sin(angle) * distance;
 
+        // Set CSS variables for the animation
+        spark.style.setProperty("--tx", `${tx}px`);
+        spark.style.setProperty("--ty", `${ty}px`);
+        spark.style.left = `${clientX}px`;
+        spark.style.top = `${clientY}px`;
+        spark.style.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
 
-      // 8 radial “spark” lines (li elements)
-      for (let i = 1; i <= 8; i++) {
-        let li = document.createElement("li");
-        ul.appendChild(li);
+        document.body.appendChild(spark);
+
+        // Remove spark after animation completes
+        setTimeout(() => {
+          spark.remove();
+        }, ANIMATION_DURATION);
       }
-
-      document.body.appendChild(ul);
-
-      // Remove after 250ms (matches animation duration)
-      setTimeout(() => {
-        ul.remove();
-      }, 250);
     };
 
-    document.body.addEventListener("click", onClick);
-    return () => document.body.removeEventListener("click", onClick);
+    document.addEventListener("click", onClick);
+    return () => document.removeEventListener("click", onClick);
   }, []);
 
   return null; // no visible UI; this just wires up the effect
