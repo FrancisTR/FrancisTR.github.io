@@ -13,6 +13,10 @@ const MIN_DIMENSION = 10;
 const SCROLL_SHAKE_THROTTLE = 16; // ~60fps throttling (ms)
 const OPTIMAL_PIXEL_RATIO = 1.5; // Balance between clarity and performance
 
+// Utility function for random integer generation
+const randInt = (a: number, b: number): number =>
+  Math.floor(Math.random() * (b - a + 1)) + a;
+
 type PhysicsConfig = {
   minBalls?: number;
   maxBalls?: number;
@@ -102,12 +106,10 @@ function PhysicsCanvas({
           background: 'transparent',
           wireframes: false,
           pixelRatio: cfg.pixelRatio,
-          enableSleeping: true,
         },
       });
 
       const runner = Runner.create();
-      runner.enableSleeping = true;
 
       // Walls (keep balls inside)
       const makeWalls = () => {
@@ -141,79 +143,76 @@ function PhysicsCanvas({
 
       let walls = makeWalls();
 
-      // Balls
-      const randInt = (a: number, b: number) =>
-        Math.floor(Math.random() * (b - a + 1)) + a;
+      // Ball creation loop
+      const createBalls = () => {
+        const [rmin, rmax] = cfg.radiusRange;
+        const count = randInt(cfg.minBalls, cfg.maxBalls);
+        const ballList: Matter.Body[] = [];
 
-      const [rmin, rmax] = cfg.radiusRange;
-      const count = randInt(cfg.minBalls, cfg.maxBalls);
-      const balls: Matter.Body[] = [];
-
-      for (let i = 0; i < count; i++) {
-        const r = randInt(rmin, rmax);
-        const x = randInt(r + WALL_PADDING, width - r - WALL_PADDING);
-        const y = randInt(r + WALL_PADDING, Math.max(r + WALL_PADDING, Math.floor(height * BALL_SPAWN_HEIGHT_RATIO)));
-        const color = cfg.colors[randInt(0, cfg.colors.length - 1)];
-        const ball = Bodies.circle(x, y, r, {
-          restitution: cfg.restitution,
-          friction: cfg.friction,
-          frictionAir: cfg.frictionAir,
-          collisionFilter: { category: CAT_BALL, mask: CAT_BALL | CAT_WALL },
-          render: {
-            fillStyle: color,
-            strokeStyle: 'rgba(0,0,0,0.08)',
-            lineWidth: 1,
-          },
-        });
-        balls.push(ball);
-        Composite.add(engine.world, ball);
-      }
+        for (let i = 0; i < count; i++) {
+          const r = randInt(rmin, rmax);
+          const x = randInt(r + WALL_PADDING, width - r - WALL_PADDING);
+          const y = randInt(r + WALL_PADDING, Math.max(r + WALL_PADDING, Math.floor(height * BALL_SPAWN_HEIGHT_RATIO)));
+          const color = cfg.colors[randInt(0, cfg.colors.length - 1)];
+          const ball = Bodies.circle(x, y, r, {
+            restitution: cfg.restitution,
+            friction: cfg.friction,
+            frictionAir: cfg.frictionAir,
+            collisionFilter: { category: CAT_BALL, mask: CAT_BALL | CAT_WALL },
+            render: {
+              fillStyle: color,
+              strokeStyle: 'rgba(0,0,0,0.08)',
+              lineWidth: 1,
+            },
+          });
+          ballList.push(ball);
+          Composite.add(engine.world, ball);
+        }
+        return ballList;
+      };
+      const balls = createBalls();
 
       // Allow page scroll while over the canvas
-      const enableWheelScrollPassThrough = (canvas: HTMLCanvasElement) => {
-        // Let the browser do native vertical panning on touch.
+      const setupScrollPassThrough = (canvas: HTMLCanvasElement) => {
         canvas.style.touchAction = 'pan-y';
+        const opts: AddEventListenerOptions = { passive: true, capture: true };
 
-        // Use capturing + passive listener so we never call preventDefault,
-        // and we run before Matter's own bubbling listeners. We stop propagation
-        // so Matter doesn't receive the event and thus can't cancel page scroll.
-        const useCapture = true;
-        const opts: AddEventListenerOptions = { passive: true, capture: useCapture };
-
-        const onWheel = (e: Event) => {
-          e.stopImmediatePropagation();
-          // No preventDefault — we want the page to scroll.
-        };
-        const onTouchMove = (e: Event) => {
-          e.stopImmediatePropagation();
+        const handlers = {
+          onWheel: (e: Event) => {
+            e.stopImmediatePropagation();
+          },
+          onTouchMove: (e: Event) => {
+            e.stopImmediatePropagation();
+          },
         };
 
-        canvas.addEventListener('wheel', onWheel as EventListener, opts);
-        canvas.addEventListener('mousewheel', onWheel as EventListener, opts); // legacy
-        canvas.addEventListener('DOMMouseScroll', onWheel as EventListener, opts); // Firefox legacy
-        canvas.addEventListener('touchmove', onTouchMove as EventListener, opts);
+        canvas.addEventListener('wheel', handlers.onWheel as EventListener, opts);
+        canvas.addEventListener('mousewheel', handlers.onWheel as EventListener, opts);
+        canvas.addEventListener('DOMMouseScroll', handlers.onWheel as EventListener, opts);
+        canvas.addEventListener('touchmove', handlers.onTouchMove as EventListener, opts);
 
         return () => {
-          canvas.removeEventListener('wheel', onWheel as EventListener, useCapture);
-          canvas.removeEventListener('mousewheel', onWheel as EventListener, useCapture);
-          canvas.removeEventListener('DOMMouseScroll', onWheel as EventListener, useCapture);
-          canvas.removeEventListener('touchmove', onTouchMove as EventListener, useCapture);
+          canvas.removeEventListener('wheel', handlers.onWheel as EventListener, true);
+          canvas.removeEventListener('mousewheel', handlers.onWheel as EventListener, true);
+          canvas.removeEventListener('DOMMouseScroll', handlers.onWheel as EventListener, true);
+          canvas.removeEventListener('touchmove', handlers.onTouchMove as EventListener, true);
         };
       };
 
-      // Enable scroll pass-through now that the canvas exists
-      detachScrollPassThrough = enableWheelScrollPassThrough(render.canvas);
+      detachScrollPassThrough = setupScrollPassThrough(render.canvas);
 
       // Keep a body fully inside the rectangle [0..width]x[0..height]
       const clampInside = (b: Matter.Body) => {
-        const r = (b as any).circleRadius ?? 12;
-        const minX = r + WALL_PADDING;
-        const maxX = width - r - WALL_PADDING;
-        const minY = r + WALL_PADDING;
-        const maxY = height - r - WALL_PADDING;
+        const radius = (b as any).circleRadius ?? 12;
+        const bounds = {
+          minX: radius + WALL_PADDING,
+          maxX: width - radius - WALL_PADDING,
+          minY: radius + WALL_PADDING,
+          maxY: height - radius - WALL_PADDING,
+        };
 
-        const nx = Math.min(maxX, Math.max(minX, b.position.x));
-        const ny = Math.min(maxY, Math.max(minY, b.position.y));
+        const nx = Math.min(bounds.maxX, Math.max(bounds.minX, b.position.x));
+        const ny = Math.min(bounds.maxY, Math.max(bounds.minY, b.position.y));
 
         if (nx !== b.position.x || ny !== b.position.y) {
           Body.setPosition(b, { x: nx, y: ny });
@@ -221,14 +220,12 @@ function PhysicsCanvas({
           const vx = b.velocity.x;
           const vy = b.velocity.y;
 
-          const outLeft = b.position.x <= minX && vx < 0;
-          const outRight = b.position.x >= maxX && vx > 0;
-          const outTop = b.position.y <= minY && vy < 0;
-          const outBottom = b.position.y >= maxY && vy > 0;
+          const isOutHorizontal = (b.position.x <= bounds.minX && vx < 0) || (b.position.x >= bounds.maxX && vx > 0);
+          const isOutVertical = (b.position.y <= bounds.minY && vy < 0) || (b.position.y >= bounds.maxY && vy > 0);
 
           Body.setVelocity(b, {
-            x: (outLeft || outRight) ? 0 : vx,
-            y: (outTop || outBottom) ? 0 : vy,
+            x: isOutHorizontal ? 0 : vx,
+            y: isOutVertical ? 0 : vy,
           });
         }
       };
@@ -239,24 +236,18 @@ function PhysicsCanvas({
       });
 
       // Shake on scroll with throttling and motion preference
-      const addScrollShakeListeners = () => {
+      const setupScrollShake = () => {
         let lastY = window.scrollY;
         let lastT = performance.now();
         let lastShakeT = performance.now();
         const prefersReducedMotion = typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
         const onScroll = () => {
+          if (prefersReducedMotion) return;
+          
           const now = performance.now();
+          if (now - lastShakeT < SCROLL_SHAKE_THROTTLE) return;
           
-          // Skip shake on reduced motion preference
-          if (prefersReducedMotion) {
-            return;
-          }
-          
-          // Throttle shake updates for consistent performance
-          if (now - lastShakeT < SCROLL_SHAKE_THROTTLE) {
-            return;
-          }
           lastShakeT = now;
 
           const dy = window.scrollY - lastY;
@@ -264,20 +255,19 @@ function PhysicsCanvas({
           lastY = window.scrollY;
           lastT = now;
 
-          const v = Math.max(-SCROLL_VELOCITY_CLAMP, Math.min(SCROLL_VELOCITY_CLAMP, dy / dt));
-          const fy = cfg.shakeForce * v;
-          const fx = cfg.shakeForce * v * (Math.random() * 0.6 - 0.3);
+          const velocity = Math.max(-SCROLL_VELOCITY_CLAMP, Math.min(SCROLL_VELOCITY_CLAMP, dy / dt));
+          const forceY = cfg.shakeForce * velocity;
+          const forceX = cfg.shakeForce * velocity * (Math.random() * 0.6 - 0.3);
 
-          for (const b of balls) {
-            Body.applyForce(b, b.position, { x: fx, y: fy });
+          balls.forEach((b) => {
+            Body.applyForce(b, b.position, { x: forceX, y: forceY });
             Body.setAngularVelocity(
               b,
               b.angularVelocity + (Math.random() * ANGULAR_VELOCITY_JITTER - ANGULAR_VELOCITY_JITTER / 2),
             );
-          }
+          });
         };
 
-        // Passive listeners to never block scrolling
         window.addEventListener('scroll', onScroll, { passive: true });
         window.addEventListener('wheel', onScroll, { passive: true });
 
@@ -287,7 +277,7 @@ function PhysicsCanvas({
         };
       };
 
-      removeScrollHandlers = addScrollShakeListeners();
+      removeScrollHandlers = setupScrollShake();
 
       // Start simulation
       Render.run(render);
@@ -295,12 +285,12 @@ function PhysicsCanvas({
 
       // Sync canvas size on container resize with debouncing
       let resizeTimeout: NodeJS.Timeout | null = null;
-      const onResize = () => {
+      const handleResize = () => {
         if (resizeTimeout) clearTimeout(resizeTimeout);
         resizeTimeout = setTimeout(() => {
-          const r = el.getBoundingClientRect();
-          width = Math.max(MIN_DIMENSION, Math.floor(r.width));
-          height = Math.max(MIN_DIMENSION, Math.floor(r.height));
+          const rect = el.getBoundingClientRect();
+          width = Math.max(MIN_DIMENSION, Math.floor(rect.width));
+          height = Math.max(MIN_DIMENSION, Math.floor(rect.height));
 
           render.canvas.width = width * cfg.pixelRatio;
           render.canvas.height = height * cfg.pixelRatio;
@@ -312,11 +302,11 @@ function PhysicsCanvas({
           Composite.remove(engine.world, walls);
           walls = makeWalls();
 
-          for (const b of balls) clampInside(b);
+          balls.forEach((b) => clampInside(b));
         }, 150);
       };
 
-      resizeObs = new ResizeObserver(onResize);
+      resizeObs = new ResizeObserver(handleResize);
       resizeObs.observe(el);
     })();
 
@@ -326,17 +316,9 @@ function PhysicsCanvas({
       if (removeScrollHandlers) removeScrollHandlers();
       if (detachScrollPassThrough) detachScrollPassThrough();
 
-      const el = containerRef.current;
-      const canvas = el?.querySelector('canvas');
+      const canvas = containerRef.current?.querySelector('canvas');
       try {
         canvas?.remove();
-      } catch {
-        // no-op
-      }
-      
-      // Clear any pending engine/render instances
-      try {
-        render.context?.clearRect(0, 0, render.canvas.width, render.canvas.height);
       } catch {
         // no-op
       }
@@ -372,13 +354,13 @@ export default function Skills() {
   ];
 
   const baseConfig: Omit<PhysicsConfig, 'colors'> = {
-    minBalls: 6,
-    maxBalls: 12,
+    minBalls: 5,
+    maxBalls: 8,
     gravity: 1,
-    radiusRange: [8, 18],
-    restitution: 0.9,
-    friction: 0.04,
-    frictionAir: 0.002,
+    radiusRange: [10, 16],
+    restitution: 0.85,
+    friction: 0.05,
+    frictionAir: 0.003,
     shakeForce: 0.002,
   };
 
