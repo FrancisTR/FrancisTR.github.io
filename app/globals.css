@@ -209,3 +209,46 @@
   from { width: 22px; }
   to   { width: 0px; }
 }
+
+/* Animated cube button */
+.cube-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  position: relative;
+}
+
+.cube-button .cube {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  transform-style: preserve-3d;
+  animation: rotate 8s infinite linear;
+}
+
+.cube-button .face {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: white;
+}
+
+.cube-button .front { transform: translateZ(16px); }
+.cube-button .back { transform: rotateY(180deg) translateZ(16px); }
+.cube-button .right { transform: rotateY(90deg) translateZ(16px); }
+.cube-button .left { transform: rotateY(-90deg) translateZ(16px); }
+.cube-button .top { transform: rotateX(90deg) translateZ(16px); }
+.cube-button .bottom { transform: rotateX(-90deg) translateZ(16px); }
+
+@keyframes rotate {
+  0% { transform: rotateX(0deg) rotateY(0deg); }
+  100% { transform: rotateX(360deg) rotateY(360deg); }
+}

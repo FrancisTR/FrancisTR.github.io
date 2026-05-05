@@ -8,7 +8,7 @@ import Projects from "@/components/Projects";
 import About from "@/components/Skills";
 import Contact from "@/components/Blog";
 import Footer from "@/components/Footer";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -147,20 +147,31 @@ const windows: HolidayWindow[] = [
 
 export default function Home() {
   const auraRef = useRef<HTMLDivElement>(null);
+  const [showPicker, setShowPicker] = useState(false);
+  const [forcedHolidayId, setForcedHolidayId] = useState<string | null>(null);
+  const lastToastHolidayId = useRef<string | null>(null);
 
-  // Prevent duplicate toasts in React Strict Mode during development
-  const shownRef = useRef(false);
-
-  // Check for holiday testing parameter
-  //Ex: http://localhost:3000/?holiday=valentines
+  // Check for holiday testing parameter or forced selection
+  // Ex: http://localhost:3000/?holiday=valentines
   const getForcedHoliday = () => {
-    if (typeof window === 'undefined') return null;
-    const urlParams = new URLSearchParams(window.location.search);
-    const holidayParam = urlParams.get('holiday');
-    if (holidayParam && windows.some(w => w.id === holidayParam)) {
-      return windows.find(w => w.id === holidayParam) || null;
+    if (forcedHolidayId) {
+      return windows.find((w) => w.id === forcedHolidayId) || null;
     }
-    return null;
+
+    if (typeof window === "undefined") return null;
+    const urlParams = new URLSearchParams(window.location.search);
+    const holidayParam = urlParams.get("holiday");
+    return holidayParam && windows.some((w) => w.id === holidayParam)
+      ? windows.find((w) => w.id === holidayParam) || null
+      : null;
+  };
+
+  const updateHoliday = (holidayId: string | null) => {
+    setForcedHolidayId(holidayId);
+    if (typeof window === "undefined") return;
+    const baseUrl = window.location.pathname;
+    const query = holidayId ? `?holiday=${holidayId}` : "";
+    window.history.pushState(null, "", `${baseUrl}${query}`);
   };
 
   // Get active windows (forced holiday takes precedence for testing)
@@ -197,16 +208,14 @@ export default function Home() {
 
   // Show toast only when a holiday window is active; no popup otherwise
   useEffect(() => {
-    if (shownRef.current) return; // guard for Strict Mode double-invoke
     const now = new Date();
     const forcedHoliday = getForcedHoliday();
     const active = forcedHoliday || windows.find(
       (w) => now >= w.start && now < w.end && !!w.notificationPopUp
     );
-    if (!active) return;
+    if (!active || lastToastHolidayId.current === active.id) return;
 
-    shownRef.current = true;
-
+    lastToastHolidayId.current = active.id;
     toast(active.notificationPopUp!, {
       position: "top-center",
       autoClose: 5000,
@@ -217,7 +226,7 @@ export default function Home() {
       progress: undefined,
       theme: "dark",
     });
-  }, []);
+  }, [forcedHolidayId]);
 
   return (
     <>
@@ -280,6 +289,106 @@ export default function Home() {
           </main>
         </div>
       </div>
+      <button
+        type="button"
+        onClick={() => setShowPicker(true)}
+        aria-label="Open holiday theme selector"
+        className="fixed bottom-5 right-5 z-[9999] border border-white/10 bg-slate-900/90 p-3 shadow-2xl shadow-slate-950/40 transition hover:bg-slate-800/95 focus:outline-none focus:ring-2 focus:ring-white/30"
+      >
+        <span className="cube-button" aria-hidden="true">
+          <span className="cube">
+            <span className="face front">🎉</span>
+            <span className="face back">🎄</span>
+            <span className="face right">🎃</span>
+            <span className="face left">🍀</span>
+            <span className="face top">🐣</span>
+            <span className="face bottom">❤️</span>
+          </span>
+        </span>
+      </button>
+      {showPicker && (
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6"
+          onClick={() => setShowPicker(false)}
+        >
+          <div
+            className="w-full max-w-2xl rounded-[1rem] border border-white/10 bg-card/95 p-6 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm sm:p-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div className="flex items-start justify-between gap-4 mb-5">
+              <div>
+                <h2 className="text-3xl font-bold tracking-tight">Holiday Themes</h2>
+              </div>
+              <button
+                type="button"
+                onClick={() => setShowPicker(false)}
+                aria-label="Close holiday theme selector"
+                className="inline-flex h-11 w-11 items-center justify-center rounded-[0.5] border border-white/10 bg-white/10 text-slate-900 transition hover:bg-white/20 dark:border-slate-700/75 dark:bg-slate-900/70 dark:text-white"
+              >
+                X
+              </button>
+            </div>
+            <div className="grid gap-4 sm:grid-cols-[220px_minmax(0,1fr)] items-start">
+              <div className="rounded-3xl bg-white/5 p-5 text-center shadow-inner ring-1 ring-white/10">
+                <div className="mb-4 inline-flex flex-wrap justify-center gap-3">
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-red-500/15 text-xl">❤️</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-green-500/15 text-xl">🍀</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-yellow-500/15 text-xl">🐣</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/15 text-xl">🎃</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500/15 text-xl">🎄</span>
+                </div>
+                <p className="text-sm leading-6 text-slate-500 dark:text-slate-400">
+                  Tap a holiday to preview the portfolio theme instantly.
+                </p>
+              </div>
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                <button
+                  type="button"
+                  onClick={() => { updateHoliday(null); setShowPicker(false); }}
+                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                >
+                  Default Theme
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { updateHoliday('valentines'); setShowPicker(false); }}
+                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                >
+                  Valentine's Day
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { updateHoliday('st-patricks'); setShowPicker(false); }}
+                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                >
+                  St. Patrick's Day
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { updateHoliday('easter'); setShowPicker(false); }}
+                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                >
+                  Easter
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { updateHoliday('halloween'); setShowPicker(false); }}
+                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                >
+                  Halloween
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { updateHoliday('christmas'); setShowPicker(false); }}
+                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                >
+                  Christmas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
