@@ -18,10 +18,6 @@
   /* Skills card */
   --skills-card-bg: #0C1426;
 
-  /* Click colors */
-  --click-color-1: rgb(255, 255, 255);
-  --click-color-2: rgb(255, 255, 255);
-
   --custom-cursor: url('/cursorImg/IceCream.ico') 16 16, auto
 }
 
@@ -119,96 +115,6 @@
   }
 }
 
-
-/* Each spark segment */
-.click-burst li {
-  padding: 0;
-  width: 0;
-  height: 0;
-  position: absolute;
-  left: auto;
-  right: auto;
-}
-
-/* Top (vertical) */
-.click-burst li:first-child {
-  left: 50%;
-  top: -22px;
-  width: 1px;
-  border-left: 2px solid var(--click-color-1);
-  animation: vert 0.25s linear;
-}
-
-/* Bottom (vertical) */
-.click-burst li:nth-child(2) {
-  left: 50%;
-  bottom: -22px;
-  width: 1px;
-  border-left: 2px solid var(--click-color-1);
-  animation: vert 0.25s linear;
-}
-
-/* Left (horizontal) */
-.click-burst li:nth-child(3) {
-  left: -6px;
-  top: 11px;
-  height: 1px;
-  border-bottom: 2px solid var(--click-color-1);
-  animation: horiz 0.25s linear;
-}
-
-/* Right (horizontal) */
-.click-burst li:nth-child(4) {
-  right: -6px;
-  top: 11px;
-  height: 1px;
-  border-bottom: 2px solid var(--click-color-1);
-  animation: horiz 0.25s linear;
-}
-
-/* Diagonals */
-.click-burst li:nth-child(5) {
-  left: 0px;
-  top: -11px;
-  rotate: 45deg;
-  height: 1px;
-  border-bottom: 2px solid var(--click-color-2);
-  animation: horiz 0.25s linear;
-}
-.click-burst li:nth-child(6) {
-  right: 0px;
-  top: -11px;
-  rotate: -45deg;
-  height: 1px;
-  border-bottom: 2px solid var(--click-color-2);
-  animation: horiz 0.25s linear;
-}
-.click-burst li:nth-child(7) {
-  left: 0px;
-  bottom: -11px;
-  rotate: -45deg;
-  height: 1px;
-  border-bottom: 2px solid var(--click-color-2);
-  animation: horiz 0.25s linear;
-}
-.click-burst li:nth-child(8) {
-  right: 0px;
-  bottom: -11px;
-  rotate: 45deg;
-  height: 1px;
-  border-bottom: 2px solid var(--click-color-2);
-  animation: horiz 0.25s linear;
-}
-
-/* Keyframes for mouse click */
-@keyframes vert {
-  from { height: 22px; }
-  to   { height: 0px; }
-}
-@keyframes horiz {
-  from { width: 22px; }
-  to   { width: 0px; }
-}
 
 /* Animated cube button */
 .cube-button {

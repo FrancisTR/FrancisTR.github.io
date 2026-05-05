@@ -1,6 +1,5 @@
 "use client";
 import ThemeScheduler, { ThemeWindow } from "@/components/ui/ThemeScheduler";
-import ClickBurst from "@/components/ui/ClickBurst";
 import Head from "next/head";
 import Nav from "@/components/Nav";
 import ExpCard from "@/components/ExpCards";
@@ -69,8 +68,6 @@ const windows: HolidayWindow[] = [
       "--primary-main-color": "305 100% 88%",
       "--card-main-bg": "319 49% 10%",
       "--skills-card-bg": "#260d1e",
-      "--click-color-1": "rgb(255, 0, 221)",
-      "--click-color-2": "rgb(255, 191, 250)",
       "--custom-cursor": "url('/cursorImg/Heart.ico') 16 16, auto",
     },
     notificationPopUp: "❤️ Happy Valentine's Day!",
@@ -86,8 +83,6 @@ const windows: HolidayWindow[] = [
       "--primary-main-color": "122 100% 81%",
       "--card-main-bg": "122 49% 10%",
       "--skills-card-bg": "#0a1a0a",
-      "--click-color-1": "rgb(0, 255, 13)",
-      "--click-color-2": "rgba(159, 255, 162, 0.93)",
       "--custom-cursor": "url('/cursorImg/Clover.ico') 16 16, auto",
     },
     notificationPopUp: "🍀 Happy St. Patrick's Day!",
@@ -103,8 +98,6 @@ const windows: HolidayWindow[] = [
       "--primary-main-color": "205 70% 78%",
       "--card-main-bg": "275 45% 12%",
       "--skills-card-bg": "#1e0d26",
-      "--click-color-1": "rgb(255, 196, 232)",
-      "--click-color-2": "rgb(255, 241, 153)",
       "--custom-cursor": "url('/cursorImg/Egg.ico') 16 16, auto",
     },
     notificationPopUp: "🐣 Happy Easter!",
@@ -120,8 +113,6 @@ const windows: HolidayWindow[] = [
       "--primary-main-color": "40 100% 75%",
       "--card-main-bg": "38 49% 10%",
       "--skills-card-bg": "#1a130a",
-      "--click-color-1": "rgb(255, 166, 0)",
-      "--click-color-2": "rgb(255, 212, 125)",
       "--custom-cursor": "url('/cursorImg/Pumpkin.ico') 16 16, auto",
     },
     notificationPopUp: "👻 Happy Halloween!",
@@ -137,8 +128,6 @@ const windows: HolidayWindow[] = [
       "--primary-main-color": "120 79% 40%",
       "--card-main-bg": "0 49% 10%",
       "--skills-card-bg": "#1a0d0d",
-      "--click-color-1": "rgb(21, 183, 21)",
-      "--click-color-2": "rgb(255, 122, 122)",
       "--custom-cursor": "url('/cursorImg/ChristmasTree.ico') 16 16, auto",
     },
     notificationPopUp: "🎄 Merry Christmas!",
@@ -243,7 +232,6 @@ export default function Home() {
         theme="dark"
         style={{ zIndex: 2147483647 }} // ensure it's on top of everything
       />
-      <ClickBurst />
       <ThemeScheduler
         windows={activeWindows}
         defaults={{
@@ -252,8 +240,6 @@ export default function Home() {
           "--primary-main-color": "193 100% 50%",
           "--card-main-bg": "222.2 50% 10%",
           "--skills-card-bg": "#0C1426",
-          "--click-color-1": "rgb(255, 255, 255)",
-          "--click-color-2": "rgb(255, 255, 255)",
         }}
         tickMs={1000}
         strict={true}
@@ -263,8 +249,6 @@ export default function Home() {
           "--primary-main-color",
           "--card-main-bg",
           "--skills-card-bg",
-          "--click-color-1",
-          "--click-color-2",
           "--custom-cursor",
         ]}
         debug={false}
