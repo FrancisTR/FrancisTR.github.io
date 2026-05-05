@@ -121,7 +121,7 @@ export default function Projects() {
         {jobProjects.map((project, index) => (
           <Card
             key={index}
-            className="relative overflow-hidden border border-border/60 bg-card/70 backdrop-blur shadow-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5 dark:bg-slate-900/60 dark:hover:bg-slate-900/60"
+            className="relative overflow-hidden border border-border/60 bg-card/70 backdrop-blur shadow-sm transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 group p-6 mb-8 flex flex-col lg:flex-row w-full min-h-fit gap-0 lg:gap-5"
           >
             <CardHeader className="h-full w-full lg:w-1/3 mb-4 p-0 overflow-hidden rounded-lg">
               <Image

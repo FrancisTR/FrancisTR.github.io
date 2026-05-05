@@ -225,7 +225,6 @@ export default function Blog() {
                   hover:-translate-y-0.5 hover:shadow-md
                   hover:border-primary/30
                   focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2
-                  dark:bg-slate-900/60 dark:hover:bg-slate-900/60
                 "
                 data-pinned={pinLabel ? "true" : "false"}
                 aria-label={pinLabel ? `Pinned: ${pinLabel}` : undefined}
