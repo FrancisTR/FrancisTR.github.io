@@ -12,6 +12,24 @@ import { MoveRight } from "lucide-react";
 
 const jobPositions = [
   {
+    timeline: "May 2026 — Present",
+    currentPosition: "Full Stack Developer",
+    place: "Virtual Coffee",
+    previousPositions: [""],
+    description:
+      ``,
+    skills: [
+      "HTML",
+      "CSS",
+      "TypeScript",
+      "Next.js",
+      "UI/UX Design",
+      "Testing & QA",
+      "Slack",
+      "Git"
+    ],
+  },
+  {
     timeline: "May 2022 — Present",
     currentPosition: "CRM Salesforce Student Administrator",
     place: "University of St. Thomas",

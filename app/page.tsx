@@ -1,5 +1,6 @@
 "use client";
 import ThemeScheduler, { ThemeWindow } from "@/components/ui/ThemeScheduler";
+import { Button } from "@/components/ui/button";
 import Head from "next/head";
 import Nav from "@/components/Nav";
 import ExpCard from "@/components/ExpCards";
@@ -296,24 +297,24 @@ export default function Home() {
           onClick={() => setShowPicker(false)}
         >
           <div
-            className="w-full max-w-2xl rounded-[1rem] border border-white/10 bg-card/95 p-6 shadow-2xl ring-1 ring-white/10 backdrop-blur-sm sm:p-8"
+            className="w-full max-w-sm sm:max-w-2xl rounded-[1rem] border border-border bg-card/95 p-4 sm:p-6 shadow-2xl ring-1 ring-border backdrop-blur-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4 mb-5">
               <div>
-                <h2 className="text-3xl font-bold tracking-tight">Holiday Themes</h2>
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Holiday Themes</h2>
               </div>
-              <button
-                type="button"
+              <Button
+                variant="outline"
+                size="icon"
                 onClick={() => setShowPicker(false)}
                 aria-label="Close holiday theme selector"
-                className="inline-flex h-11 w-11 items-center justify-center rounded-[0.5] border border-white/10 bg-white/10 text-slate-900 transition hover:bg-white/20 dark:border-slate-700/75 dark:bg-slate-900/70 dark:text-white"
               >
-                X
-              </button>
+                ✕
+              </Button>
             </div>
-            <div className="grid gap-4 sm:grid-cols-[220px_minmax(0,1fr)] items-start">
-              <div className="rounded-3xl bg-white/5 p-5 text-center shadow-inner ring-1 ring-white/10">
+            <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)] items-start">
+              <div className="rounded-3xl bg-muted/50 p-5 text-center shadow-inner ring-1 ring-border order-2 lg:order-1">
                 <div className="mb-4 inline-flex flex-wrap justify-center gap-3">
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-red-500/15 text-xl">❤️</span>
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-green-500/15 text-xl">🍀</span>
@@ -321,53 +322,53 @@ export default function Home() {
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/15 text-xl">🎃</span>
                   <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500/15 text-xl">🎄</span>
                 </div>
-                <p className="text-sm leading-6 text-slate-500 dark:text-slate-400">
+                <p className="text-sm leading-6 text-muted-foreground">
                   Tap a holiday to preview the portfolio theme instantly.
                 </p>
               </div>
-              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
-                <button
-                  type="button"
+              <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 order-1 lg:order-2">
+                <Button
+                  variant="outline"
                   onClick={() => { updateHoliday(null); setShowPicker(false); }}
-                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                  className="min-h-[3rem]"
                 >
                   Default Theme
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
+                  variant="outline"
                   onClick={() => { updateHoliday('valentines'); setShowPicker(false); }}
-                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                  className="min-h-[3rem]"
                 >
                   Valentine's Day
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
+                  variant="outline"
                   onClick={() => { updateHoliday('st-patricks'); setShowPicker(false); }}
-                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                  className="min-h-[3rem]"
                 >
                   St. Patrick's Day
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
+                  variant="outline"
                   onClick={() => { updateHoliday('easter'); setShowPicker(false); }}
-                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                  className="min-h-[3rem]"
                 >
                   Easter
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
+                  variant="outline"
                   onClick={() => { updateHoliday('halloween'); setShowPicker(false); }}
-                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                  className="min-h-[3rem]"
                 >
                   Halloween
-                </button>
-                <button
-                  type="button"
+                </Button>
+                <Button
+                  variant="outline"
                   onClick={() => { updateHoliday('christmas'); setShowPicker(false); }}
-                  className="min-h-[3rem] rounded-2xl bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm ring-1 ring-slate-200 transition hover:bg-slate-100"
+                  className="min-h-[3rem]"
                 >
                   Christmas
-                </button>
+                </Button>
               </div>
             </div>
           </div>

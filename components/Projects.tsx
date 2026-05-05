@@ -82,26 +82,6 @@ const jobProjects: ProjectItem[] = [
     ],
     repoLink: "https://github.com/FrancisTR/ClassifierAI",
   },
-  // {
-  //   imagePath: "/UnknownProject.png",
-  //   title: "PokeMarket",
-  //   description:
-  //     "A Full-Stack application that shows the values for each card in the market. Uses Machine Learning to predict the value of the card.",
-  //   skills: [
-  //     "Coming Soon",
-  //   ],
-  //   link: "",
-  // },
-  // {
-  //   imagePath: "/UnknownProject.png",
-  //   title: "Lunar Landing RL Research",
-  //   description:
-  //     "A research project to see which RL algorithms performs the fastest.",
-  //   skills: [
-  //     "Coming Soon",
-  //   ],
-  //   link: "",
-  // },
 ];
 
 export default function Projects() {
