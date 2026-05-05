@@ -297,7 +297,7 @@ export default function Home() {
           onClick={() => setShowPicker(false)}
         >
           <div
-            className="w-full max-w-sm sm:max-w-2xl rounded-[1rem] border border-border bg-card/95 p-4 sm:p-6 shadow-2xl ring-1 ring-border backdrop-blur-sm"
+            className="w-full max-w-sm sm:max-w-2xl rounded-[.5rem] border border-border bg-card/95 p-4 sm:p-6 shadow-2xl ring-1 ring-border backdrop-blur-sm"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-start justify-between gap-4 mb-5">
@@ -314,16 +314,16 @@ export default function Home() {
               </Button>
             </div>
             <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)] items-start">
-              <div className="rounded-3xl bg-muted/50 p-5 text-center shadow-inner ring-1 ring-border order-2 lg:order-1">
+              <div className="rounded-1xl bg-muted/50 p-5 text-center shadow-inner ring-1 ring-border order-2 lg:order-1">
                 <div className="mb-4 inline-flex flex-wrap justify-center gap-3">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-red-500/15 text-xl">❤️</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-green-500/15 text-xl">🍀</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-yellow-500/15 text-xl">🐣</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-orange-500/15 text-xl">🎃</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-500/15 text-xl">🎄</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-red-500/15 text-xl">❤️</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-green-500/15 text-xl">🍀</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-yellow-500/15 text-xl">🐣</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-orange-500/15 text-xl">🎃</span>
+                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-sky-500/15 text-xl">🎄</span>
                 </div>
                 <p className="text-sm leading-6 text-muted-foreground">
-                  Tap a holiday to preview the portfolio theme instantly.
+                  Choose a holiday to preview!
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 order-1 lg:order-2">
