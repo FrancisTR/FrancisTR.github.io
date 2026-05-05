@@ -83,7 +83,7 @@ const windows: HolidayWindow[] = [
     vars: {
       "--shiny-color": "#00ff0dd0",
       "--shiny-color-light": "#9fffa2eb",
-      "--primary-main-color": "122 100% 81% 0.93",
+      "--primary-main-color": "122 100% 81%",
       "--card-main-bg": "122 49% 10%",
       "--skills-card-bg": "#0a1a0a",
       "--click-color-1": "rgb(0, 255, 13)",
@@ -117,7 +117,7 @@ const windows: HolidayWindow[] = [
     vars: {
       "--shiny-color": "#ffa600ee",
       "--shiny-color-light": "#ffd47dee",
-      "--primary-main-color": "40 100% 75% 0.93",
+      "--primary-main-color": "40 100% 75%",
       "--card-main-bg": "38 49% 10%",
       "--skills-card-bg": "#1a130a",
       "--click-color-1": "rgb(255, 166, 0)",
