@@ -64,16 +64,16 @@ export default function Nav() {
 
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-20 flex flex-col lg:gap-4">
-      <div className="flex flex-col gap-4 lg:pr-20 mt-2">
-        <h1 className="text-5xl font-bold lg:text-start">Francis Tran</h1>
-        <h2 className="text-2xl lg:text-start shiny">
+      <div className="flex flex-col gap-4 lg:pr-20 mt-2 px-6 lg:px-0">
+        <h1 className="text-5xl font-bold lg:text-start text-center sm:text-start">Francis Tran</h1>
+        <h2 className="text-2xl lg:text-start text-center sm:text-start shiny">
           <span className="custom-cursor">Full-Stack Engineer</span>
         </h2>
-        <p className="text-lg lg:text-start text-muted-foreground">
+        <p className="text-lg lg:text-start text-center sm:text-start text-muted-foreground">
           Software Engineering graduate from the University of St. Thomas with 4+
           years of overall professional experience.
         </p>
-        <ul className="flex flex-row gap-6 mt-4">
+        <ul className="flex flex-row gap-6 mt-4 justify-center lg:justify-start">
           <a href="mailto:xst-tran6832@stthomas.edu" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="icon" className="relative group">
               <Mail className="h-[1.2rem] w-[1.2rem] transition-opacity duration-150 opacity-100 group-hover:opacity-0 pointer-events-none" />

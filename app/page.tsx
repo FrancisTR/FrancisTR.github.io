@@ -265,7 +265,7 @@ export default function Home() {
       <div className="mx-auto min-h-screen max-w-screen-2xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
           <Nav />
-          <main className="flex flex-col pt-6 lg:pt-24 lg:w-1/2 lg:py-24 gap-8">
+          <main className="flex flex-col pt-6 lg:pt-24 lg:w-1/2 lg:py-24 gap-12 md:gap-16">
             <About />
             <ExpCard />
             <Projects />
@@ -278,18 +278,23 @@ export default function Home() {
         type="button"
         onClick={() => setShowPicker(true)}
         aria-label="Open holiday theme selector"
-        className="fixed bottom-5 right-5 z-[9999] border border-white/10 bg-slate-900/90 p-3 shadow-2xl shadow-slate-950/40 transition hover:bg-slate-800/95 focus:outline-none focus:ring-2 focus:ring-white/30"
+        className="fixed bottom-5 right-5 z-[9999] group"
       >
-        <span className="cube-button" aria-hidden="true">
-          <span className="cube">
-            <span className="face front">🎉</span>
-            <span className="face back">🎄</span>
-            <span className="face right">🎃</span>
-            <span className="face left">🍀</span>
-            <span className="face top">🐣</span>
-            <span className="face bottom">❤️</span>
-          </span>
-        </span>
+        <div className="relative flex items-center justify-center w-12 h-12 transition-transform duration-300 ease-out hover:scale-110 active:scale-95">
+          <div className="absolute inset-0 rounded-full bg-primary/30 blur-md group-hover:blur-lg transition-all duration-500"></div>
+          <div className="relative w-10 h-10 rounded-full bg-card/80 backdrop-blur-md shadow-xl flex items-center justify-center overflow-hidden">
+            <span className="cube-button scale-75" aria-hidden="true">
+              <span className="cube">
+                <span className="face front">🎉</span>
+                <span className="face back">🎄</span>
+                <span className="face right">🎃</span>
+                <span className="face left">🍀</span>
+                <span className="face top">🐣</span>
+                <span className="face bottom">❤️</span>
+              </span>
+            </span>
+          </div>
+        </div>
       </button>
       {showPicker && (
         <div
@@ -297,75 +302,77 @@ export default function Home() {
           onClick={() => setShowPicker(false)}
         >
           <div
-            className="w-full max-w-sm sm:max-w-2xl rounded-[.5rem] border border-border bg-card/95 p-4 sm:p-6 shadow-2xl ring-1 ring-border backdrop-blur-sm"
+            className="w-full max-w-sm sm:max-w-2xl rounded-2xl border border-white/10 bg-card/90 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-xl"
             onClick={(e) => e.stopPropagation()}
           >
-            <div className="flex items-start justify-between gap-4 mb-5">
-              <div>
-                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">Holiday Themes</h2>
+            <div className="flex items-center justify-between gap-4 mb-8">
+              <div className="flex flex-col gap-1">
+                <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Holiday Themes</h2>
+                <p className="text-sm text-muted-foreground">Personalize your experience</p>
               </div>
               <Button
-                variant="outline"
+                variant="ghost"
                 size="icon"
                 onClick={() => setShowPicker(false)}
+                className="rounded-full hover:bg-white/10"
                 aria-label="Close holiday theme selector"
               >
-                ✕
+                <span className="text-xl">✕</span>
               </Button>
             </div>
-            <div className="grid gap-4 lg:grid-cols-[220px_minmax(0,1fr)] items-start">
-              <div className="rounded-1xl bg-muted/50 p-5 text-center shadow-inner ring-1 ring-border order-2 lg:order-1">
+            <div className="grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)] items-center">
+              <div className="rounded-2xl bg-white/5 p-6 text-center shadow-inner ring-1 ring-white/10 order-2 lg:order-1 backdrop-blur-sm">
                 <div className="mb-4 inline-flex flex-wrap justify-center gap-3">
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-red-500/15 text-xl">❤️</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-green-500/15 text-xl">🍀</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-yellow-500/15 text-xl">🐣</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-orange-500/15 text-xl">🎃</span>
-                  <span className="inline-flex h-11 w-11 items-center justify-center rounded-1xl bg-sky-500/15 text-xl">🎄</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-500/20 text-2xl transition-transform hover:scale-110 cursor-default">❤️</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🍀</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🐣</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-orange-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🎃</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🎄</span>
                 </div>
-                <p className="text-sm leading-6 text-muted-foreground">
-                  Choose a holiday to preview!
+                <p className="text-sm font-medium text-muted-foreground">
+                  Select a theme to apply
                 </p>
               </div>
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 order-1 lg:order-2">
                 <Button
                   variant="outline"
                   onClick={() => { updateHoliday(null); setShowPicker(false); }}
-                  className="min-h-[3rem]"
+                  className="min-h-[3.5rem] rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all"
                 >
                   Default Theme
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => { updateHoliday('valentines'); setShowPicker(false); }}
-                  className="min-h-[3rem]"
+                  className="min-h-[3.5rem] rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all"
                 >
                   Valentine's Day
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => { updateHoliday('st-patricks'); setShowPicker(false); }}
-                  className="min-h-[3rem]"
+                  className="min-h-[3.5rem] rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all"
                 >
                   St. Patrick's Day
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => { updateHoliday('easter'); setShowPicker(false); }}
-                  className="min-h-[3rem]"
+                  className="min-h-[3.5rem] rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all"
                 >
                   Easter
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => { updateHoliday('halloween'); setShowPicker(false); }}
-                  className="min-h-[3rem]"
+                  className="min-h-[3.5rem] rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all"
                 >
                   Halloween
                 </Button>
                 <Button
                   variant="outline"
                   onClick={() => { updateHoliday('christmas'); setShowPicker(false); }}
-                  className="min-h-[3rem]"
+                  className="min-h-[3.5rem] rounded-xl border-white/10 bg-white/5 hover:bg-white/10 transition-all"
                 >
                   Christmas
                 </Button>
