@@ -367,7 +367,7 @@ export default function Skills() {
   return (
     <section id="skills" className="scroll-mt-16" data-section="skills">
       <div className="sticky top-0 z-20 -mx-6 mb-4 w-screen px-6 py-5 backdrop-blur md:-mx-12 md:px-12 lg:static lg:mb-0 lg:w-auto lg:px-0 lg:py-0 lg:backdrop-blur-none">
-        <h2 className="shiny text-xl font-bold uppercase tracking-widest lg:hidden">
+        <h2 className="shiny text-xl font-bold uppercase tracking-widest lg:hidden text-start">
           Skills
         </h2>
       </div>
