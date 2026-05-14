@@ -235,7 +235,7 @@ export default function Blog() {
                     pointer-events-none absolute inset-0
                     opacity-0 transition-opacity duration-200
                     group-hover:opacity-100
-                    bg-gradient-to-r from-cyan-500/10 via-transparent to-transparent
+                    bg-gradient-to-r from-primary/10 via-transparent to-transparent
                   "
                 />
 

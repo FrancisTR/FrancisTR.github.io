@@ -282,7 +282,7 @@ export default function Home() {
       >
         <div className="relative flex items-center justify-center w-12 h-12 transition-transform duration-300 ease-out hover:scale-110 active:scale-95">
           <div className="absolute inset-0 rounded-full bg-primary/30 blur-md group-hover:blur-lg transition-all duration-500"></div>
-          <div className="relative w-10 h-10 rounded-full bg-card/80 backdrop-blur-md shadow-xl flex items-center justify-center overflow-hidden">
+          <div className="relative w-10 h-10 rounded-full bg-transparent shadow-none flex items-center justify-center overflow-hidden">
             <span className="cube-button scale-75" aria-hidden="true">
               <span className="cube">
                 <span className="face front">🎉</span>
