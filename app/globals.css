@@ -58,8 +58,73 @@
 
   body {
     @apply bg-background text-foreground;
+    position: relative;
+    overflow-x: hidden;
   }
 }
+
+/* Space Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(15, 25, 45, 0.6) 0%, transparent 80%),
+    radial-gradient(ellipse at bottom +1px, #1B2735 0%, #090A0F 100%);
+  background-color: #090A0F;
+}
+
+.milky-way {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  z-index: -1;
+  pointer-events: none;
+  background: 
+    radial-gradient(ellipse at 70% 30%, rgba(100, 150, 255, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 30% 60%, rgba(150, 100, 255, 0.1) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(60, 40, 120, 0.1) 0%, transparent 80%);
+  filter: blur(80px);
+  opacity: 0.4;
+  animation: drift 120s linear infinite;
+}
+
+@keyframes drift {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.stars-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  opacity: 0.5;
+  animation: twinkle var(--duration) ease-in-out infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
 
 .nav-indicator {
   display: inline-block;

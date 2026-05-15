@@ -75,9 +75,11 @@ export default function Nav() {
         </p>
         <ul className="flex flex-row gap-6 mt-4 justify-center lg:justify-start">
           <a href="mailto:xst-tran6832@stthomas.edu" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon" className="relative group">
-              <Mail className="h-[1.2rem] w-[1.2rem] transition-opacity duration-150 opacity-100 group-hover:opacity-0 pointer-events-none" />
-              <MailOpen className="h-[1.2rem] w-[1.2rem] absolute inset-0 m-auto transition-opacity duration-150 opacity-0 group-hover:opacity-100 pointer-events-none" />
+            <Button variant="outline" size="icon" className="relative group flex items-center justify-center overflow-hidden">
+              <div className="relative h-[1.2rem] w-[1.2rem] flex items-center justify-center">
+                <Mail className="h-[1.2rem] w-[1.2rem] transition-all duration-300 opacity-100 group-hover:opacity-0 pointer-events-none" />
+                <MailOpen className="h-[1.2rem] w-[1.2rem] absolute transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-none" />
+              </div>
             </Button>
           </a>
           <a href="https://github.com/FrancisTR" target="_blank" rel="noopener noreferrer">
