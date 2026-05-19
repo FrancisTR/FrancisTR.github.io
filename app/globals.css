@@ -219,6 +219,22 @@ body::before {
 .cube-button .top { transform: rotateX(90deg) translateZ(16px); }
 .cube-button .bottom { transform: rotateX(-90deg) translateZ(16px); }
 
+.blog-card-3d-wrapper {
+  perspective: 2200px;
+}
+
+.blog-card-3d {
+  transform-style: preserve-3d;
+  transform-origin: center center;
+  will-change: transform;
+  transition: transform 0.28s ease, box-shadow 0.28s ease, border-color 0.28s ease;
+}
+
+.blog-card-3d-wrapper:hover .blog-card-3d,
+.blog-card-3d:hover {
+  transform: translateZ(0) rotateX(8deg) rotateY(-8deg);
+}
+
 @keyframes rotate {
   0% { transform: rotateX(0deg) rotateY(0deg); }
   100% { transform: rotateX(360deg) rotateY(360deg); }

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import { CSSProperties, useEffect, useState } from 'react';
 
 export default function SpaceBackground() {
   const [stars, setStars] = useState<{ x: string; y: string; size: string; duration: string; delay: string }[]>([]);
@@ -31,7 +31,7 @@ export default function SpaceBackground() {
             height: star.size,
             '--duration': star.duration,
             animationDelay: star.delay,
-          } as React.CSSProperties}
+          } as CSSProperties}
         />
       ))}
     </div>

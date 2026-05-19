@@ -15,7 +15,6 @@ const jobPositions = [
     timeline: "May 2026 — Present",
     currentPosition: "Full-Stack Developer",
     place: "Virtual Coffee",
-    previousPositions: [""],
     description:
       ``,
     skills: [
@@ -35,7 +34,6 @@ const jobPositions = [
     timeline: "May 2022 — Present",
     currentPosition: "CRM Salesforce Student Administrator",
     place: "University of St. Thomas",
-    previousPositions: [""],
     description:
       `Collaborated with stakeholders to document requirements, define project scope, and implement solutions across various university applications. Led the development of interactive front-end widgets in partnership with the Admissions Department, enhancing the UI/UX of the college application system.`,
     skills: [
@@ -56,7 +54,6 @@ const jobPositions = [
     timeline: "June 2024 — June 2025",
     currentPosition: "Software Developer Intern",
     place: "Games For Love",
-    previousPositions: [""],
     description:
       `Directed a team in developing monthly video games for children using Godot. Managed UI/UX improvements for the organization's itch.io platform to increase user engagement and participation in game jams.`,
     skills: [
@@ -77,7 +74,6 @@ const jobPositions = [
     timeline: "Feb 2022 — May 2022",
     currentPosition: "Computer Science Tutor",
     place: "University of St. Thomas",
-    previousPositions: [""],
     description:
       `Provided personalized tutoring for Computer Science students, focusing on problem-solving techniques and coding assignments to support academic success.`,
     skills: [

@@ -1,5 +1,5 @@
 "use client";
-import ThemeScheduler, { ThemeWindow } from "@/components/ui/ThemeScheduler";
+import ThemeScheduler from "@/components/ui/ThemeScheduler";
 import { Button } from "@/components/ui/button";
 import Head from "next/head";
 import Nav from "@/components/Nav";
@@ -12,7 +12,7 @@ import { useEffect, useRef, useState } from "react";
 import { Inter } from "next/font/google";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { HOLIDAY_WINDOWS, DEFAULT_THEME_VARS, HolidayWindow } from "@/lib/themes";
+import { HOLIDAY_WINDOWS, DEFAULT_THEME_VARS } from "@/lib/themes";
 
 const inter = Inter({ subsets: ["latin"] });
 

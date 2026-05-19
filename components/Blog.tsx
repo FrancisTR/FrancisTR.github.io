@@ -40,7 +40,7 @@ const PINNED_TITLES: Record<string, string> = {
 };
 
 const FALLBACK_IMAGE =
-  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiB2aWV3Qm94PSIwIDAgMTkyMCAxMDgwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMTkyMCIgaGVpZ2h0PSIxMDgwIiBmaWxsPSIjMTQxNDE0Ii8+Cjx0ZXh0IHg9Ijk2MCIgeT0iNTQwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNmI3MjgwIiBmb250LXNpemU9IjQ4IiBmb250LWZhbWlseT0ic2Fucy1zZXJpZiIgZmlsbC1vcGFjaXR5PSIwLjUiPk5vIEltYWdlPC90ZXh0Pgo8L3N2Zz4K";
+  "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzg0MCIgaGVpZ2h0PSIyMTYwIiB2aWV3Qm94PSIwIDAgMzg0MCAyMTYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMzg0MCIgaGVpZ2h0PSIyMTYwIiBmaWxsPSIjMTQxNDE0Ii8+Cjx0ZXh0IHg9IjE5MjAiIHk9IjExODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2YjcyODAiIGZvbnQtc2l6ZT0iOTYiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmaWxsLW9wYWNpdHk9IjAuNSI+Tm8gSW1hZ2U8L3RleHQ+Cjwvc3ZnPg==";
 
 export default function Blog() {
   const [articles, setArticles] = useState<DevBlog[]>([]);
@@ -212,11 +212,12 @@ export default function Blog() {
               className="
                 group block hover:cursor-pointer
                 focus:outline-none
+                blog-card-3d-wrapper
               "
             >
               <Card
                 className="
-                  relative overflow-hidden
+                  blog-card-3d relative overflow-hidden
                   p-6 mb-8 w-full min-h-fit
                   border border-border/60
                   bg-card/70 backdrop-blur
@@ -243,8 +244,8 @@ export default function Blog() {
                   <img
                     src={imgSrc}
                     alt={`Cover image for ${a.title}`}
-                    width={1920}
-                    height={1080}
+                    width={3840}
+                    height={2160}
                     className="
                       bg-[#141414] mt-2
                       border border-muted-foreground/20
