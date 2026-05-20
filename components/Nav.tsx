@@ -65,8 +65,8 @@ export default function Nav() {
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-20 flex flex-col lg:gap-4">
       <div className="flex flex-col gap-4 lg:pr-20 mt-2 px-6 lg:px-0">
-        <h1 className="text-5xl font-bold lg:text-start text-center sm:text-start">Francis Tran</h1>
-        <h2 className="text-2xl lg:text-start text-center sm:text-start shiny">
+        <h1 className="text-5xl font-bold lg:text-start text-center sm:text-start drop-shadow-[0_0_15px_rgba(0,204,255,0.5)]">Francis Tran</h1>
+        <h2 className="text-2xl lg:text-start text-center sm:text-start shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)]">
           <span className="custom-cursor">Full-Stack Engineer</span>
         </h2>
         <p className="text-lg lg:text-start text-center sm:text-start text-muted-foreground">

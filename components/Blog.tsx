@@ -230,13 +230,12 @@ export default function Blog() {
                 data-pinned={pinLabel ? "true" : "false"}
                 aria-label={pinLabel ? `Pinned: ${pinLabel}` : undefined}
               >
-                {/* Subtle highlight on hover (no gray wash) */}
+                {/* Subtle highlight on hover (removed gradient to prevent resolution/clarity issues) */}
                 <div
                   className="
                     pointer-events-none absolute inset-0
                     opacity-0 transition-opacity duration-200
                     group-hover:opacity-100
-                    bg-gradient-to-r from-primary/10 via-transparent to-transparent
                   "
                 />
 
@@ -250,6 +249,9 @@ export default function Blog() {
                       bg-[#141414] mt-2
                       border border-muted-foreground/20
                       w-full h-auto rounded-lg
+                      will-change-transform backface-visibility-hidden
+                      transition-all duration-300
+                      group-hover:scale-[1.02] group-hover:brightness-110
                     "
                     loading="lazy"
                   />
