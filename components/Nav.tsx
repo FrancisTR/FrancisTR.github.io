@@ -67,7 +67,7 @@ export default function Nav() {
       <div className="flex flex-col gap-4 lg:pr-20 mt-2 px-6 lg:px-0">
         <h1 className="text-5xl font-bold lg:text-start text-center sm:text-start drop-shadow-[0_0_15px_rgba(0,204,255,0.5)]">Francis Tran</h1>
         <h2 className="text-2xl lg:text-start text-center sm:text-start shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)]">
-          <span className="custom-cursor">Full-Stack Engineer</span>
+          <span className="custom-cursor">Full-Stack Developer</span>
         </h2>
         <p className="text-lg lg:text-start text-center sm:text-start text-muted-foreground">
           Software Engineering graduate from the University of St. Thomas with 4+

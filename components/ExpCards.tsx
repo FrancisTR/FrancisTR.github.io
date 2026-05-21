@@ -16,7 +16,7 @@ const jobPositions = [
     currentPosition: "Full-Stack Developer",
     place: "Virtual Coffee",
     description:
-      ``,
+      `Worked with website maintainers to clean and update documentation to the Virtual Coffee website.`,
     skills: [
       "HTML",
       "CSS",
