@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import {
   Card,
   CardContent,
@@ -41,6 +41,50 @@ const PINNED_TITLES: Record<string, string> = {
 
 const FALLBACK_IMAGE =
   "data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzg0MCIgaGVpZ2h0PSIyMTYwIiB2aWV3Qm94PSIwIDAgMzg0MCAyMTYwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8cmVjdCB3aWR0aD0iMzg0MCIgaGVpZ2h0PSIyMTYwIiBmaWxsPSIjMTQxNDE0Ii8+Cjx0ZXh0IHg9IjE5MjAiIHk9IjExODAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2YjcyODAiIGZvbnQtc2l6ZT0iOTYiIGZvbnQtZmFtaWx5PSJzYW5zLXNlcmlmIiBmaWxsLW9wYWNpdHk9IjAuNSI+Tm8gSW1hZ2U8L3RleHQ+Cjwvc3ZnPg==";
+
+function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const [rotate, setRotate] = useState({ x: 0, y: 0 });
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const centerX = rect.width / 2;
+    const centerY = rect.height / 2;
+    const rotateX = (centerY - y) / centerY * 5; 
+    const rotateY = (x - centerX) / centerX * 5;
+    setRotate({ x: rotateX, y: rotateY });
+  };
+
+  const handleMouseLeave = () => {
+    setRotate({ x: 0, y: 0 });
+  };
+
+  return (
+    <div 
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      style={{ 
+        perspective: "1000px",
+        transformStyle: "preserve-3d" 
+      }}
+      className="w-full"
+    >
+      <div 
+        style={{ 
+          transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
+          transition: "transform 0.1s ease-out"
+        }}
+        className={className}
+      >
+        {children}
+      </div>
+    </div>
+  );
+}
 
 export default function Blog() {
   const [articles, setArticles] = useState<DevBlog[]>([]);
@@ -212,24 +256,24 @@ export default function Blog() {
               className="
                 group block hover:cursor-pointer
                 focus:outline-none
-                blog-card-3d-wrapper
               "
             >
-              <Card
-                className="
-                  blog-card-3d relative overflow-hidden
-                  p-6 mb-8 w-full min-h-fit
-                  border border-border/60
-                  bg-card/70 backdrop-blur
-                  shadow-sm
-                  transition-all duration-200
-                  hover:-translate-y-0.5 hover:shadow-md
-                  hover:border-primary/30
-                  focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2
-                "
-                data-pinned={pinLabel ? "true" : "false"}
-                aria-label={pinLabel ? `Pinned: ${pinLabel}` : undefined}
-              >
+              <TiltCard className="will-change-transform">
+                <Card
+                  className="
+                    relative overflow-hidden
+                    p-6 mb-8 w-full min-h-fit
+                    border border-border/60
+                    bg-card/70 backdrop-blur
+                    shadow-sm
+                    transition-all duration-200
+                    hover:-translate-y-0.5 hover:shadow-md
+                    hover:border-primary/30
+                    focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2
+                  "
+                  data-pinned={pinLabel ? "true" : "false"}
+                  aria-label={pinLabel ? `Pinned: ${pinLabel}` : undefined}
+                >
                 {/* Subtle highlight on hover (removed gradient to prevent resolution/clarity issues) */}
                 <div
                   className="
@@ -251,7 +295,7 @@ export default function Blog() {
                       w-full h-auto rounded-lg
                       will-change-transform backface-visibility-hidden
                       transition-all duration-300
-                      group-hover:scale-[1.02] group-hover:brightness-110
+                      group-hover:brightness-110
                     "
                     loading="lazy"
                   />
@@ -301,6 +345,7 @@ export default function Blog() {
                   </CardDescription>
                 </CardContent>
               </Card>
+            </TiltCard>
             </a>
           );
         })}

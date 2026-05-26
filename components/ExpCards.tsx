@@ -8,7 +8,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MoveRight } from "lucide-react";
+import { MoveRight, Link as LinkIcon } from "lucide-react";
 
 const jobPositions = [
   {
@@ -29,6 +29,8 @@ const jobPositions = [
       "Slack",
       "Git"
     ],
+    link: "https://virtualcoffee.com",
+    linkName: "Virtual Coffee Website",
   },
   {
     timeline: "May 2022 — Present",
@@ -120,6 +122,17 @@ export default function ExpCard() {
               <CardDescription className="py-3 text-muted-foreground leading-relaxed">
                 {job.description}
               </CardDescription>
+              {job.link && (
+                <a 
+                  href={job.link} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all duration-200 mb-4 mt-2 w-fit"
+                >
+                  <LinkIcon className="h-3.5 w-3.5" />
+                  {job.linkName || "View Work"}
+                </a>
+              )}
               <CardFooter className="p-0 flex flex-wrap gap-2 pt-3">
                 {job.skills.map((skill, index) => (
                   <Badge key={index} variant="secondary">
