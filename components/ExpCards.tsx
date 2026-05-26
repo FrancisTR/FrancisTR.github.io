@@ -29,8 +29,8 @@ const jobPositions = [
       "Slack",
       "Git"
     ],
-    link: "https://virtualcoffee.com",
-    linkName: "Virtual Coffee Website",
+    link: "https://github.com/Virtual-Coffee/virtualcoffee.io/pulls?q=is%3Apr+author%3AFrancisTRAlt+is%3Amerge",
+    linkName: "Pull Requests Merged List",
   },
   {
     timeline: "May 2022 — Present",
