@@ -127,6 +127,7 @@ export default function ExpCard() {
                   href={job.link} 
                   target="_blank" 
                   rel="noopener noreferrer" 
+                  aria-label={`View ${job.linkName || "work"} for ${job.currentPosition} at ${job.place}`}
                   className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium text-primary bg-primary/10 border border-primary/20 hover:bg-primary/20 transition-all duration-200 mb-4 mt-2 w-fit"
                 >
                   <LinkIcon className="h-3.5 w-3.5" />
@@ -147,7 +148,7 @@ export default function ExpCard() {
       <div className="mt-12 flex">
         <a
           className="inline-flex items-center font-medium leading-tight text-foreground hover:text-primary transition-colors group"
-          href="/Francis_Tran_Resume.pdf" target="_blank"
+          href="/Francis_Tran_Resume.pdf" target="_blank" aria-label="Download Francis Tran's full resume PDF"
         >
           <span className="border-transparent pb-px transition hover:border-primary motion-reduce:transition-none">
             View Full Resume

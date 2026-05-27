@@ -75,7 +75,7 @@ export default function Nav() {
         </p>
         <ul className="flex flex-row gap-6 mt-4 justify-center lg:justify-start">
           <a href="mailto:xst-tran6832@stthomas.edu" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon" className="relative group flex items-center justify-center overflow-hidden">
+            <Button variant="outline" size="icon" className="relative group flex items-center justify-center overflow-hidden" aria-label="Email Francis Tran">
               <div className="relative h-[1.2rem] w-[1.2rem] flex items-center justify-center">
                 <Mail className="h-[1.2rem] w-[1.2rem] transition-all duration-300 opacity-100 group-hover:opacity-0 pointer-events-none" />
                 <MailOpen className="h-[1.2rem] w-[1.2rem] absolute transition-all duration-300 opacity-0 group-hover:opacity-100 pointer-events-none" />
@@ -83,22 +83,22 @@ export default function Nav() {
             </Button>
           </a>
           <a href="https://github.com/FrancisTR" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label="GitHub">
               <Github className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>
           <a href="https://linkedin.com/in/francistran6832" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label="LinkedIn">
               <Linkedin className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>
           <a href="https://dev.to/francistrdev" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label="Dev.to">
               <FaDev className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>
           <a href="https://www.hackerrank.com/profile/FrancisTR" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon">
+            <Button variant="outline" size="icon" aria-label="HackerRank">
               <FaHackerrank className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>

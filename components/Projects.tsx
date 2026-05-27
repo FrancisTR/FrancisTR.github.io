@@ -108,8 +108,8 @@ export default function Projects() {
               <Image
                 src={project.imagePath}
                 alt={`Screenshot of ${project.title}`}
-                width={1920}
-                height={1080}
+                width={640}
+                height={360}
                 priority
                 className="bg-[#141414] mt-2 border border-muted-foreground/20 rounded-lg overflow-hidden"
               />
@@ -139,7 +139,7 @@ export default function Projects() {
                 <div className="flex flex-wrap gap-3 mt-4">
                   {project.demoLink && (
                     <Button asChild size="sm">
-                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer">
+                      <a href={project.demoLink} target="_blank" rel="noopener noreferrer" aria-label={`View project demo for ${project.title}`}>
                         <ExternalLink className="mr-2 h-4 w-4" />
                         View Project
                       </a>
@@ -147,7 +147,7 @@ export default function Projects() {
                   )}
                   {project.repoLink ? (
                     <Button asChild variant="outline" size="sm">
-                      <a href={project.repoLink} target="_blank" rel="noopener noreferrer">
+                      <a href={project.repoLink} target="_blank" rel="noopener noreferrer" aria-label={`View GitHub repository for ${project.title}`}>
                         <Github className="mr-2 h-4 w-4" />
                         View Repo
                       </a>
@@ -159,7 +159,7 @@ export default function Projects() {
                   ) : null}
                   {project.devtoLink && (
                     <Button asChild variant="ghost" size="sm">
-                      <a href={project.devtoLink} target="_blank" rel="noopener noreferrer">
+                      <a href={project.devtoLink} target="_blank" rel="noopener noreferrer" aria-label={`View article on Dev.to for ${project.title}`}>
                         <BookOpen className="mr-2 h-4 w-4" />
                         View on Dev.to
                       </a>

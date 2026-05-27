@@ -199,6 +199,7 @@ export default function Blog() {
             href="https://dev.to/francistrdev"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Visit Francis Tran's Dev.to profile"
             className="inline-flex items-center mt-4 text-primary hover:underline"
           >
             Visit Dev.to Profile <MoveRight className="ml-1 h-4 w-4" />
@@ -260,6 +261,7 @@ export default function Blog() {
               href={a.url}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`Read blog post: ${a.title}`}
               className="
                 group block hover:cursor-pointer
                 focus:outline-none
