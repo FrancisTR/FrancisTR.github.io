@@ -104,14 +104,14 @@ export default function Projects() {
             key={index}
             className="relative overflow-hidden border border-border/60 bg-card/70 backdrop-blur shadow-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 group p-6 mb-10 flex flex-col lg:flex-row w-full min-h-fit gap-6 lg:gap-8"
           >
-            <div className="h-full w-full lg:w-1/3 mb-4 p-0 overflow-hidden rounded-lg">
+            <div className="h-full w-full lg:w-1/3 mb-4 p-0 overflow-hidden rounded-lg flex justify-center">
               <Image
                 src={project.imagePath}
                 alt={`Screenshot of ${project.title}`}
                 width={640}
                 height={360}
                 priority
-                className="bg-[#141414] mt-2 border border-muted-foreground/20 rounded-lg overflow-hidden"
+                className="bg-[#141414] mt-2 border border-muted-foreground/20 rounded-lg overflow-hidden mx-auto"
               />
             </div>
             <div className="flex flex-col w-full lg:w-2/3">
