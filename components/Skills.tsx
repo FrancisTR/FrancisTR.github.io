@@ -1,5 +1,6 @@
 'use client';
 import { useEffect, useRef } from 'react';
+import Image from 'next/image';
 
 // Constants
 const WALL_THICKNESS = 40;
@@ -77,7 +78,7 @@ function PhysicsCanvas({
       // Config with performance optimizations
       const cfg: Required<PhysicsConfig> = {
         minBalls: config.minBalls ?? 5,
-        maxBalls: config.maxBalls ?? 8,
+        maxBalls: typeof window !== 'undefined' && window.innerWidth < 768 ? 4 : (config.maxBalls ?? 8),
         colors: config.colors.length ? config.colors : ['#3b82f6', '#22c55e', '#ef4444'],
         gravity: config.gravity ?? 1,
         radiusRange: config.radiusRange ?? [10, 16],
@@ -330,9 +331,11 @@ function PhysicsCanvas({
       ref={containerRef}
       className={`relative w-full overflow-hidden rounded-xl border border-white/10 ${className} bg-white/10 dark:bg-white/5 backdrop-blur-md supports-[backdrop-filter]:bg-white/10 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.15),0_8px_24px_rgba(0,0,0,0.08)]`}
     >
-      <img
+    <Image
         src={logoSrc}
         alt={logoAlt}
+        width={160}
+        height={96}
         className="pointer-events-none absolute inset-0 z-10 m-auto h-24 w-40 object-contain opacity-90"
         loading="lazy"
       />

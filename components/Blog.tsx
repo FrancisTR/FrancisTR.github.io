@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 import {
   Card,
   CardContent,
@@ -293,7 +294,7 @@ export default function Blog() {
                 />
 
                 <CardHeader className="h-full w-full mb-4 p-0 relative">
-                  <img
+                  <Image
                     src={imgSrc}
                     alt={`Cover image for ${a.title}`}
                     width={3840}

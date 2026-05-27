@@ -124,7 +124,13 @@ export default function Projects() {
                     <p>{project.type}</p>
                     <p>
                       {typeof project.stars === "string" && project.stars.startsWith("http") ? (
-                        <img src={project.stars} alt="GitHub Stars" className="w-auto" />
+                        <Image 
+                          src={project.stars} 
+                          alt="GitHub Stars" 
+                          width={16} 
+                          height={16} 
+                          className="w-auto h-auto" 
+                        />
                       ) : (
                         <span className="font-semibold">{project.stars}</span>
                       )}
