@@ -102,9 +102,9 @@ export default function Projects() {
         {jobProjects.map((project, index) => (
           <Card
             key={index}
-            className="relative overflow-hidden border border-border/60 bg-card/70 backdrop-blur shadow-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 group p-6 mb-10 flex flex-col lg:flex-row w-full min-h-fit gap-6 lg:gap-8"
+            className="relative overflow-hidden border border-border/60 bg-card/70 backdrop-blur shadow-md transition-all duration-200 focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2 group p-4 sm:p-6 mb-10 flex flex-col lg:flex-row w-full min-h-fit gap-6 lg:gap-8"
           >
-            <div className="h-full w-full lg:w-1/3 mb-4 p-0 overflow-hidden rounded-lg flex justify-center">
+            <div className="h-full w-full lg:w-1/3 mb-4 p-0 overflow-hidden rounded-lg flex justify-center max-w-sm mx-auto lg:max-w-none lg:mx-0">
               <Image
                 src={project.imagePath}
                 alt={`Screenshot of ${project.title}`}
