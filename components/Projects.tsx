@@ -51,7 +51,7 @@ const jobProjects: ProjectItem[] = [
     imagePath: "/EasyPollVote.png",
     title: "EasyPollVote",
     type: "Personal Project",
-    stars: "Private Repo",
+    stars: "https://img.shields.io/github/stars/FrancisTRAlt/easypollvote?label=Stars&logo=github&style=for-the-badge&color=007ec6",
     description:
       "A full stack Next.js application where users can create polls and share them without requiring an account. Results update in real time. Repo is currently private.",
     skills: [
