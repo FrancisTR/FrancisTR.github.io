@@ -48,18 +48,24 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
-    const rect = cardRef.current.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const rotateX = (centerY - y) / centerY * 5; 
-    const rotateY = (x - centerX) / centerX * 5;
-    setRotate({ x: rotateX, y: rotateY });
+    
+    requestAnimationFrame(() => {
+      if (!cardRef.current) return;
+      const rect = cardRef.current.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+      const rotateX = (centerY - y) / centerY * 5; 
+      const rotateY = (x - centerX) / centerX * 5;
+      setRotate({ x: rotateX, y: rotateY });
+    });
   };
 
   const handleMouseLeave = () => {
-    setRotate({ x: 0, y: 0 });
+    requestAnimationFrame(() => {
+      setRotate({ x: 0, y: 0 });
+    });
   };
 
   return (
@@ -76,7 +82,8 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
       <div 
         style={{ 
           transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
-          transition: "transform 0.1s ease-out"
+          transition: "transform 0.1s ease-out",
+          willChange: "transform"
         }}
         className={className}
       >
@@ -268,7 +275,7 @@ export default function Blog() {
                     shadow-sm
                     transition-all duration-200
                     hover:-translate-y-0.5 hover:shadow-md
-                    hover:border-primary/30
+                    group-hover:border-primary/60
                     focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2
                   "
                   data-pinned={pinLabel ? "true" : "false"}

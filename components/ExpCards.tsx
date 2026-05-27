@@ -16,7 +16,7 @@ const jobPositions = [
     currentPosition: "Full-Stack Developer",
     place: "Virtual Coffee",
     description:
-      `Worked with website maintainers to clean and update documentation to the Virtual Coffee website.`,
+      `Virtual Coffee is a global community designed for developers to connect, collaborate on open-source projects, and engage in technical events. Currently contributing to the platform's growth by collaborating with maintainers to refine and update the official website documentation.`,
     skills: [
       "HTML",
       "CSS",
