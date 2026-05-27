@@ -65,15 +65,28 @@ export default function Home() {
 
   // Track the mouse to update aura vars (existing behavior)
   useEffect(() => {
+    let frameId: number | null = null;
+    let mouseX = 0;
+    let mouseY = 0;
+
     const updateAuraPosition = (e: MouseEvent) => {
-      if (auraRef.current) {
-        auraRef.current.style.setProperty("--mouse-x", `${e.clientX}px`);
-        auraRef.current.style.setProperty("--mouse-y", `${e.clientY}px`);
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+
+      if (!frameId) {
+        frameId = requestAnimationFrame(() => {
+          if (auraRef.current) {
+            auraRef.current.style.setProperty("--mouse-x", `${mouseX}px`);
+            auraRef.current.style.setProperty("--mouse-y", `${mouseY}px`);
+          }
+          frameId = null;
+        });
       }
     };
     window.addEventListener("pointermove", updateAuraPosition);
     return () => {
       window.removeEventListener("pointermove", updateAuraPosition);
+      if (frameId) cancelAnimationFrame(frameId);
     };
   }, []);
 

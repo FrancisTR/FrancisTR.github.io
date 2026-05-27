@@ -21,17 +21,19 @@ export default function Nav() {
     const headerOffset = 96; // must match your sticky header height
 
     const onScroll = () => {
-      const scrollPos = window.scrollY + headerOffset + 1;
+      requestAnimationFrame(() => {
+        const scrollPos = window.scrollY + headerOffset + 1;
 
-      let current = sections[0]?.id;
+        let current = sections[0]?.id;
 
-      for (const section of sections) {
-        if (section.offsetTop <= scrollPos) {
-          current = section.id;
+        for (const section of sections) {
+          if (section.offsetTop <= scrollPos) {
+            current = section.id;
+          }
         }
-      }
 
-      if (current) setActiveSection(current);
+        if (current) setActiveSection(current);
+      });
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
