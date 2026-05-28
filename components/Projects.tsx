@@ -29,8 +29,8 @@ const jobProjects: ProjectItem[] = [
   {
     imagePath: "/Forem.png",
     title: "Forem (Dev.to)",
-    type: "Open-Source Contributor",
-    stars: "https://img.shields.io/github/stars/forem/forem?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    type: "Contributor",
+    stars: "https://flat.badgen.net/github/stars/Forem/Forem",
     description:
       "An open-source blogging platform that powers communities like DEV.to. Implemented features and bug fixes to enhance platform functionality and user experience.",
     skills: [
@@ -51,7 +51,7 @@ const jobProjects: ProjectItem[] = [
     imagePath: "/EasyPollVote.png",
     title: "EasyPollVote",
     type: "Personal Project",
-    stars: "https://img.shields.io/github/stars/FrancisTRAlt/easypollvote?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    stars: "https://flat.badgen.net/github/stars/FrancisTRAlt/easypollvote",
     description:
       "A full stack Next.js application where users can create polls and share them without requiring an account. Results update in real time. Repo is currently private.",
     skills: [
@@ -71,7 +71,7 @@ const jobProjects: ProjectItem[] = [
     imagePath: "/ClassifierAI.png",
     title: "ClassifierAI",
     type: "Personal Project",
-    stars: "https://img.shields.io/github/stars/FrancisTR/Classifierai?label=Stars&logo=github&style=for-the-badge&color=007ec6",
+    stars: "https://flat.badgen.net/github/stars/FrancisTR/ClassifierAI",
     description:
       "Built a Chrome extension that uses machine learning (ml5.js) to classify images in Google Images search results and detect AI-generated content. Utilizes Bootstrap for UI and integrates with browser APIs.",
     skills: [
@@ -129,7 +129,7 @@ export default function Projects() {
                           alt="GitHub Stars" 
                           width={16} 
                           height={16} 
-                          className="w-auto h-auto" 
+                          className="w-auto h-7 block" 
                         />
                       ) : (
                         <span className="font-semibold">{project.stars}</span>
