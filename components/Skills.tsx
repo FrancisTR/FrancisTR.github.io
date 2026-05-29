@@ -345,7 +345,7 @@ function PhysicsCanvas({
 
 export default function Skills() {
   const skills: Skill[] = [
-    { name: 'Python', src: './Python.png', palette: ['#3776AB', '#FFE873', '#306998', '#FFCA3A'] },
+    { name: 'Ruby', src: './Ruby.webp', palette: ['#3776AB', '#FFE873', '#306998', '#FFCA3A'] },
     { name: 'HTML', src: './html.webp', palette: ['#E34F26', '#F06529', '#F29C6B', '#FF7A45'] },
     { name: 'CSS', src: './css.webp', palette: ['#1572B6', '#2965F1', '#60A5FA', '#93C5FD'] },
     { name: 'TypeScript', src: './Typescript.webp', palette: ['#3178C6', '#2F74C0', '#4AA3FF', '#90CAF9'] },
