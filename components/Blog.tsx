@@ -8,7 +8,7 @@ import {
   CardDescription,
   CardHeader,
 } from "@/components/ui/card";
-import { MoveUpRight, MoveRight } from "lucide-react";
+import { MoveUpRight, MoveRight, Pin } from "lucide-react";
 
 type DevToUser = {
   name?: string;
@@ -278,7 +278,7 @@ export default function Blog() {
             >
               <TiltCard className="will-change-transform">
                 <Card
-                  className="
+                  className={`
                     relative overflow-hidden
                     p-6 mb-8 w-full min-h-fit
                     border border-border/60
@@ -288,10 +288,29 @@ export default function Blog() {
                     hover:-translate-y-0.5 hover:shadow-md
                     group-hover:border-primary/60
                     focus-visible:ring-2 focus-visible:ring-primary/40 focus-visible:ring-offset-2
-                  "
+                    ${pinLabel ? "pinned-border-animation border-transparent" : ""}
+                  `}
                   data-pinned={pinLabel ? "true" : "false"}
                   aria-label={pinLabel ? `Pinned: ${pinLabel}` : undefined}
                 >
+                {pinLabel && (
+                  <div className="absolute top-0 left-0 z-10">
+                    <span className="
+                      inline-flex items-center justify-center gap-2 
+                      bg-primary/90 backdrop-blur-md 
+                      text-primary-foreground 
+                      px-4 py-2 
+                      text-[11px] uppercase tracking-widest font-bold 
+                      rounded-none
+                      shadow-sm
+                      transition-all duration-300
+                      group-hover:bg-primary
+                    ">
+                      <Pin className="h-3.5 w-3.5 stroke-[3px]" />
+                      Pinned
+                    </span>
+                  </div>
+                )}
                 {/* Mouse-following gradient highlight */}
                 <div
                   className="
