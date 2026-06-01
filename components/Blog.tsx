@@ -46,6 +46,7 @@ const FALLBACK_IMAGE =
 function TiltCard({ children, className }: { children: React.ReactNode; className?: string }) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [rotate, setRotate] = useState({ x: 0, y: 0 });
+  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
@@ -55,6 +56,9 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
       const rect = cardRef.current.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
+      
+      setMousePos({ x, y });
+
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
       const rotateX = (centerY - y) / centerY * 5; 
@@ -66,6 +70,7 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
   const handleMouseLeave = () => {
     requestAnimationFrame(() => {
       setRotate({ x: 0, y: 0 });
+      setMousePos({ x: 0, y: 0 });
     });
   };
 
@@ -84,7 +89,10 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
         style={{ 
           transform: `rotateX(${rotate.x}deg) rotateY(${rotate.y}deg)`,
           transition: "transform 0.1s ease-out",
-          willChange: "transform"
+          willChange: "transform",
+          // Pass mouse position to children via CSS variables
+          ["--mouse-x" as any]: `${mousePos.x}px`,
+          ["--mouse-y" as any]: `${mousePos.y}px`,
         }}
         className={className}
       >
@@ -284,13 +292,18 @@ export default function Blog() {
                   data-pinned={pinLabel ? "true" : "false"}
                   aria-label={pinLabel ? `Pinned: ${pinLabel}` : undefined}
                 >
-                {/* Subtle highlight on hover (removed gradient to prevent resolution/clarity issues) */}
+                {/* Mouse-following gradient highlight */}
                 <div
                   className="
                     pointer-events-none absolute inset-0
-                    opacity-0 transition-opacity duration-200
+                    opacity-0 transition-opacity duration-300
                     group-hover:opacity-100
+                    z-0
                   "
+                  style={{
+                    background: `radial-gradient(600px circle at var(--mouse-x) var(--mouse-y), var(--shiny-color), transparent 80%)`,
+                    opacity: 0.15, // Keep it subtle
+                  }}
                 />
 
                 <CardHeader className="h-full w-full mb-4 p-0 relative">

@@ -53,7 +53,7 @@ const jobProjects: ProjectItem[] = [
     type: "Personal Project",
     stars: "https://flat.badgen.net/github/stars/FrancisTRAlt/easypollvote",
     description:
-      "A full stack Next.js application where users can create polls and share them without requiring an account. Results update in real time. Repo is currently private.",
+      "A full stack Next.js application where users can create polls and share them without requiring an account. Results update in real time.",
     skills: [
       "HTML",
       "CSS",
