@@ -204,6 +204,31 @@ body::before {
   background-color: hsl(var(--card));
 }
 
+.pinned-badge-border-animation {
+  position: relative;
+  z-index: 0;
+}
+
+.pinned-badge-border-animation::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  z-index: -1;
+  background: conic-gradient(from var(--rotation), var(--shiny-color), var(--shiny-color-light), var(--shiny-color));
+  border-radius: inherit;
+  animation: rotate-border 4s linear infinite;
+}
+
+.pinned-badge-border-animation::after {
+  content: "";
+  position: absolute;
+  inset: 0px;
+  z-index: -1;
+  background: inherit;
+  border-radius: inherit;
+  background-color: inherit;
+}
+
 @property --rotation {
   syntax: '<angle>';
   initial-value: 0deg;

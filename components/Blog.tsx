@@ -297,14 +297,15 @@ export default function Blog() {
                   <div className="absolute top-0 left-0 z-10">
                     <span className="
                       inline-flex items-center justify-center gap-2 
-                      bg-primary/90 backdrop-blur-md 
-                      text-primary-foreground 
+                      bg-card/40 backdrop-blur-md 
+                      text-white 
                       px-4 py-2 
                       text-[11px] uppercase tracking-widest font-bold 
                       rounded-none
+                      pinned-badge-border-animation border-transparent
                       shadow-sm
                       transition-all duration-300
-                      group-hover:bg-primary
+                      [text-shadow:0_1px_0_#000,-1px_0_0_#000,1px_0_0_#000,0_-1px_0_#000]
                     ">
                       <Pin className="h-3.5 w-3.5 stroke-[3px]" />
                       Pinned
