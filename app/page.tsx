@@ -190,7 +190,7 @@ export default function Home() {
           onClick={() => setShowPicker(false)}
         >
           <div
-            className="w-full max-w-sm sm:max-w-2xl rounded-2xl border border-white/10 bg-card/90 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-xl"
+            className="w-full max-w-sm sm:max-w-2xl rounded-1xl border border-white/10 bg-card/90 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-xl"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-4 mb-8">
@@ -209,13 +209,13 @@ export default function Home() {
               </Button>
             </div>
             <div className="grid gap-6 lg:grid-cols-[240px_minmax(0,1fr)] items-center">
-              <div className="rounded-2xl bg-white/5 p-6 text-center shadow-inner ring-1 ring-white/10 order-2 lg:order-1 backdrop-blur-sm">
+              <div className="rounded-1xl bg-white/5 p-6 text-center shadow-inner ring-1 ring-white/10 order-2 lg:order-1 backdrop-blur-sm">
                 <div className="mb-4 inline-flex flex-wrap justify-center gap-3">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-red-500/20 text-2xl transition-transform hover:scale-110 cursor-default">❤️</span>
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-green-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🍀</span>
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-yellow-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🐣</span>
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-orange-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🎃</span>
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-full bg-sky-500/20 text-2xl transition-transform hover:scale-110 cursor-default">🎄</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center bg-red-500/20 text-2xl cursor-default">❤️</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center bg-green-500/20 text-2xl cursor-default">🍀</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center bg-yellow-500/20 text-2xl cursor-default">🐣</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center bg-orange-500/20 text-2xl cursor-default">🎃</span>
+                  <span className="inline-flex h-12 w-12 items-center justify-center bg-sky-500/20 text-2xl cursor-default">🎄</span>
                 </div>
                 <p className="text-sm font-medium text-muted-foreground">
                   Select a theme to apply
