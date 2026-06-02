@@ -256,8 +256,8 @@ body::before {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 42px;
-  height: 42px;
+  width: 60px;
+  height: 60px;
   position: relative;
 }
 
@@ -267,6 +267,12 @@ body::before {
   position: relative;
   transform-style: preserve-3d;
   animation: rotate 8s infinite linear;
+  transition: transform 0.6s cubic-bezier(0.34, 1.5, 0.65, 1);
+}
+
+.cube-button.opened .cube {
+  animation: none;
+  transform: rotateX(-20deg) rotateY(20deg) scale(1.2);
 }
 
 .cube-button .face {
@@ -280,7 +286,15 @@ body::before {
   justify-content: center;
   font-size: 12px;
   color: white;
+  transition: transform 0.6s cubic-bezier(0.34, 1.5, 0.65, 1), opacity 0.3s ease;
 }
+
+.cube-button.opened .front { transform: translateZ(30px); }
+.cube-button.opened .back { transform: rotateY(180deg) translateZ(30px); }
+.cube-button.opened .right { transform: rotateY(90deg) translateZ(30px); }
+.cube-button.opened .left { transform: rotateY(-90deg) translateZ(30px); }
+.cube-button.opened .top { transform: rotateX(90deg) translateZ(30px); }
+.cube-button.opened .bottom { transform: rotateX(-90deg) translateZ(30px); }
 
 .cube-button .front { transform: translateZ(16px); }
 .cube-button .back { transform: rotateY(180deg) translateZ(16px); }

@@ -170,8 +170,8 @@ export default function Home() {
       >
         <div className="relative flex items-center justify-center w-12 h-12 transition-transform duration-300 ease-out hover:scale-110 active:scale-95">
           <div className="absolute inset-0 rounded-full bg-primary/30 blur-md group-hover:blur-lg transition-all duration-500"></div>
-          <div className="relative w-10 h-10 rounded-full bg-transparent shadow-none flex items-center justify-center overflow-hidden">
-            <span className="cube-button scale-75" aria-hidden="true">
+          <div className="relative w-10 h-10 rounded-full bg-transparent shadow-none flex items-center justify-center">
+            <span className={`cube-button scale-75 ${showPicker ? 'opened' : ''}`} aria-hidden="true">
               <span className="cube">
                 <span className="face front">🎉</span>
                 <span className="face back">🎄</span>
@@ -186,11 +186,11 @@ export default function Home() {
       </button>
       {showPicker && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6 animate-in fade-in duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out"
           onClick={() => setShowPicker(false)}
         >
           <div
-            className="w-full max-w-sm sm:max-w-2xl rounded-1xl border border-white/10 bg-card/90 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-xl"
+            className="w-full max-w-sm sm:max-w-2xl rounded-1xl border border-white/10 bg-card/90 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-xl animate-in zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95"
             onClick={(e) => e.stopPropagation()}
           >
             <div className="flex items-center justify-between gap-4 mb-8">
