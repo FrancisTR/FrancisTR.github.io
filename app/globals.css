@@ -271,7 +271,7 @@ body::before {
 }
 
 .cube-button.opened .cube {
-  animation: none;
+  animation-play-state: paused;
   transform: rotateX(-20deg) rotateY(20deg) scale(1.2);
 }
 

@@ -184,15 +184,23 @@ export default function Home() {
           </div>
         </div>
       </button>
-      {showPicker && (
+      {/* Holiday Theme Picker */}
+      <div
+        className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6 transition-all duration-300 ease-in-out ${
+          showPicker 
+            ? "opacity-100 pointer-events-auto translate-y-0" 
+            : "opacity-0 pointer-events-none translate-y-4"
+        }`}
+        onClick={() => setShowPicker(false)}
+      >
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6 animate-in fade-in duration-300 data-[state=closed]:animate-out data-[state=closed]:fade-out"
-          onClick={() => setShowPicker(false)}
+          className={`w-full max-w-sm sm:max-w-2xl rounded-1xl border border-white/10 bg-card/90 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-xl transition-all duration-300 ease-in-out ${
+            showPicker 
+              ? "opacity-100 scale-100" 
+              : "opacity-0 scale-95"
+          }`}
+          onClick={(e) => e.stopPropagation()}
         >
-          <div
-            className="w-full max-w-sm sm:max-w-2xl rounded-1xl border border-white/10 bg-card/90 p-6 shadow-2xl ring-1 ring-white/20 backdrop-blur-xl animate-in zoom-in-95 duration-300 data-[state=closed]:animate-out data-[state=closed]:zoom-out-95"
-            onClick={(e) => e.stopPropagation()}
-          >
             <div className="flex items-center justify-between gap-4 mb-8">
               <div className="flex flex-col gap-1">
                 <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-foreground">Holiday Themes</h2>
@@ -268,7 +276,7 @@ export default function Home() {
             </div>
           </div>
         </div>
-      )}
+      
     </>
   );
 }
