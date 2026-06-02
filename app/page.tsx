@@ -164,8 +164,8 @@ export default function Home() {
       </div>
       <button
         type="button"
-        onClick={() => setShowPicker(true)}
-        aria-label="Open holiday theme selector"
+        onClick={() => setShowPicker(!showPicker)}
+        aria-label="Toggle holiday theme selector"
         className="fixed bottom-5 right-5 z-[9999] group"
       >
         <div className="relative flex items-center justify-center w-12 h-12 transition-transform duration-300 ease-out hover:scale-110 active:scale-95">
