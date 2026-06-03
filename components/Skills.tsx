@@ -336,7 +336,7 @@ function PhysicsCanvas({
         alt={logoAlt}
         width={160}
         height={96}
-        className="pointer-events-none absolute inset-0 z-10 m-auto h-24 w-40 object-contain opacity-90"
+        className="pointer-events-none absolute inset-0 z-10 m-auto h-24 w-40 object-contain opacity-90 will-change-transform backface-visibility-hidden"
         loading="lazy"
       />
     </div>

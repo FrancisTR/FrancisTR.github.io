@@ -111,7 +111,7 @@ export default function Projects() {
                 width={640}
                 height={360}
                 priority
-                className="bg-[#141414] mt-2 border border-muted-foreground/20 rounded-lg overflow-hidden mx-auto"
+                className="bg-[#141414] mt-2 border border-muted-foreground/20 rounded-lg overflow-hidden mx-auto will-change-transform backface-visibility-hidden"
               />
             </div>
             <div className="flex flex-col w-full lg:w-2/3">
