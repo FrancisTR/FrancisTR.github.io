@@ -66,16 +66,16 @@ export default function Nav() {
 
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-20 flex flex-col lg:gap-4">
-      <div className="flex flex-col gap-4 lg:pr-20 mt-2 px-6 lg:px-0">
-        <h1 className="text-5xl font-bold text-start drop-shadow-[0_0_15px_rgba(0,204,255,0.5)]">Francis Tran</h1>
-        <h2 className="text-2xl text-start shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)]">
+      <div className="flex flex-col gap-4 lg:pr-20 mt-2 px-6 lg:px-0 items-center lg:items-start text-center lg:text-start">
+        <h1 className="text-5xl font-bold drop-shadow-[0_0_15px_rgba(0,204,255,0.5)]">Francis Tran</h1>
+        <h2 className="text-2xl shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)]">
           <span className="custom-cursor">Full-Stack Developer</span>
         </h2>
-        <p className="text-lg text-start text-muted-foreground">
+        <p className="text-lg text-muted-foreground">
           Software Engineering graduate from the University of St. Thomas with 4+
           years of overall professional experience.
         </p>
-        <ul className="flex flex-row gap-6 mt-4 justify-start">
+        <ul className="flex flex-row gap-6 mt-4 justify-center lg:justify-start">
           <a href="mailto:xst-tran6832@stthomas.edu" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="icon" className="relative group flex items-center justify-center overflow-hidden" aria-label="Email Francis Tran">
               <div className="relative h-[1.2rem] w-[1.2rem] flex items-center justify-center">

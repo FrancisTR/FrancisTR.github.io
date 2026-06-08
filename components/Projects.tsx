@@ -73,7 +73,7 @@ const jobProjects: ProjectItem[] = [
     type: "Personal Project",
     stars: "https://flat.badgen.net/github/stars/FrancisTR/ClassifierAI",
     description:
-      "A Chrome extension that uses machine learning to perform Image and Text Classification to determine if the article is AI-Generated on dev.to",
+      "A Chrome extension that uses machine learning to perform Image and Text Classification to determine if the article is AI-Generated on dev.to.",
     skills: [
       "HTML",
       "CSS",
