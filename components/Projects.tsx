@@ -32,7 +32,7 @@ const jobProjects: ProjectItem[] = [
     type: "Contributor",
     stars: "https://flat.badgen.net/github/stars/Forem/Forem",
     description:
-      "An open-source blogging platform that powers communities like DEV.to. Implemented features and bug fixes to enhance platform functionality and user experience.",
+      "An open-source blogging platform that powers dev.to. Implemented features and bug fixes to enhance platform functionality and user experience.",
     skills: [
       "HTML",
       "CSS",
@@ -53,7 +53,7 @@ const jobProjects: ProjectItem[] = [
     type: "Personal Project",
     stars: "https://flat.badgen.net/github/stars/FrancisTRAlt/easypollvote",
     description:
-      "A full stack Next.js application where users can create polls and share them without requiring an account. Results update in real time.",
+      "A full stack Next.js application where users can create polls and share them without requiring an account.",
     skills: [
       "HTML",
       "CSS",
@@ -73,13 +73,16 @@ const jobProjects: ProjectItem[] = [
     type: "Personal Project",
     stars: "https://flat.badgen.net/github/stars/FrancisTR/ClassifierAI",
     description:
-      "Built a Chrome extension that uses machine learning (ml5.js) to classify images in Google Images search results and detect AI-generated content. Utilizes Bootstrap for UI and integrates with browser APIs.",
+      "A Chrome extension that uses machine learning to perform Image and Text Classification to determine if the article is AI-Generated on dev.to",
     skills: [
       "HTML",
       "CSS",
       "JavaScript",
-      "Bootstrap",
-      "ml5.js",
+      "Tailwind CSS",
+      "Tensorflow.js",
+      "Chart.js",
+      "Vite",
+      "CRXJS",
     ],
     repoLink: "https://github.com/FrancisTR/ClassifierAI",
   },
