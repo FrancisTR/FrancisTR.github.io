@@ -16,7 +16,7 @@ const jobPositions = [
     currentPosition: "Full-Stack Developer",
     place: "Virtual Coffee",
     description:
-      `Virtual Coffee is a global community designed for developers to connect, collaborate on open-source projects, and engage in technical events. Currently contributing to the platform's growth by collaborating with maintainers to refine and update the official website documentation.`,
+      `A community for developers to collaborate on projects, attend weekly meets, and connecting others virtually. Currently contributing to the main website by collaborating with maintainers to refine the website's UI and updating documentation.`,
     skills: [
       "HTML",
       "CSS",
@@ -37,7 +37,7 @@ const jobPositions = [
     currentPosition: "CRM Salesforce Student Administrator",
     place: "University of St. Thomas",
     description:
-      `Collaborated with stakeholders to document requirements, define project scope, and implement solutions across various university applications. Led the development of interactive front-end widgets in partnership with the Admissions Department, enhancing the UI/UX of the college application system.`,
+      `Collaborated with stakeholders to document requirements, define project scope, and implement solutions across various university applications. Led the development of interactive front-end widgets in partnership with the Admissions Department to enhance the UI/UX of the college application system.`,
     skills: [
       "Salesforce",
       "HTML",
@@ -57,7 +57,7 @@ const jobPositions = [
     currentPosition: "Software Developer Intern",
     place: "Games For Love",
     description:
-      `Directed a team in developing monthly video games for children using Godot. Managed UI/UX improvements for the organization's itch.io platform to increase user engagement and participation in game jams.`,
+      `Directed a team in developing monthly video games using Godot. Managed UI/UX improvements for the organization's itch.io platform to increase user engagement and participation in game jams.`,
     skills: [
       "Godot",
       "HTML",
@@ -77,7 +77,7 @@ const jobPositions = [
     currentPosition: "Computer Science Tutor",
     place: "University of St. Thomas",
     description:
-      `Provided personalized tutoring for Computer Science students, focusing on problem-solving techniques and coding assignments to support academic success.`,
+      `Provided personalized tutoring for Computer Science students, that are in the Introduction to Programming course, to focus on problem-solving techniques and coding assignments.`,
     skills: [
       "Python",
       "Problem-Solving",
