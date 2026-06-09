@@ -20,9 +20,10 @@ const jobPositions = [
     skills: [
       "HTML",
       "CSS",
-      "Next.js",
       "TypeScript",
+      "React",
       "Tailwind CSS",
+      "Next.js",
       "PostgreSQL",
       "UI/UX Design",
       "Testing & QA",
