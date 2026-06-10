@@ -99,11 +99,6 @@ export default function Nav() {
               <FaDev className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>
-          <a href="https://www.hackerrank.com/profile/FrancisTR" target="_blank" rel="noopener noreferrer">
-            <Button variant="outline" size="icon" aria-label="HackerRank">
-              <FaHackerrank className="h-[1.2rem] w-[1.2rem]" />
-            </Button>
-          </a>
         </ul>
         <nav className="lg:block hidden mt-4">
           <ul className="flex flex-col w-max text-start gap-6 uppercase text-xs font-medium">
