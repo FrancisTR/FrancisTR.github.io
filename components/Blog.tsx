@@ -36,6 +36,8 @@ export function formatDate(isoString: string | number | Date) {
 }
 
 const PINNED_TITLES: Record<string, string> = {
+  "Get Started on Dev.to! A Beginner's Guide to Engage with the Community! 💡":
+    `🗺️ Listed as DEV's Official Community Resource Guide!"`,
   "I used Google Gemini for the First Time. A Deep Analysis of my Experience so far! ✨":
     `🏆 Winner of the "Google Gemini: Writing Challenge"`,
 };
