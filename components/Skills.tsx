@@ -349,7 +349,7 @@ export default function Skills() {
     { name: 'HTML', src: './html.webp', palette: ['#E44D26', '#F16529', '#FF8C42', '#FFB085'] },
     { name: 'CSS', src: './css.webp', palette: ['#264DE4', '#2965F1', '#5A8DEE', '#8FB3FF'] },
     { name: 'TypeScript', src: './Typescript.webp', palette: ['#2563EB', '#3178C6', '#60A5FA', '#93C5FD'] },
-    { name: 'Next.js', src: './Nextjs.webp', palette: ['#000000', '#1F2937', '#6B7280', '#D1D5DB'] },
+    { name: 'Next.js', src: './Nextjs.webp', palette: ['#141414', '#1F2937', '#6B7280', '#D1D5DB'] },
     { name: 'Tailwind CSS', src: './Tailwind.webp', palette: ['#0EA5E9', '#06B6D4', '#67E8F9', '#CFFAFE'] },
     { name: 'PostgreSQL', src: './postgresql.webp', palette: ['#336791', '#2F5D8C', '#6699CC', '#A7C4E0'] },
     { name: 'Vite', src: './Vite.webp', palette: ['#646CFF', '#7C83FD', '#A5B4FC', '#C7D2FE'] },
