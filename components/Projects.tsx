@@ -58,7 +58,7 @@ const jobProjects: ProjectItem[] = [
       "Tailwind CSS",
     ],
     demoLink: "https://virtualcoffee.io/",
-    repoLink: "https://github.com/Virtual-Coffee/virtualcoffee.io/pulls?q=is%3Apr+author%3AFrancisTRAlt+is%3Amerged+",
+    repoLink: "https://github.com/Virtual-Coffee/virtualcoffee.io/pulls?q=author:FrancisTRAlt+is:merged",
   },
   {
     imagePath: "/ClassifierAI.png",
