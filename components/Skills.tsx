@@ -358,7 +358,7 @@ export default function Skills() {
 
   const baseConfig: Omit<PhysicsConfig, 'colors'> = {
     minBalls: 5,
-    maxBalls: 8,
+    maxBalls: 10,
     gravity: 1,
     radiusRange: [10, 16],
     restitution: 0.85,
