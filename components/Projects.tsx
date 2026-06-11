@@ -42,6 +42,7 @@ const jobProjects: ProjectItem[] = [
     ],
     demoLink: "https://dev.to",
     repoLink: "https://github.com/forem/forem/pulls?q=author:FrancisTRAlt+is:merged",
+    devtoLink: "https://dev.to/francistrdev/series/38569",
   },
   {
     imagePath: "/VirtualCoffee.webp",
@@ -49,7 +50,7 @@ const jobProjects: ProjectItem[] = [
     type: "Contributor",
     stars: "https://flat.badgen.net/github/stars/Virtual-Coffee/virtualcoffee.io",
     description:
-      "A community website that provides resources and events for developers around the world.",
+      "Tech Community website that provides resources for 1,000 developers registered around the world with over 200 stars on GitHub. Contributing alongside with maintainers and developers to improve the UI/UX, and updating documentation during the migration process.",
     skills: [
       "HTML",
       "CSS",
@@ -76,8 +77,8 @@ const jobProjects: ProjectItem[] = [
       "Chart.js",
       "Vite",
     ],
-    demoLink: "https://dev.to/devengers/two-devs-and-a-copilot-created-classifierai-a-prototype-chrome-extension-that-automatically-4fge",
     repoLink: "https://github.com/FrancisTR/ClassifierAI",
+    devtoLink: "https://dev.to/devengers/two-devs-and-a-copilot-created-classifierai-a-prototype-chrome-extension-that-automatically-4fge",
   },
 ];
 
