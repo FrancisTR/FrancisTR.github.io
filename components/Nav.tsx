@@ -44,8 +44,8 @@ export default function Nav() {
 
   const navItems: NavItem[] = [
     { name: "Skills", href: "#skills" },
-    { name: "Experiences", href: "#experiences" },
     { name: "Projects", href: "#projects" },
+    { name: "Experiences", href: "#experiences" },
     { name: "Blog", href: "#blog" },
   ];
 

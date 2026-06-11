@@ -12,28 +12,6 @@ import { MoveRight, Link as LinkIcon } from "lucide-react";
 
 const jobPositions = [
   {
-    timeline: "May 2026 — Present",
-    currentPosition: "Full-Stack Developer",
-    place: "Virtual Coffee",
-    description:
-      `A community for developers to collaborate on projects, attend weekly meets, and connecting others virtually. Currently contributing to the main website by collaborating with maintainers to refine the website's UI and updating documentation.`,
-    skills: [
-      "HTML",
-      "CSS",
-      "TypeScript",
-      "React",
-      "Tailwind CSS",
-      "Next.js",
-      "PostgreSQL",
-      "UI/UX Design",
-      "Testing & QA",
-      "Slack",
-      "Git"
-    ],
-    link: "https://github.com/Virtual-Coffee/virtualcoffee.io/pulls?q=author%3AFrancisTRAlt+is%3Amerged",
-    linkName: "PR Merged List",
-  },
-  {
     timeline: "May 2022 — Present",
     currentPosition: "CRM Salesforce Student Administrator",
     place: "University of St. Thomas",
@@ -123,7 +101,7 @@ export default function ExpCard() {
               <CardDescription className="py-3 text-muted-foreground leading-relaxed">
                 {job.description}
               </CardDescription>
-              {job.link && (
+              {/* {job.link && (
                 <a 
                   href={job.link} 
                   target="_blank" 
@@ -134,7 +112,7 @@ export default function ExpCard() {
                   <LinkIcon className="h-3.5 w-3.5" />
                   {job.linkName || "View Work"}
                 </a>
-              )}
+              )} */}
               <CardFooter className="p-0 flex flex-wrap gap-2 pt-3">
                 {job.skills.map((skill, index) => (
                   <Badge key={index} variant="secondary">
