@@ -349,10 +349,10 @@ export default function Skills() {
     { name: 'HTML', src: './html.webp', palette: ['#E34F26', '#F06529', '#F29C6B', '#FF7A45'] },
     { name: 'CSS', src: './css.webp', palette: ['#1572B6', '#2965F1', '#60A5FA', '#93C5FD'] },
     { name: 'TypeScript', src: './Typescript.webp', palette: ['#3178C6', '#2F74C0', '#4AA3FF', '#90CAF9'] },
-    { name: 'React', src: './React.png', palette: ['#61DAFB', '#38BDF8', '#22D3EE', '#06B6D4'] },
-    { name: 'Tailwind CSS', src: './Tailwind.webp', palette: ['#06B6D4', '#22D3EE', '#7DD3FC', '#A5F3FC'] },
     { name: 'Next.js', src: './Nextjs.webp', palette: ['#111827', '#4B5563', '#9CA3AF', '#D1D5DB'] },
+    { name: 'Tailwind CSS', src: './Tailwind.webp', palette: ['#06B6D4', '#22D3EE', '#7DD3FC', '#A5F3FC'] },
     { name: 'PostgreSQL', src: './postgresql.webp', palette: ['#3ECF8E', '#10B981', '#34D399', '#6EE7B7'] },
+    { name: 'Vite', src: './Vite.webp', palette: ['#61DAFB', '#38BDF8', '#22D3EE', '#06B6D4'] },
     { name: 'Salesforce', src: './Salesforce.png', palette: ['#00A1E0', '#33C3F0', '#60A5FA', '#93C5FD'] },
   ];
 
