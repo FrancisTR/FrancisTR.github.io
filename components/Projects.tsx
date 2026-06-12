@@ -28,7 +28,7 @@ type ProjectItem = {
 const jobProjects: ProjectItem[] = [
   {
     imagePath: "/Forem.png",
-    title: "Forem (Dev.to)",
+    title: "Forem (dev.to)",
     type: "Contributor",
     stars: "https://flat.badgen.net/github/stars/Forem/Forem",
     description:
