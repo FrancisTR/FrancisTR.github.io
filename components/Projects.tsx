@@ -32,7 +32,7 @@ const jobProjects: ProjectItem[] = [
     type: "Contributor",
     stars: "https://flat.badgen.net/github/stars/Forem/Forem",
     description:
-      "Contributing to an open-source blogging platform, that powers dev.to, with over 22K stars and over 3+ millions users registered. Identifying and document low-visibility issues on GitHub, optimizing UI/UX and fixing bugs to enhance user experience. Over 10+ Pull Requests merged onto the Forem Respository within the first 3 months of contribution.",
+      "An open-source blogging tech platform that powers dev.to.",
     skills: [
       "Ruby on Rails",
       "HTML",
@@ -50,7 +50,7 @@ const jobProjects: ProjectItem[] = [
     type: "Contributor",
     stars: "https://flat.badgen.net/github/stars/Virtual-Coffee/virtualcoffee.io",
     description:
-      "Tech Community website that provides resources for over 1,000 developers registered around the world with over 200 stars on GitHub. Contributing alongside with maintainers and developers to improve the UI/UX, and updating documentation during the migration process.",
+      "A community website that provides resources and events for developers around the world.",
     skills: [
       "HTML",
       "CSS",
@@ -67,7 +67,7 @@ const jobProjects: ProjectItem[] = [
     type: "Personal Project",
     stars: "https://flat.badgen.net/github/stars/FrancisTR/ClassifierAI",
     description:
-      "A chrome extension, that performs Image and Text Classification using Tensorflow.js, to automatically detect AI-generated articles on dev.to. Published the project on dev.to as part of the 'GitHub “Finish-Up-A-Thon” Challenge' that gained over 100+ likes and over 1,000 total views.",
+      "A chrome extension, that performs Image and Text Classification using Tensorflow.js, to automatically detect AI-generated articles on dev.to.",
     skills: [
       "HTML",
       "CSS",
