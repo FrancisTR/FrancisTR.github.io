@@ -32,7 +32,7 @@ const jobProjects: ProjectItem[] = [
     type: "OSS Contributor",
     stars: "https://flat.badgen.net/github/stars/Forem/Forem",
     description:
-      "An open-source blogging tech platform that powers dev.to.",
+      "An open-source blogging platform that powers dev.to, a platform for software developers where users can share and grow with other developers around the world.",
     skills: [
       "Ruby on Rails",
       "HTML",
