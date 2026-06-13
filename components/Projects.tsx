@@ -29,7 +29,7 @@ const jobProjects: ProjectItem[] = [
   {
     imagePath: "/Forem.png",
     title: "Forem (dev.to)",
-    type: "Contributor",
+    type: "OSS Contributor",
     stars: "https://flat.badgen.net/github/stars/Forem/Forem",
     description:
       "An open-source blogging tech platform that powers dev.to.",
@@ -47,7 +47,7 @@ const jobProjects: ProjectItem[] = [
   {
     imagePath: "/VirtualCoffee.webp",
     title: "Virtual Coffee",
-    type: "Contributor",
+    type: "OSS Contributor",
     stars: "https://flat.badgen.net/github/stars/Virtual-Coffee/virtualcoffee.io",
     description:
       "A community website that provides resources and events for developers around the world.",
