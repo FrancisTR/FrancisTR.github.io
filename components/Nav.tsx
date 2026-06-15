@@ -9,7 +9,13 @@ type NavItem = {
   href: string;
 };
 
-export default function Nav() {
+export default function Nav({ 
+  showPicker, 
+  setShowPicker 
+}: { 
+  showPicker: boolean; 
+  setShowPicker: (val: boolean) => void; 
+}) {
   const [activeSection, setActiveSection] = useState<string>("skills");
 
   // Scroll‑position based active section logic
@@ -68,8 +74,30 @@ export default function Nav() {
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-20 flex flex-col lg:gap-4">
       <div className="flex flex-col gap-4 lg:pr-20 mt-2 px-6 lg:px-0 items-center lg:items-start text-center lg:text-start">
         <h1 className="text-5xl font-bold drop-shadow-[0_0_15px_rgba(0,204,255,0.5)]">Francis Tran</h1>
-        <h2 className="text-2xl shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)]">
+        <h2 className="text-2xl shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)] flex items-center gap-3">
           <span className="custom-cursor">Full-Stack Developer</span>
+          <button
+            type="button"
+            onClick={() => setShowPicker(!showPicker)}
+            aria-label="Toggle holiday theme selector"
+            className="group"
+          >
+            <div className="relative flex items-center justify-center w-10 h-10 transition-transform duration-300 ease-out hover:scale-110 active:scale-95">
+              <div className="absolute inset-0 rounded-full bg-primary/30 blur-md group-hover:blur-lg transition-all duration-500"></div>
+              <div className="relative w-8 h-8 rounded-full bg-transparent shadow-none flex items-center justify-center">
+                <span className={`cube-button scale-75 ${showPicker ? 'opened' : ''}`} aria-hidden="true">
+                  <span className="cube">
+                    <span className="face front">🎉</span>
+                    <span className="face back">🎄</span>
+                    <span className="face right">🎃</span>
+                    <span className="face left">🍀</span>
+                    <span className="face top">🐣</span>
+                    <span className="face bottom">❤️</span>
+                  </span>
+                </span>
+              </div>
+            </div>
+          </button>
         </h2>
         <p className="text-lg text-muted-foreground">
           Software Engineering graduate from the University of St. Thomas with 4+

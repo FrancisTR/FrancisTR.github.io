@@ -152,7 +152,7 @@ export default function Home() {
       </Head>
       <div className="mx-auto min-h-screen max-w-screen-2xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
-          <Nav />
+          <Nav showPicker={showPicker} setShowPicker={setShowPicker} />
           <main className="flex flex-col pt-6 lg:pt-24 lg:w-1/2 lg:py-24 gap-12 md:gap-16">
             <About />
             <Projects />
@@ -162,28 +162,6 @@ export default function Home() {
           </main>
         </div>
       </div>
-      <button
-        type="button"
-        onClick={() => setShowPicker(!showPicker)}
-        aria-label="Toggle holiday theme selector"
-        className="fixed bottom-5 right-5 z-[9999] group"
-      >
-        <div className="relative flex items-center justify-center w-12 h-12 transition-transform duration-300 ease-out hover:scale-110 active:scale-95">
-          <div className="absolute inset-0 rounded-full bg-primary/30 blur-md group-hover:blur-lg transition-all duration-500"></div>
-          <div className="relative w-10 h-10 rounded-full bg-transparent shadow-none flex items-center justify-center">
-            <span className={`cube-button scale-75 ${showPicker ? 'opened' : ''}`} aria-hidden="true">
-              <span className="cube">
-                <span className="face front">🎉</span>
-                <span className="face back">🎄</span>
-                <span className="face right">🎃</span>
-                <span className="face left">🍀</span>
-                <span className="face top">🐣</span>
-                <span className="face bottom">❤️</span>
-              </span>
-            </span>
-          </div>
-        </div>
-      </button>
       {/* Holiday Theme Picker */}
       <div
         className={`fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4 py-6 transition-all duration-300 ease-in-out ${
