@@ -82,19 +82,14 @@ export default function Nav({
             aria-label="Toggle holiday theme selector"
             className="group"
           >
-            <div className="relative flex items-center justify-center w-10 h-10 transition-transform duration-300 ease-out hover:scale-110 active:scale-95">
-              <div className="absolute inset-0 rounded-full bg-primary/30 blur-md group-hover:blur-lg transition-all duration-500"></div>
-              <div className="relative w-8 h-8 rounded-full bg-transparent shadow-none flex items-center justify-center">
-                <span className={`cube-button scale-75 ${showPicker ? 'opened' : ''}`} aria-hidden="true">
-                  <span className="cube">
-                    <span className="face front">🎉</span>
-                    <span className="face back">🎄</span>
-                    <span className="face right">🎃</span>
-                    <span className="face left">🍀</span>
-                    <span className="face top">🐣</span>
-                    <span className="face bottom">❤️</span>
-                  </span>
-                </span>
+            <div className={`cube-button scale-75 ${showPicker ? 'opened' : ''}`} aria-hidden="true">
+              <div className="cube">
+                <span className="face front">🎉</span>
+                <span className="face back">🎄</span>
+                <span className="face right">🎃</span>
+                <span className="face left">🍀</span>
+                <span className="face top">🐣</span>
+                <span className="face bottom">❤️</span>
               </div>
             </div>
           </button>

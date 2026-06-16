@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useMemo } from 'react';
 import Image from 'next/image';
 
 // Constants
@@ -344,7 +344,7 @@ function PhysicsCanvas({
 }
 
 export default function Skills() {
-  const skills: Skill[] = [
+  const skills: Skill[] = useMemo(() => [
     { name: 'Ruby on Rails', src: './RubyonRails.webp', palette: ['#CC0000', '#A30000', '#E74C3C', '#7B1E1E'] },
     { name: 'HTML', src: './html.webp', palette: ['#E44D26', '#F16529', '#FF8C42', '#FFB085'] },
     { name: 'CSS', src: './css.webp', palette: ['#264DE4', '#2965F1', '#5A8DEE', '#8FB3FF'] },
@@ -354,7 +354,7 @@ export default function Skills() {
     { name: 'PostgreSQL', src: './postgresql.webp', palette: ['#336791', '#2F5D8C', '#6699CC', '#A7C4E0'] },
     { name: 'Vite', src: './Vite.webp', palette: ['#646CFF', '#7C83FD', '#A5B4FC', '#C7D2FE'] },
     { name: 'Salesforce', src: './Salesforce.png', palette: ['#00A1E0', '#0070D2', '#4CC9F0', '#A0E7FF'] },
-  ];
+  ], []);
 
   const baseConfig: Omit<PhysicsConfig, 'colors'> = {
     minBalls: 5,
