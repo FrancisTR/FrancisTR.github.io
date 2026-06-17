@@ -36,7 +36,7 @@ export function formatDate(isoString: string | number | Date) {
 }
 
 const PINNED_TITLES: Record<string, string> = {
-  "Ask a DEV Community Mod!":
+  "Ask a DEV Community Mod! 🚀":
     `📬 DEV Mailbox for Community's Questions/Concerns!`,
   "Get Started on Dev.to! A Beginner's Guide to Engage with the Community! 💡":
     `🗺️ Listed as DEV's Official Community Resource Guide"`,
