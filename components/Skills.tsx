@@ -245,10 +245,10 @@ function PhysicsCanvas({
 
         const onScroll = () => {
           if (prefersReducedMotion) return;
-          
+
           const now = performance.now();
           if (now - lastShakeT < SCROLL_SHAKE_THROTTLE) return;
-          
+
           lastShakeT = now;
 
           const dy = window.scrollY - lastY;
@@ -331,7 +331,7 @@ function PhysicsCanvas({
       ref={containerRef}
       className={`relative w-full overflow-hidden rounded-xl border border-white/10 ${className} bg-white/10 dark:bg-white/5 backdrop-blur-md supports-[backdrop-filter]:bg-white/10 [box-shadow:inset_0_1px_0_rgba(255,255,255,0.15),0_8px_24px_rgba(0,0,0,0.08)]`}
     >
-    <Image
+      <Image
         src={logoSrc}
         alt={logoAlt}
         width={160}
@@ -345,15 +345,18 @@ function PhysicsCanvas({
 
 export default function Skills() {
   const skills: Skill[] = useMemo(() => [
-    { name: 'Ruby on Rails', src: './RubyonRails.webp', palette: ['#CC0000', '#A30000', '#E74C3C', '#7B1E1E'] },
-    { name: 'HTML', src: './html.webp', palette: ['#E44D26', '#F16529', '#FF8C42', '#FFB085'] },
-    { name: 'CSS', src: './css.webp', palette: ['#264DE4', '#2965F1', '#5A8DEE', '#8FB3FF'] },
-    { name: 'TypeScript', src: './Typescript.webp', palette: ['#2563EB', '#3178C6', '#60A5FA', '#93C5FD'] },
-    { name: 'Next.js', src: './Nextjs.webp', palette: ['#141414', '#1F2937', '#6B7280', '#D1D5DB'] },
-    { name: 'Tailwind CSS', src: './Tailwind.webp', palette: ['#0EA5E9', '#06B6D4', '#67E8F9', '#CFFAFE'] },
-    { name: 'PostgreSQL', src: './postgresql.webp', palette: ['#336791', '#2F5D8C', '#6699CC', '#A7C4E0'] },
-    { name: 'Vite', src: './Vite.webp', palette: ['#646CFF', '#7C83FD', '#A5B4FC', '#C7D2FE'] },
-    { name: 'Salesforce', src: './Salesforce.png', palette: ['#00A1E0', '#0070D2', '#4CC9F0', '#A0E7FF'] },
+    { name: 'Ruby on Rails', src: './RubyonRails.webp', palette: ['#CC0000', '#8B0000', '#FF4D4D', '#660000'] },
+    { name: 'HTML', src: './html.webp', palette: ['#E34F26', '#F06529', '#FF8A50', '#FFC2A1'] },
+    { name: 'CSS', src: './css.webp', palette: ['#1572B6', '#2965F1', '#5DADE2', '#A9CCE3'] },
+    { name: 'TypeScript', src: './Typescript.webp', palette: ['#3178C6', '#235A97', '#5AA9E6', '#A7D3F5'] },
+    { name: 'Next.js', src: './Nextjs.webp', palette: ['#000000', '#111827', '#6B7280', '#E5E7EB'] },
+    { name: 'Tailwind CSS', src: './Tailwind.webp', palette: ['#06B6D4', '#0891B2', '#67E8F9', '#CFFAFE'] },
+    { name: 'PostgreSQL', src: './postgresql.webp', palette: ['#336791', '#2D5A88', '#6699CC', '#B3D4FC'] },
+    { name: 'Redis', src: './Redis.png', palette: ['#DC382D', '#A41E11', '#FF6B6B', '#F5B7B1'] },
+    { name: 'Vite', src: './Vite.webp', palette: ['#646CFF', '#4F46E5', '#A5B4FC', '#E0E7FF'] },
+    { name: 'Docker', src: './Docker.webp', palette: ['#2496ED', '#0B5FFF', '#6FB6FF', '#CFE8FF'] },
+    { name: 'Salesforce', src: './Salesforce.png', palette: ['#00A1E0', '#1589EE', '#6EC1FF', '#CFE9FF'] },
+    { name: 'Git', src: './Git.webp', palette: ['#F05032', '#BD2C00', '#FF7F50', '#FFD6CC'] },
   ], []);
 
   const baseConfig: Omit<PhysicsConfig, 'colors'> = {
