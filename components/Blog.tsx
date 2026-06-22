@@ -350,12 +350,12 @@ export default function Blog() {
 
                 <CardContent className="flex flex-col p-0 w-full flex-grow relative">
                   <div className="flex items-start justify-between mb-3">
-                    <p className="text-lg text-primary font-bold leading-tight flex-1">
-                      <span className="inline-flex items-center gap-2 flex-wrap align-middle">
+                    <div className="text-lg text-primary font-bold leading-tight flex-1">
+                      <div className="flex flex-col gap-2">
                         {pinLabel && (
                           <span
                             className="
-                              inline-flex items-center gap-1
+                              inline-flex items-center gap-1 w-fit
                               bg-amber-200/25 text-amber-700 dark:text-amber-300
                               ring-1 ring-amber-300/60 p-2 text-[11px] uppercase tracking-wide rounded-sm
                             "
@@ -366,8 +366,8 @@ export default function Blog() {
                           </span>
                         )}
                         <span className="break-words">{a.title}</span>
-                      </span>
-                    </p>
+                      </div>
+                    </div>
 
                     <MoveUpRight
                       className="
