@@ -82,7 +82,7 @@ export default function Nav({
           Software Engineering graduate from the University of St. Thomas with 4+
           years of overall professional experience.
         </p>
-        <ul className="flex flex-row gap-6 mt-4 justify-center lg:justify-start">
+        <ul className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
           <a href="mailto:xst-tran6832@stthomas.edu" target="_blank" rel="noopener noreferrer">
             <Button variant="outline" size="icon" className="relative group flex items-center justify-center overflow-hidden" aria-label="Email Francis Tran">
               <div className="relative h-[1.2rem] w-[1.2rem] flex items-center justify-center">
