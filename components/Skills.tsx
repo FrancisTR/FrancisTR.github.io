@@ -42,7 +42,7 @@ function PhysicsCanvas({
   logoSrc,
   logoAlt,
   config,
-  className = 'h-40 sm:h-44 md:h-48',
+  className = 'aspect-square w-full',
 }: {
   logoSrc: string;
   logoAlt: string;
@@ -389,7 +389,7 @@ export default function Skills() {
               logoSrc={s.src}
               logoAlt={`${s.name} logo`}
               config={{ ...baseConfig, colors: s.palette, ...(s.options ?? {}) }}
-              className="h-40 sm:h-44 md:h-48"
+              className="aspect-square w-full"
             />
             <div className="px-4 py-3">
               <p className="text-center text-sm font-medium">{s.name}</p>
