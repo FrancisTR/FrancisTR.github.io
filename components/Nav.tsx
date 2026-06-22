@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, MailOpen, Github, Linkedin } from "lucide-react";
 import { FaDev, FaHackerrank } from "react-icons/fa";
+import { SiLeetcode } from "react-icons/si";
 
 type NavItem = {
   name: string;
@@ -76,23 +77,6 @@ export default function Nav({
         <h1 className="text-5xl font-bold drop-shadow-[0_0_15px_rgba(0,204,255,0.5)]">Francis Tran</h1>
         <h2 className="text-2xl shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)] flex items-center gap-3">
           <span className="custom-cursor">Full-Stack Developer</span>
-          <button
-            type="button"
-            onClick={() => setShowPicker(!showPicker)}
-            aria-label="Toggle holiday theme selector"
-            className="group"
-          >
-            <div className={`cube-button scale-75 ${showPicker ? 'opened' : ''}`} aria-hidden="true">
-              <div className="cube">
-                <span className="face front">🎉</span>
-                <span className="face back">🎄</span>
-                <span className="face right">🎃</span>
-                <span className="face left">🍀</span>
-                <span className="face top">🐣</span>
-                <span className="face bottom">❤️</span>
-              </div>
-            </div>
-          </button>
         </h2>
         <p className="text-lg text-muted-foreground">
           Software Engineering graduate from the University of St. Thomas with 4+
@@ -122,6 +106,29 @@ export default function Nav({
               <FaDev className="h-[1.2rem] w-[1.2rem]" />
             </Button>
           </a>
+          <a href="https://leetcode.com/u/FrancisTRdev/" target="_blank" rel="noopener noreferrer">
+            <Button variant="outline" size="icon" aria-label="LeetCode">
+              <SiLeetcode className="h-[1.2rem] w-[1.2rem]" />
+            </Button>
+          </a>
+          <div
+            onClick={() => setShowPicker(!showPicker)}
+            aria-label="Toggle holiday theme selector"
+            className="group cursor-pointer"
+          >
+            <Button variant="outline" size="icon" className="relative group flex items-center justify-center overflow-visible">
+              <div className={`cube-button ${showPicker ? 'opened' : ''}`} aria-hidden="true">
+                <div className="cube">
+                  <span className="face front">🎉</span>
+                  <span className="face back">🎄</span>
+                  <span className="face right">🎃</span>
+                  <span className="face left">🍀</span>
+                  <span className="face top">🐣</span>
+                  <span className="face bottom">❤️</span>
+                </div>
+              </div>
+            </Button>
+          </div>
         </ul>
         <nav className="lg:block hidden mt-4">
           <ul className="flex flex-col w-max text-start gap-6 uppercase text-xs font-medium">

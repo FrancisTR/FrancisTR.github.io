@@ -5,7 +5,13 @@ const nextConfig = {
     output: 'export',
     trailingSlash: true,
     images: {
-        domains: ['media2.dev.to'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'media2.dev.to',
+                pathname: '/**',
+            },
+        ],
         unoptimized: true,
     },
 };
