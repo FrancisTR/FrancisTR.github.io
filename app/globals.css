@@ -330,6 +330,14 @@ body::before {
   inherits: false;
 }
 
+.profile-catch-wrapper {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+}
+
 .profile-image-ring {
   --profile-border-progress: 0deg;
 
@@ -352,13 +360,37 @@ body::before {
     );
 
   transition:
-    --profile-border-progress 800ms ease,
+    --profile-border-progress 1200ms ease,
     transform 300ms ease,
     box-shadow 300ms ease;
 }
 
-.profile-image-ring:hover {
+/* Controlled by React instead of raw :hover */
+.profile-image-ring-charging:not(.profile-image-ring-evolved) {
   --profile-border-progress: 360deg;
+  transform: translateY(-2px) scale(1.05);
+  box-shadow:
+    0 0 18px rgba(0, 204, 255, 0.45),
+    0 0 36px rgba(206, 245, 255, 0.18);
+}
+
+/* Final caught state: no hover replay */
+.profile-image-ring-evolved {
+  --profile-border-progress: 360deg;
+  cursor: default;
+
+  background:
+    conic-gradient(
+      from -90deg,
+      var(--shiny-color) 0deg,
+      var(--shiny-color-light) 180deg,
+      var(--shiny-color) 360deg
+    );
+
+  animation: profile-caught-pop 550ms ease both;
+  box-shadow:
+    0 0 18px rgba(0, 204, 255, 0.45),
+    0 0 36px rgba(206, 245, 255, 0.18);
 }
 
 .profile-image {
@@ -366,7 +398,145 @@ body::before {
   height: 100%;
   display: block;
   border-radius: inherit;
-  object-fit: cover;
+  object-fit: contain;
   background-color: #090a0f;
   border: 2px solid rgba(9, 10, 15, 0.95);
+  user-select: none;
+
+  transition:
+    opacity 300ms ease,
+    transform 500ms cubic-bezier(0.34, 1.56, 0.64, 1),
+    filter 500ms ease;
+}
+
+.profile-image-pokeball {
+  padding: 5px;
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(255, 255, 255, 0.08),
+      rgba(9, 10, 15, 0.95)
+    );
+}
+
+.profile-image-pokemon {
+  padding: 3px;
+  animation: pokemon-reveal 550ms ease both;
+  filter:
+    drop-shadow(0 0 8px rgba(0, 204, 255, 0.45))
+    drop-shadow(0 0 18px rgba(206, 245, 255, 0.25));
+}
+
+.profile-loading-dot {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  background: var(--shiny-color-light);
+  box-shadow:
+    0 0 8px rgba(206, 245, 255, 0.9),
+    0 0 16px rgba(0, 204, 255, 0.55);
+  animation: profile-loading-pulse 800ms ease-in-out infinite;
+}
+
+.profile-catch-label {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  pointer-events: none;
+
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--shiny-color-light);
+  text-shadow:
+    0 0 8px rgba(0, 204, 255, 0.55),
+    0 0 16px rgba(206, 245, 255, 0.25);
+
+  animation: catch-label-in 350ms ease both;
+}
+
+.profile-catch-error {
+  position: absolute;
+  top: calc(100% + 0.35rem);
+  left: 50%;
+  transform: translateX(-50%);
+  width: max-content;
+  max-width: 12rem;
+  pointer-events: none;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #fca5a5;
+  text-shadow: 0 0 8px rgba(248, 113, 113, 0.35);
+}
+
+@keyframes profile-caught-pop {
+  0% {
+    transform: scale(1);
+  }
+
+  35% {
+    transform: scale(1.2) rotate(4deg);
+  }
+
+  65% {
+    transform: scale(0.95) rotate(-3deg);
+  }
+
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes pokemon-reveal {
+  0% {
+    opacity: 0;
+    transform: scale(0.45) rotate(-10deg);
+    filter: brightness(2) blur(5px);
+  }
+
+  55% {
+    opacity: 1;
+    transform: scale(1.18) rotate(3deg);
+    filter: brightness(1.4) blur(0);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+    filter:
+      drop-shadow(0 0 8px rgba(0, 204, 255, 0.45))
+      drop-shadow(0 0 18px rgba(206, 245, 255, 0.25));
+  }
+}
+
+@keyframes profile-loading-pulse {
+  0%,
+  100% {
+    transform: scale(0.8);
+    opacity: 0.55;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes catch-label-in {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
 }

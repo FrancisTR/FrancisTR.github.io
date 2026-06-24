@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, MailOpen, Github, Linkedin } from "lucide-react";
 import { FaDev } from "react-icons/fa";
@@ -11,6 +11,36 @@ type NavItem = {
   href: string;
 };
 
+type RandomPokemon = {
+  id: number;
+  name: string;
+  image: string;
+};
+
+function formatPokemonName(name: string) {
+  return name
+    .split("-")
+    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
+    .join(" ");
+}
+
+function getRandomPokemonId() {
+  /**
+   * Current mainline Pokédex range.
+   * If you want to include forms/variants too, you can increase this,
+   * but 1-1025 keeps it to standard Pokémon.
+   */
+  const maxPokemonId = 1025;
+
+  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
+    const array = new Uint32Array(1);
+    crypto.getRandomValues(array);
+    return (array[0] % maxPokemonId) + 1;
+  }
+
+  return Math.floor(Math.random() * maxPokemonId) + 1;
+}
+
 export default function Nav({
   showPicker,
   setShowPicker,
@@ -19,6 +49,67 @@ export default function Nav({
   setShowPicker: (val: boolean) => void;
 }) {
   const [activeSection, setActiveSection] = useState<string>("skills");
+
+  /**
+   * Pokémon profile reveal state
+   */
+  const [isProfileCharging, setIsProfileCharging] = useState(false);
+  const [hasProgressCompleted, setHasProgressCompleted] = useState(false);
+  const [hasProfileEvolved, setHasProfileEvolved] = useState(false);
+
+  const [randomPokemon, setRandomPokemon] = useState<RandomPokemon | null>(null);
+  const [isPokemonLoading, setIsPokemonLoading] = useState(false);
+  const [pokemonError, setPokemonError] = useState<string | null>(null);
+
+  const fetchRandomPokemon = useCallback(async () => {
+    if (hasProfileEvolved || isPokemonLoading || randomPokemon) return;
+
+    try {
+      setIsPokemonLoading(true);
+      setPokemonError(null);
+
+      const randomId = getRandomPokemonId();
+
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${randomId}`
+      );
+
+      if (!response.ok) {
+        throw new Error("Failed to catch Pokémon.");
+      }
+
+      const data = await response.json();
+
+      const pokemonImage =
+        data.sprites?.other?.["official-artwork"]?.front_default ||
+        data.sprites?.other?.home?.front_default ||
+        data.sprites?.front_default;
+
+      if (!pokemonImage) {
+        throw new Error("This Pokémon has no available sprite.");
+      }
+
+      setRandomPokemon({
+        id: data.id,
+        name: formatPokemonName(data.name),
+        image: pokemonImage,
+      });
+    } catch (error) {
+      console.error(error);
+      setPokemonError("The Poké Ball shook... but nothing appeared.");
+      setHasProgressCompleted(false);
+      setIsProfileCharging(false);
+    } finally {
+      setIsPokemonLoading(false);
+    }
+  }, [hasProfileEvolved, isPokemonLoading, randomPokemon]);
+
+  useEffect(() => {
+    if (hasProgressCompleted && randomPokemon && !hasProfileEvolved) {
+      setHasProfileEvolved(true);
+      setIsProfileCharging(false);
+    }
+  }, [hasProgressCompleted, randomPokemon, hasProfileEvolved]);
 
   // Scroll-position based active section logic
   useEffect(() => {
@@ -62,16 +153,45 @@ export default function Nav({
 
     return {
       linkClass: isActive ? "active" : "",
-      indicatorClass: `nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all ${isActive
+      indicatorClass: `nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all ${
+        isActive
           ? "active w-16 bg-foreground h-2"
           : "group-hover:w-16 group-hover:bg-foreground group-hover:h-px"
-        }`,
-      textClass: `nav-text text-xs font-bold uppercase tracking-widest ${isActive
+      }`,
+      textClass: `nav-text text-xs font-bold uppercase tracking-widest ${
+        isActive
           ? "text-foreground"
           : "text-slate-500 group-hover:text-foreground"
-        }`,
+      }`,
     };
   };
+
+  const handleProfileMouseEnter = () => {
+    if (hasProfileEvolved) return;
+
+    setIsProfileCharging(true);
+    void fetchRandomPokemon();
+  };
+
+  const handleProfileMouseLeave = () => {
+    if (hasProfileEvolved) return;
+
+    /**
+     * If they leave before the progress finishes, reset it.
+     * If the progress already completed, keep waiting for the PokeAPI fetch.
+     */
+    if (!hasProgressCompleted) {
+      setIsProfileCharging(false);
+    }
+  };
+
+  const profileImageSrc = hasProfileEvolved
+    ? randomPokemon?.image || "/OGavatar.png"
+    : "/pokeball.png";
+
+  const profileImageAlt = hasProfileEvolved && randomPokemon
+    ? `Random Pokémon revealed: ${randomPokemon.name}`
+    : "Poké Ball. Hover until the progress bar fills to reveal a random Pokémon.";
 
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-20 flex flex-col lg:gap-4">
@@ -81,15 +201,58 @@ export default function Nav({
             Francis Tran
           </h1>
 
-          <div
-            className="profile-image-ring h-10 w-10 sm:h-[3.25rem] sm:w-[3.25rem] md:h-16 md:w-16"
-            aria-label="Profile image of Francis Tran"
-          >
-            <img
-              src="/OGavatar.png"
-              alt="Francis Tran"
-              className="profile-image"
-            />
+          <div className="profile-catch-wrapper">
+            <div
+              className={`profile-image-ring h-10 w-10 sm:h-[3.25rem] sm:w-[3.25rem] md:h-16 md:w-16 ${
+                isProfileCharging ? "profile-image-ring-charging" : ""
+              } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
+              aria-label={profileImageAlt}
+              title={
+                hasProfileEvolved && randomPokemon
+                  ? `Caught ${randomPokemon.name}!`
+                  : "Hover to catch a random Pokémon"
+              }
+              onMouseEnter={handleProfileMouseEnter}
+              onMouseLeave={handleProfileMouseLeave}
+              onTransitionEnd={(event) => {
+                /**
+                 * Only trigger when the custom progress property finishes.
+                 * This prevents transform or shadow transitions from evolving it.
+                 */
+                if (
+                  !hasProfileEvolved &&
+                  isProfileCharging &&
+                  event.propertyName === "--profile-border-progress"
+                ) {
+                  setHasProgressCompleted(true);
+                }
+              }}
+            >
+              <img
+                src={profileImageSrc}
+                alt={profileImageAlt}
+                className={`profile-image ${
+                  hasProfileEvolved
+                    ? "profile-image-pokemon"
+                    : "profile-image-pokeball"
+                }`}
+                draggable={false}
+              />
+
+              {!hasProfileEvolved && isPokemonLoading && (
+                <span className="profile-loading-dot" aria-hidden="true" />
+              )}
+            </div>
+
+            {hasProfileEvolved && randomPokemon && (
+              <span className="profile-catch-label">
+                #{randomPokemon.id} {randomPokemon.name}
+              </span>
+            )}
+
+            {!hasProfileEvolved && pokemonError && (
+              <span className="profile-catch-error">{pokemonError}</span>
+            )}
           </div>
         </div>
 
