@@ -187,7 +187,7 @@ export default function Nav({
 
   const profileImageSrc = hasProfileEvolved
     ? randomPokemon?.image || "/OGavatar.png"
-    : "/pokeball.png";
+    : "/GreatBall.png";
 
   const profileImageAlt = hasProfileEvolved && randomPokemon
     ? `Random Pokémon revealed: ${randomPokemon.name}`
@@ -207,11 +207,6 @@ export default function Nav({
                 isProfileCharging ? "profile-image-ring-charging" : ""
               } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
               aria-label={profileImageAlt}
-              title={
-                hasProfileEvolved && randomPokemon
-                  ? `Caught ${randomPokemon.name}!`
-                  : "Hover to catch a random Pokémon"
-              }
               onMouseEnter={handleProfileMouseEnter}
               onMouseLeave={handleProfileMouseLeave}
               onTransitionEnd={(event) => {
