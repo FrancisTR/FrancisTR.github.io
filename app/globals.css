@@ -345,7 +345,7 @@ body::before {
   width: 5.25rem;
   height: 5.25rem;
   flex-shrink: 0;
-  border-radius: 1em;
+  border-radius: 100%;
   padding: 3px;
   cursor: pointer;
   isolation: isolate;
@@ -409,7 +409,7 @@ body::before {
 }
 
 .profile-image-pokeball {
-  padding: 5px;
+  padding: 3px;
   background:
     radial-gradient(
       circle at center,
@@ -419,7 +419,7 @@ body::before {
 }
 
 .profile-image-pokemon {
-  padding: 1px;
+  padding: 3px;
   animation: pokemon-reveal 550ms ease both;
   filter:
     drop-shadow(0 0 8px rgba(0, 204, 255, 0.45))
