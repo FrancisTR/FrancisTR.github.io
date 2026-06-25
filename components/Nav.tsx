@@ -203,7 +203,7 @@ export default function Nav({
 
           <div className="profile-catch-wrapper">
             <div
-              className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${
+              className={`profile-image-ring h-10 w-10 lg:h-[4rem] lg:w-[4rem] ${
                 isProfileCharging ? "profile-image-ring-charging" : ""
               } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
               aria-label={profileImageAlt}
