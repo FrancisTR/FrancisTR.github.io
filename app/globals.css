@@ -540,3 +540,23 @@ body::before {
     transform: translateX(-50%) translateY(0);
   }
 }
+
+
+/* ----------------------------- */
+/* Poké Ball shake animation     */
+/* ----------------------------- */
+
+@keyframes pokeball-shake {
+  0%   { transform: rotate(0deg) translateX(0); }
+  15%  { transform: rotate(-8deg) translateX(-2px); }
+  30%  { transform: rotate(8deg) translateX(2px); }
+  45%  { transform: rotate(-6deg) translateX(-2px); }
+  60%  { transform: rotate(6deg) translateX(2px); }
+  75%  { transform: rotate(-3deg) translateX(-1px); }
+  90%  { transform: rotate(3deg) translateX(1px); }
+  100% { transform: rotate(0deg) translateX(0); }
+}
+
+.profile-image-ring-charging:not(.profile-image-ring-evolved):hover .profile-image-pokeball {
+  animation: pokeball-shake 0.6s ease-in-out infinite;
+}
