@@ -368,7 +368,6 @@ body::before {
 /* Controlled by React instead of raw :hover */
 .profile-image-ring-charging:not(.profile-image-ring-evolved) {
   --profile-border-progress: 360deg;
-  transform: translateY(-2px) scale(1.05);
   box-shadow:
     0 0 18px rgba(0, 204, 255, 0.45),
     0 0 36px rgba(206, 245, 255, 0.18);
