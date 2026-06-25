@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://francistr.github.io",
     images: [
       {
-        url: "/OGavatar.png",
+        url: "/GreatBall.png",
         width: 1200,
         height: 630,
         alt: "Francis Tran - Full-Stack Developer",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Francis Tran",
     description: "Francis Tran is a Full-Stack Developer with 4+ years of overall professional experience.",
-    images: ["/OGavatar.png"],
+    images: ["/GreatBall.png"],
   },
   other: {
     "theme-color": "#005da8",

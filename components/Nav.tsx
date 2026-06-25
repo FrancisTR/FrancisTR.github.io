@@ -186,7 +186,7 @@ export default function Nav({
   };
 
   const profileImageSrc = hasProfileEvolved
-    ? randomPokemon?.image || "/OGavatar.png"
+    ? randomPokemon?.image || "/GreatBall.png"
     : "/GreatBall.png";
 
   const profileImageAlt = hasProfileEvolved && randomPokemon
