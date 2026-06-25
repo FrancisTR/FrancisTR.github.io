@@ -196,14 +196,14 @@ export default function Nav({
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-20 flex flex-col lg:gap-4">
       <div className="flex flex-col gap-4 lg:pr-20 mt-2 px-6 lg:px-0 items-center lg:items-start text-center lg:text-start">
-        <div className="flex w-full flex-col-reverse items-center justify-center gap-4 sm:w-auto sm:flex-row sm:gap-5 lg:justify-start">
+        <div className="flex w-full flex-col-reverse items-center justify-center gap-4 sm:w-auto lg:flex-row sm:gap-5 lg:justify-start">
           <h1 className="text-center text-4xl font-bold leading-tight drop-shadow-[0_0_15px_rgba(0,204,255,0.5)] sm:text-4xl lg:text-start">
             Francis Tran
           </h1>
 
           <div className="profile-catch-wrapper">
             <div
-              className={`profile-image-ring h-10 w-10 sm:h-[3.25rem] sm:w-[3.25rem] md:h-16 md:w-16 ${
+              className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${
                 isProfileCharging ? "profile-image-ring-charging" : ""
               } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
               aria-label={profileImageAlt}

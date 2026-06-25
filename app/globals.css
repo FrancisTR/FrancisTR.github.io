@@ -420,7 +420,7 @@ body::before {
 }
 
 .profile-image-pokemon {
-  padding: 3px;
+  padding: 1px;
   animation: pokemon-reveal 550ms ease both;
   filter:
     drop-shadow(0 0 8px rgba(0, 204, 255, 0.45))
@@ -429,8 +429,8 @@ body::before {
 
 .profile-loading-dot {
   position: absolute;
-  right: -2px;
-  bottom: -2px;
+  top: 50%;
+  left: 50%;
   width: 0.65rem;
   height: 0.65rem;
   border-radius: 999px;
@@ -439,6 +439,7 @@ body::before {
     0 0 8px rgba(206, 245, 255, 0.9),
     0 0 16px rgba(0, 204, 255, 0.55);
   animation: profile-loading-pulse 800ms ease-in-out infinite;
+  z-index: -1;
 }
 
 .profile-catch-label {
