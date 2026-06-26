@@ -57,9 +57,15 @@ export default function Nav({
   const [hasProgressCompleted, setHasProgressCompleted] = useState(false);
   const [hasProfileEvolved, setHasProfileEvolved] = useState(false);
 
-  const [randomPokemon, setRandomPokemon] = useState<RandomPokemon | null>(null);
+  const [randomPokemon, setRandomPokemon] = useState<RandomPokemon | null>(
+    null
+  );
   const [isPokemonLoading, setIsPokemonLoading] = useState(false);
   const [pokemonError, setPokemonError] = useState<string | null>(null);
+
+  const underlineOnRevealClass = hasProfileEvolved
+    ? "bg-[linear-gradient(to_right,rgb(103_232_249),rgb(103_232_249))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_rgba(103,232,249,0.8)] transition-[background-size,filter] duration-700 ease-out"
+    : "bg-[linear-gradient(to_right,rgb(103_232_249),rgb(103_232_249))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out";
 
   const fetchRandomPokemon = useCallback(async () => {
     if (hasProfileEvolved || isPokemonLoading || randomPokemon) return;
@@ -153,16 +159,14 @@ export default function Nav({
 
     return {
       linkClass: isActive ? "active" : "",
-      indicatorClass: `nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all ${
-        isActive
+      indicatorClass: `nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all ${isActive
           ? "active w-16 bg-foreground h-2"
           : "group-hover:w-16 group-hover:bg-foreground group-hover:h-px"
-      }`,
-      textClass: `nav-text text-xs font-bold uppercase tracking-widest ${
-        isActive
+        }`,
+      textClass: `nav-text text-xs font-bold uppercase tracking-widest ${isActive
           ? "text-foreground"
           : "text-slate-500 group-hover:text-foreground"
-      }`,
+        }`,
     };
   };
 
@@ -189,9 +193,10 @@ export default function Nav({
     ? randomPokemon?.image || "/GreatBall.png"
     : "/GreatBall.png";
 
-  const profileImageAlt = hasProfileEvolved && randomPokemon
-    ? `Random Pokémon revealed: ${randomPokemon.name}`
-    : "Poké Ball. Hover until the progress bar fills to reveal a random Pokémon.";
+  const profileImageAlt =
+    hasProfileEvolved && randomPokemon
+      ? `Random Pokémon revealed: ${randomPokemon.name}`
+      : "Poké Ball. Hover until the progress bar fills to reveal a random Pokémon.";
 
   return (
     <header className="lg:sticky lg:top-0 lg:flex lg:max-h-screen lg:w-1/2 lg:flex-col lg:justify-between lg:py-20 flex flex-col lg:gap-4">
@@ -203,9 +208,8 @@ export default function Nav({
 
           <div className="profile-catch-wrapper">
             <div
-              className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${
-                isProfileCharging ? "profile-image-ring-charging" : ""
-              } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
+              className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${isProfileCharging ? "profile-image-ring-charging" : ""
+                } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
               aria-label={profileImageAlt}
               onMouseEnter={handleProfileMouseEnter}
               onMouseLeave={handleProfileMouseLeave}
@@ -226,11 +230,10 @@ export default function Nav({
               <img
                 src={profileImageSrc}
                 alt={profileImageAlt}
-                className={`profile-image ${
-                  hasProfileEvolved
+                className={`profile-image ${hasProfileEvolved
                     ? "profile-image-pokemon"
                     : "profile-image-pokeball"
-                }`}
+                  }`}
                 draggable={false}
               />
 
@@ -256,9 +259,18 @@ export default function Nav({
         </h2>
 
         <p className="text-md text-muted-foreground">
-          A Software Engineering Student with 4+ years of overall experience.
-          An OSS Forem (dev.to) Contributor that has 3+ million users 
-          and is sponsored by several companies such as Google and GitHub.
+          A Software Engineering Student with{" "}
+          <span className={underlineOnRevealClass}>
+            4+ years of overall experience.
+          </span>{" "}
+          An OSS{" "}
+          <span className={underlineOnRevealClass}>
+            Forem &#40;dev.to&#41; Contributor
+          </span>{" "}
+          that has{" "}
+          <span className={underlineOnRevealClass}>3+ million users</span> and
+          is sponsored by several companies such as{" "}
+          <span className={underlineOnRevealClass}>Google and GitHub</span>.
         </p>
 
         <ul className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
