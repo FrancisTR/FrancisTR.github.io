@@ -270,7 +270,7 @@ export default function Nav({
           that has{" "}
           <span className={underlineOnRevealClass}>3+ million users</span> and
           is sponsored by several companies such as{" "}
-          <span className={underlineOnRevealClass}>Google and GitHub</span>.
+          <span className={underlineOnRevealClass}>Google and GitHub.</span>
         </p>
 
         <ul className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
