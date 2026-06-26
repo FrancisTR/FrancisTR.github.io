@@ -384,15 +384,21 @@ export default function Skills() {
 
       <ul role="list" className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:gap-6">
         {skills.map((s) => (
-          <li key={s.name} className="overflow-hidden rounded-xl border border-white/10 transition-shadow hover:shadow-md">
+          <li
+            key={s.name}
+            className="rounded-xl border border-white/10 transition-shadow hover:shadow-md"
+          >
             <PhysicsCanvas
               logoSrc={s.src}
               logoAlt={`${s.name} logo`}
               config={{ ...baseConfig, colors: s.palette, ...(s.options ?? {}) }}
               className="aspect-square w-full"
             />
-            <div className="px-4 py-3">
-              <p className="text-center text-sm font-medium">{s.name}</p>
+
+            <div className="px-3 py-3 min-h-[3rem] flex items-center justify-center">
+              <p className="text-center text-sm font-medium leading-tight break-words whitespace-normal">
+                {s.name}
+              </p>
             </div>
           </li>
         ))}
