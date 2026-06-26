@@ -203,7 +203,7 @@ export default function Nav({
 
           <div className="profile-catch-wrapper">
             <div
-              className={`profile-image-ring h-10 w-10 lg:h-[4rem] lg:w-[4rem] ${
+              className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${
                 isProfileCharging ? "profile-image-ring-charging" : ""
               } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
               aria-label={profileImageAlt}
@@ -257,7 +257,7 @@ export default function Nav({
 
         <p className="text-md text-muted-foreground">
           A Software Engineering Student with 4+ years of overall experience.
-          An active OSS Forem (dev.to) Contributor that has 3+ million users 
+          An OSS Forem (dev.to) Contributor that has 3+ million users 
           and is sponsored by several companies such as Google and GitHub.
         </p>
 
