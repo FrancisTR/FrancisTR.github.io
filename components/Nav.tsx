@@ -255,7 +255,7 @@ export default function Nav({
           <span className="custom-cursor">Full-Stack Developer</span>
         </h2>
 
-        <p className="text-lg text-muted-foreground">
+        <p className="text-md text-muted-foreground">
           A Software Engineering Student with 4+ years of overall experience.
           Currently an active Open-source Contributor to Forem (dev.to) that has over 3+ million users 
           and is sponsored by several companies such as Google and GitHub
