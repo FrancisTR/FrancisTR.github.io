@@ -257,8 +257,8 @@ export default function Nav({
 
         <p className="text-md text-muted-foreground">
           A Software Engineering Student with 4+ years of overall experience.
-          Currently an active Open-source Contributor to Forem (dev.to) that has over 3+ million users 
-          and is sponsored by several companies such as Google and GitHub
+          An active OSS Forem (dev.to) Contributor that has 3+ million users 
+          and is sponsored by several companies such as Google and GitHub.
         </p>
 
         <ul className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
