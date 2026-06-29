@@ -369,8 +369,8 @@ body::before {
 .profile-image-ring-charging:not(.profile-image-ring-evolved) {
   --profile-border-progress: 360deg;
   box-shadow:
-    0 0 18px rgba(0, 204, 255, 0.45),
-    0 0 36px rgba(206, 245, 255, 0.18);
+    0 0 18px var(--shiny-color),
+    0 0 36px var(--shiny-color-light);
 }
 
 /* Final caught state: no hover replay */
@@ -388,8 +388,8 @@ body::before {
 
   animation: profile-caught-pop 550ms ease both;
   box-shadow:
-    0 0 18px rgba(0, 204, 255, 0.45),
-    0 0 36px rgba(206, 245, 255, 0.18);
+    0 0 18px var(--shiny-color),
+    0 0 36px var(--shiny-color-light);
 }
 
 .profile-image {
@@ -422,8 +422,8 @@ body::before {
   padding: 3px;
   animation: pokemon-reveal 550ms ease both;
   filter:
-    drop-shadow(0 0 8px rgba(0, 204, 255, 0.45))
-    drop-shadow(0 0 18px rgba(206, 245, 255, 0.25));
+    drop-shadow(0 0 8px var(--shiny-color))
+    drop-shadow(0 0 18px var(--shiny-color-light));
 }
 
 .profile-loading-dot {
@@ -435,8 +435,8 @@ body::before {
   border-radius: 999px;
   background: var(--shiny-color-light);
   box-shadow:
-    0 0 8px rgba(206, 245, 255, 0.9),
-    0 0 16px rgba(0, 204, 255, 0.55);
+    0 0 8px var(--shiny-color-light),
+    0 0 16px var(--shiny-color);
   animation: profile-loading-pulse 800ms ease-in-out infinite;
   z-index: -1;
 }
@@ -455,8 +455,8 @@ body::before {
   text-transform: uppercase;
   color: var(--shiny-color-light);
   text-shadow:
-    0 0 8px rgba(0, 204, 255, 0.55),
-    0 0 16px rgba(206, 245, 255, 0.25);
+    0 0 8px var(--shiny-color),
+    0 0 16px var(--shiny-color-light);
 
   animation: catch-label-in 350ms ease both;
 }
@@ -511,8 +511,8 @@ body::before {
     opacity: 1;
     transform: scale(1) rotate(0deg);
     filter:
-      drop-shadow(0 0 8px rgba(0, 204, 255, 0.45))
-      drop-shadow(0 0 18px rgba(206, 245, 255, 0.25));
+      drop-shadow(0 0 8px var(--shiny-color))
+      drop-shadow(0 0 18px var(--shiny-color-light));
   }
 }
 

@@ -64,7 +64,7 @@ export default function Nav({
   const [pokemonError, setPokemonError] = useState<string | null>(null);
 
   const underlineOnRevealClass = hasProfileEvolved
-    ? `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_rgba(103,232,249,0.8)] transition-[background-size,filter] duration-700 ease-out`
+    ? `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_var(--shiny-color)] transition-[background-size,filter] duration-700 ease-out`
     : `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out`;
 
   const fetchRandomPokemon = useCallback(async () => {
