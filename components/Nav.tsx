@@ -64,8 +64,8 @@ export default function Nav({
   const [pokemonError, setPokemonError] = useState<string | null>(null);
 
   const underlineOnRevealClass = hasProfileEvolved
-    ? "bg-[linear-gradient(to_right,rgb(103_232_249),rgb(103_232_249))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_rgba(103,232,249,0.8)] transition-[background-size,filter] duration-700 ease-out"
-    : "bg-[linear-gradient(to_right,rgb(103_232_249),rgb(103_232_249))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out";
+    ? `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_rgba(103,232,249,0.8)] transition-[background-size,filter] duration-700 ease-out`
+    : `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out`;
 
   const fetchRandomPokemon = useCallback(async () => {
     if (hasProfileEvolved || isPokemonLoading || randomPokemon) return;
@@ -254,23 +254,13 @@ export default function Nav({
           </div>
         </div>
 
-        <h2 className="text-2xl shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)] flex items-center gap-3">
+        <h2 className="text-2xl shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)] flex items-center gap-3 text-center lg:text-start">
           <span className="custom-cursor">Full-Stack Developer</span>
         </h2>
 
-        <p className="text-md text-muted-foreground">
-          A Software Engineering Student with{" "}
-          <span className={underlineOnRevealClass}>
-            4+ years of overall experience.
-          </span>{" "}
-          An OSS{" "}
-          <span className={underlineOnRevealClass}>
-            Forem &#40;dev.to&#41; Contributor
-          </span>{" "}
-          that has{" "}
-          <span className={underlineOnRevealClass}>3+ million users</span> and
-          is sponsored by several companies such as{" "}
-          <span className={underlineOnRevealClass}>Google and GitHub.</span>
+        <p className="text-md text-muted-foreground text-center lg:text-start">
+          Software Engineering student with <span className={underlineOnRevealClass}>4+ years of experience</span>. 
+          Open-source <span className={underlineOnRevealClass}>contributor on Forem (dev.to)</span>, a platform supporting a community of <span className={underlineOnRevealClass}>3M+ developers</span> and backed by organizations such as <span className={underlineOnRevealClass}>Google and GitHub</span>.
         </p>
 
         <ul className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
