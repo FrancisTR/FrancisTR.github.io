@@ -6,7 +6,6 @@ import ExpCard from "@/components/ExpCards";
 import Projects from "@/components/Projects";
 import About from "@/components/Skills";
 import Contact from "@/components/Blog";
-import Footer from "@/components/Footer";
 import { useEffect, useRef, useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -149,7 +148,6 @@ export default function Home() {
             <Projects />
             <ExpCard />
             <Contact />
-            <Footer />
           </main>
         </div>
       </div>
