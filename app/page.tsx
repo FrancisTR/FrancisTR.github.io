@@ -143,13 +143,6 @@ export default function Home() {
         debug={false}
         mode="local"
       />
-      <Head>
-        <style jsx global>{`
-          body {
-            font-family: "${inter.style.fontFamily}";
-          }
-        `}</style>
-      </Head>
       <div className="mx-auto min-h-screen max-w-screen-2xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
           <Nav showPicker={showPicker} setShowPicker={setShowPicker} />
