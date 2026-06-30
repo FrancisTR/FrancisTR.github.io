@@ -12,6 +12,12 @@ type NavItem = {
   href: string;
 };
 
+type Pokemon = {
+  id: number;
+  name: string;
+  image?: string;
+};
+
 export default function Nav({
   showPicker,
   setShowPicker,
@@ -27,26 +33,79 @@ export default function Nav({
   const [isProfileCharging, setIsProfileCharging] = useState(false);
   const [hasProgressCompleted, setHasProgressCompleted] = useState(false);
   const [hasProfileEvolved, setHasProfileEvolved] = useState(false);
-  const [randomPokemon, setRandomPokemon] = useState<any>(null);
+  const [randomPokemon, setRandomPokemon] = useState<Pokemon | null>(null);
   const [isPokemonLoading, setIsPokemonLoading] = useState(false);
   const [pokemonError, setPokemonError] = useState<string | null>(null);
 
-  // Track timeout so it can be cancelled
-  const evolveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  /**
+   * Refs prevent stale state inside event handlers/callbacks.
+   */
+  const isProfileChargingRef = useRef(false);
+  const hasProgressCompletedRef = useRef(false);
+  const hasProfileEvolvedRef = useRef(false);
+  const randomPokemonRef = useRef<Pokemon | null>(null);
+  const isPokemonLoadingRef = useRef(false);
+  const hasRequestedPokemonRef = useRef(false);
+
+  useEffect(() => {
+    isProfileChargingRef.current = isProfileCharging;
+  }, [isProfileCharging]);
+
+  useEffect(() => {
+    hasProgressCompletedRef.current = hasProgressCompleted;
+  }, [hasProgressCompleted]);
+
+  useEffect(() => {
+    hasProfileEvolvedRef.current = hasProfileEvolved;
+  }, [hasProfileEvolved]);
+
+  useEffect(() => {
+    randomPokemonRef.current = randomPokemon;
+  }, [randomPokemon]);
+
+  useEffect(() => {
+    isPokemonLoadingRef.current = isPokemonLoading;
+  }, [isPokemonLoading]);
+
+  const revealPokemon = useCallback((pokemon?: Pokemon | null) => {
+    const pokemonToReveal = pokemon ?? randomPokemonRef.current;
+
+    if (!pokemonToReveal || hasProfileEvolvedRef.current) return;
+
+    setRandomPokemon(pokemonToReveal);
+    setHasProgressCompleted(true);
+    setHasProfileEvolved(true);
+    setIsProfileCharging(false);
+    setIsPokemonLoading(false);
+    setPokemonError(null);
+
+    hasProgressCompletedRef.current = true;
+    hasProfileEvolvedRef.current = true;
+    isProfileChargingRef.current = false;
+    randomPokemonRef.current = pokemonToReveal;
+    isPokemonLoadingRef.current = false;
+  }, []);
 
   const underlineOnRevealClass = hasProfileEvolved
-    ? `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_var(--shiny-color)] transition-[background-size,filter] duration-700 ease-out`
-    : `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out`;
+    ? "bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_var(--shiny-color)] transition-[background-size,filter] duration-700 ease-out"
+    : "bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out";
 
-  // Scroll-position based active section logic
+  /**
+   * Scroll-position based active section logic
+   */
   useEffect(() => {
     const sections = Array.from(
       document.querySelectorAll<HTMLElement>("section[id]")
     );
 
     const headerOffset = 96;
+    let ticking = false;
 
     const onScroll = () => {
+      if (ticking) return;
+
+      ticking = true;
+
       requestAnimationFrame(() => {
         const scrollPos = window.scrollY + headerOffset + 1;
 
@@ -59,6 +118,8 @@ export default function Nav({
         }
 
         if (current) setActiveSection(current);
+
+        ticking = false;
       });
     };
 
@@ -80,64 +141,122 @@ export default function Nav({
 
     return {
       linkClass: isActive ? "active" : "",
-      indicatorClass: `nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all ${isActive
-        ? "active w-16 bg-foreground h-2"
-        : "group-hover:w-16 group-hover:bg-foreground group-hover:h-px"
-        }`,
-      textClass: `nav-text text-xs font-bold uppercase tracking-widest ${isActive
-        ? "text-foreground"
-        : "text-slate-500 group-hover:text-foreground"
-        }`,
+      indicatorClass: `nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all ${
+        isActive
+          ? "active w-16 bg-foreground h-2"
+          : "group-hover:w-16 group-hover:bg-foreground group-hover:h-px"
+      }`,
+      textClass: `nav-text text-xs font-bold uppercase tracking-widest ${
+        isActive
+          ? "text-foreground"
+          : "text-slate-500 group-hover:text-foreground"
+      }`,
     };
   };
 
-  const handleProfileMouseEnter = () => {
-    if (hasProfileEvolved) return;
+  const requestPokemonFetch = useCallback(() => {
+    if (
+      hasProfileEvolvedRef.current ||
+      randomPokemonRef.current ||
+      isPokemonLoadingRef.current ||
+      hasRequestedPokemonRef.current
+    ) {
+      return;
+    }
+
+    hasRequestedPokemonRef.current = true;
+    window.dispatchEvent(new CustomEvent("trigger-pokemon-fetch"));
+  }, []);
+
+  const handleProfileMouseEnter = useCallback(() => {
+    if (hasProfileEvolvedRef.current) return;
+
+    setPokemonError(null);
     setIsProfileCharging(true);
-  };
 
-  const handlePokemonFetch = (
-    pokemon: any,
-    loading: boolean,
-    error: string | null
-  ) => {
-    setRandomPokemon(pokemon);
-    setIsPokemonLoading(loading);
-    setPokemonError(error);
+    isProfileChargingRef.current = true;
 
-    // Only continue if still charging (prevents stale reveal)
-    if (pokemon && isProfileCharging) {
-      if (evolveTimeoutRef.current) {
-        clearTimeout(evolveTimeoutRef.current);
+    /**
+     * Start fetching immediately on hover.
+     * This allows the Pokémon to be ready by the time progress reaches 100%.
+     */
+    requestPokemonFetch();
+  }, [requestPokemonFetch]);
+
+  const handleProfileMouseLeave = useCallback(() => {
+    if (hasProfileEvolvedRef.current) return;
+
+    /**
+     * If progress already completed, do not cancel the reveal flow.
+     * The Pokémon should reveal once ready.
+     */
+    if (hasProgressCompletedRef.current) return;
+
+    setIsProfileCharging(false);
+    setHasProgressCompleted(false);
+
+    isProfileChargingRef.current = false;
+    hasProgressCompletedRef.current = false;
+  }, []);
+
+  const handlePokemonFetch = useCallback(
+    (pokemon: Pokemon | null, loading: boolean, error: string | null) => {
+      setIsPokemonLoading(loading);
+      setPokemonError(error);
+
+      isPokemonLoadingRef.current = loading;
+
+      if (error) {
+        hasRequestedPokemonRef.current = false;
       }
 
-      evolveTimeoutRef.current = setTimeout(() => {
-        setHasProgressCompleted(true);
-        setHasProfileEvolved(true);
-        setIsProfileCharging(false);
-      }, 2000);
-    }
-  };
+      if (pokemon) {
+        setRandomPokemon(pokemon);
+        randomPokemonRef.current = pokemon;
+        hasRequestedPokemonRef.current = false;
 
-  const handleProfileMouseLeave = () => {
-    if (hasProfileEvolved) return;
+        /**
+         * If progress already reached 100%, reveal immediately as soon
+         * as the Pokémon data arrives.
+         */
+        if (
+          hasProgressCompletedRef.current &&
+          !hasProfileEvolvedRef.current
+        ) {
+          revealPokemon(pokemon);
+        }
+      }
+    },
+    [revealPokemon]
+  );
 
-    // stop charging
-    setIsProfileCharging(false);
+  const handleProfileTransitionEnd = useCallback(
+    (event: React.TransitionEvent<HTMLDivElement>) => {
+      if (event.currentTarget !== event.target) return;
 
-    // reset progress state
-    if (!hasProgressCompleted) {
-      setHasProgressCompleted(false);
-    }
+      if (
+        event.propertyName !== "--profile-border-progress" ||
+        hasProfileEvolvedRef.current ||
+        !isProfileChargingRef.current
+      ) {
+        return;
+      }
 
-    // cancel pending evolution
-    if (evolveTimeoutRef.current) {
-      clearTimeout(evolveTimeoutRef.current);
-      evolveTimeoutRef.current = null;
-    }
+      setHasProgressCompleted(true);
+      hasProgressCompletedRef.current = true;
 
-    setIsPokemonLoading(false);
-  };
+      /**
+       * At 100%, reveal immediately if the Pokémon is already loaded.
+       * Otherwise, keep loading and reveal inside handlePokemonFetch.
+       */
+      if (randomPokemonRef.current) {
+        revealPokemon(randomPokemonRef.current);
+      } else {
+        requestPokemonFetch();
+      }
+    },
+    [requestPokemonFetch, revealPokemon]
+  );
 
   const profileImageSrc = hasProfileEvolved
     ? randomPokemon?.image || "/GreatBall.png"
@@ -158,34 +277,22 @@ export default function Nav({
 
           <div className="profile-catch-wrapper">
             <div
-              className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${isProfileCharging ? "profile-image-ring-charging" : ""
-                } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""
-                }`}
+              className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${
+                isProfileCharging ? "profile-image-ring-charging" : ""
+              } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
               aria-label={profileImageAlt}
               onMouseEnter={handleProfileMouseEnter}
               onMouseLeave={handleProfileMouseLeave}
-              onTransitionEnd={(event) => {
-                if (
-                  !hasProfileEvolved &&
-                  isProfileCharging &&
-                  event.propertyName === "--profile-border-progress"
-                ) {
-                  setHasProgressCompleted(true);
-
-                  // trigger fetch ONLY when fully charged
-                  window.dispatchEvent(
-                    new CustomEvent("trigger-pokemon-fetch")
-                  );
-                }
-              }}
+              onTransitionEnd={handleProfileTransitionEnd}
             >
               <img
                 src={profileImageSrc}
                 alt={profileImageAlt}
-                className={`profile-image ${hasProfileEvolved
-                  ? "profile-image-pokemon"
-                  : "profile-image-pokeball"
-                  }`}
+                className={`profile-image ${
+                  hasProfileEvolved
+                    ? "profile-image-pokemon"
+                    : "profile-image-pokeball"
+                }`}
                 draggable={false}
               />
 
@@ -201,9 +308,7 @@ export default function Nav({
             )}
 
             {!hasProfileEvolved && pokemonError && (
-              <span className="profile-catch-error">
-                {pokemonError}
-              </span>
+              <span className="profile-catch-error">{pokemonError}</span>
             )}
           </div>
 
@@ -227,14 +332,9 @@ export default function Nav({
             contributor on Forem (dev.to)
           </span>
           , a platform supporting a community of{" "}
-          <span className={underlineOnRevealClass}>
-            3M+ developers
-          </span>{" "}
-          and backed by organizations such as{" "}
-          <span className={underlineOnRevealClass}>
-            Google and GitHub
-          </span>
-          .
+          <span className={underlineOnRevealClass}>3M+ developers</span> and
+          backed by organizations such as{" "}
+          <span className={underlineOnRevealClass}>Google and GitHub</span>.
         </p>
 
         <ul className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
