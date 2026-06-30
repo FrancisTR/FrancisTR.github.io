@@ -16,8 +16,7 @@ const jobPositions = [
     currentPosition: "CRM Salesforce Student Administrator",
     place: "University of St. Thomas",
     description:
-      `• Collaborated with stakeholders to document requirements, define project scope, and implement solutions across various university applications.
-• Led the development of interactive front-end widgets in partnership with the Admissions Department to enhance the UI/UX of the college application system.`,
+      `Collaborated with stakeholders to document requirements, define project scope, and implement solutions across various university applications. Led the development of interactive front-end widgets in partnership with the Admissions Department to enhance the UI/UX of the college application system.`,
     skills: [
       "Salesforce",
       "HTML",
@@ -37,8 +36,7 @@ const jobPositions = [
     currentPosition: "Software Developer Intern",
     place: "Games For Love",
     description:
-      `• Directed a team in developing monthly video games using Godot.
-• Managed UI/UX improvements for the organization's itch.io platform to increase user engagement and participation in game jams.`,
+      `Directed a team in developing monthly video games using Godot. Managed UI/UX improvements for the organization's itch.io platform to increase user engagement and participation in game jams.`,
     skills: [
       "Godot",
       "HTML",
@@ -58,8 +56,7 @@ const jobPositions = [
     currentPosition: "Computer Science Tutor",
     place: "University of St. Thomas",
     description:
-      `• Provided personalized tutoring for Computer Science students in the Introduction to Programming course.
-• Focused on problem-solving techniques and coding assignments.`,
+      `Provided personalized tutoring for Computer Science students in the Introduction to Programming course. Focused on problem-solving techniques and coding assignments.`,
     skills: [
       "Python",
       "Problem-Solving",
