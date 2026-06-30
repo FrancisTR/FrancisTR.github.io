@@ -1,7 +1,6 @@
 "use client";
 import ThemeScheduler from "@/components/ui/ThemeScheduler";
 import { Button } from "@/components/ui/button";
-import Head from "next/head";
 import Nav from "@/components/Nav";
 import ExpCard from "@/components/ExpCards";
 import Projects from "@/components/Projects";
@@ -9,12 +8,9 @@ import About from "@/components/Skills";
 import Contact from "@/components/Blog";
 import Footer from "@/components/Footer";
 import { useEffect, useRef, useState } from "react";
-import { Inter } from "next/font/google";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { HOLIDAY_WINDOWS, DEFAULT_THEME_VARS } from "@/lib/themes";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const auraRef = useRef<HTMLDivElement>(null);
