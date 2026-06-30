@@ -53,7 +53,7 @@ function TiltCard({ children, className }: { children: React.ReactNode; classNam
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
+    if (!cardRef.current || typeof window === 'undefined' || window.innerWidth < 768) return;
     
     requestAnimationFrame(() => {
       if (!cardRef.current) return;

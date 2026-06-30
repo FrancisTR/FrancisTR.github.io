@@ -5,41 +5,12 @@ import { Button } from "@/components/ui/button";
 import { Mail, MailOpen, Github, Linkedin } from "lucide-react";
 import { FaDev } from "react-icons/fa";
 import { SiLeetcode } from "react-icons/si";
+import PokemonProfile from "./PokemonProfile";
 
 type NavItem = {
   name: string;
   href: string;
 };
-
-type RandomPokemon = {
-  id: number;
-  name: string;
-  image: string;
-};
-
-function formatPokemonName(name: string) {
-  return name
-    .split("-")
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(" ");
-}
-
-function getRandomPokemonId() {
-  /**
-   * Current mainline Pokédex range.
-   * If you want to include forms/variants too, you can increase this,
-   * but 1-1025 keeps it to standard Pokémon.
-   */
-  const maxPokemonId = 1025;
-
-  if (typeof crypto !== "undefined" && crypto.getRandomValues) {
-    const array = new Uint32Array(1);
-    crypto.getRandomValues(array);
-    return (array[0] % maxPokemonId) + 1;
-  }
-
-  return Math.floor(Math.random() * maxPokemonId) + 1;
-}
 
 export default function Nav({
   showPicker,
@@ -56,10 +27,7 @@ export default function Nav({
   const [isProfileCharging, setIsProfileCharging] = useState(false);
   const [hasProgressCompleted, setHasProgressCompleted] = useState(false);
   const [hasProfileEvolved, setHasProfileEvolved] = useState(false);
-
-  const [randomPokemon, setRandomPokemon] = useState<RandomPokemon | null>(
-    null
-  );
+  const [randomPokemon, setRandomPokemon] = useState<any>(null);
   const [isPokemonLoading, setIsPokemonLoading] = useState(false);
   const [pokemonError, setPokemonError] = useState<string | null>(null);
 
@@ -67,55 +35,6 @@ export default function Nav({
     ? `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_var(--shiny-color)] transition-[background-size,filter] duration-700 ease-out`
     : `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out`;
 
-  const fetchRandomPokemon = useCallback(async () => {
-    if (hasProfileEvolved || isPokemonLoading || randomPokemon) return;
-
-    try {
-      setIsPokemonLoading(true);
-      setPokemonError(null);
-
-      const randomId = getRandomPokemonId();
-
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${randomId}`
-      );
-
-      if (!response.ok) {
-        throw new Error("Failed to catch Pokémon.");
-      }
-
-      const data = await response.json();
-
-      const pokemonImage =
-        data.sprites?.other?.["official-artwork"]?.front_default ||
-        data.sprites?.other?.home?.front_default ||
-        data.sprites?.front_default;
-
-      if (!pokemonImage) {
-        throw new Error("This Pokémon has no available sprite.");
-      }
-
-      setRandomPokemon({
-        id: data.id,
-        name: formatPokemonName(data.name),
-        image: pokemonImage,
-      });
-    } catch (error) {
-      console.error(error);
-      setPokemonError("The Poké Ball shook... but nothing appeared.");
-      setHasProgressCompleted(false);
-      setIsProfileCharging(false);
-    } finally {
-      setIsPokemonLoading(false);
-    }
-  }, [hasProfileEvolved, isPokemonLoading, randomPokemon]);
-
-  useEffect(() => {
-    if (hasProgressCompleted && randomPokemon && !hasProfileEvolved) {
-      setHasProfileEvolved(true);
-      setIsProfileCharging(false);
-    }
-  }, [hasProgressCompleted, randomPokemon, hasProfileEvolved]);
 
   // Scroll-position based active section logic
   useEffect(() => {
@@ -174,7 +93,20 @@ export default function Nav({
     if (hasProfileEvolved) return;
 
     setIsProfileCharging(true);
-    void fetchRandomPokemon();
+  };
+
+  const handlePokemonFetch = (pokemon: any, loading: boolean, error: string | null) => {
+    setRandomPokemon(pokemon);
+    setIsPokemonLoading(loading);
+    setPokemonError(error);
+    if (pokemon) {
+      // Delay the reveal to match the border fill animation (approx 2 seconds)
+      setTimeout(() => {
+        setHasProgressCompleted(true);
+        setHasProfileEvolved(true);
+        setIsProfileCharging(false);
+      }, 2000);
+    }
   };
 
   const handleProfileMouseLeave = () => {
@@ -211,7 +143,12 @@ export default function Nav({
               className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${isProfileCharging ? "profile-image-ring-charging" : ""
                 } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
               aria-label={profileImageAlt}
-              onMouseEnter={handleProfileMouseEnter}
+              onMouseEnter={(e) => {
+                handleProfileMouseEnter();
+                // Trigger the fetch in the hidden PokemonProfile component via a custom event or a ref
+                // Since we are using a hidden component, we can trigger the fetch by dispatching a custom event
+                window.dispatchEvent(new CustomEvent('trigger-pokemon-fetch'));
+              }}
               onMouseLeave={handleProfileMouseLeave}
               onTransitionEnd={(event) => {
                 /**
@@ -252,6 +189,10 @@ export default function Nav({
               <span className="profile-catch-error">{pokemonError}</span>
             )}
           </div>
+          <PokemonProfile 
+            hasProfileEvolved={hasProfileEvolved} 
+            onFetchPokemon={handlePokemonFetch} 
+          />
         </div>
 
         <h2 className="text-2xl shiny drop-shadow-[0_0_10px_rgba(206,245,255,0.6)] flex items-center gap-3 text-center lg:text-start">
@@ -339,10 +280,10 @@ export default function Nav({
                 <div className="cube">
                   <span className="face front">🎉</span>
                   <span className="face back">🎄</span>
-                  <span className="face right">🎃</span>
                   <span className="face left">🍀</span>
                   <span className="face top">🐣</span>
                   <span className="face bottom">❤️</span>
+                  <span className="face right">🎃</span>
                 </div>
               </div>
             </Button>

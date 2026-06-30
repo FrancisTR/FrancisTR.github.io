@@ -142,8 +142,10 @@ export default function Home() {
       <div className="mx-auto min-h-screen max-w-screen-2xl px-6 py-12 md:px-12 md:py-20 lg:px-24 lg:py-0">
         <div className="lg:flex lg:justify-between lg:gap-4">
           <Nav showPicker={showPicker} setShowPicker={setShowPicker} />
-          <main className="flex flex-col pt-6 lg:pt-24 lg:w-1/2 lg:py-24 gap-12 md:gap-16">
-            <About />
+          <main className="flex flex-col pt-6 lg:pt-24 lg:w-1/2 lg:py-24 gap-16 md:gap-24">
+            <div className="flex flex-col gap-4">
+              <About />
+            </div>
             <Projects />
             <ExpCard />
             <Contact />

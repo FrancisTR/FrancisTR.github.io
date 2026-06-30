@@ -32,7 +32,8 @@ const jobProjects: ProjectItem[] = [
     type: "OSS Contributor",
     stars: "https://flat.badgen.net/github/stars/Forem/Forem",
     description:
-      "An open-source blogging platform that powers dev.to, a platform for software developers where users can share and grow with other developers around the world.",
+      `• An open-source blogging platform that powers dev.to.
+• Enables software developers to share and grow with other developers worldwide.`,
     skills: [
       "Ruby on Rails",
       "HTML",
@@ -53,7 +54,7 @@ const jobProjects: ProjectItem[] = [
     type: "OSS Contributor",
     stars: "https://flat.badgen.net/github/stars/Virtual-Coffee/virtualcoffee.io",
     description:
-      "A community website that provides resources and events for developers around the world.",
+      `• A community website providing resources and events for developers worldwide.`,
     skills: [
       "HTML",
       "CSS",
@@ -71,7 +72,8 @@ const jobProjects: ProjectItem[] = [
     type: "Personal Project",
     stars: "https://flat.badgen.net/github/stars/FrancisTR/ClassifierAI",
     description:
-      "A chrome extension, that performs Image and Text Classification using Tensorflow.js, to automatically detect AI-generated articles on dev.to.",
+      `• A Chrome extension performing Image and Text Classification using Tensorflow.js.
+• Automatically detects AI-generated articles on dev.to.`,
     skills: [
       "HTML",
       "CSS",
