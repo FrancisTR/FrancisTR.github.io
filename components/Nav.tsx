@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Mail, MailOpen, Github, Linkedin } from "lucide-react";
 import { FaDev } from "react-icons/fa";
@@ -31,10 +31,12 @@ export default function Nav({
   const [isPokemonLoading, setIsPokemonLoading] = useState(false);
   const [pokemonError, setPokemonError] = useState<string | null>(null);
 
+  // Track timeout so it can be cancelled
+  const evolveTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+
   const underlineOnRevealClass = hasProfileEvolved
     ? `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:100%_2px] drop-shadow-[0_0_6px_var(--shiny-color)] transition-[background-size,filter] duration-700 ease-out`
     : `bg-[linear-gradient(to_right,var(--shiny-color),var(--shiny-color))] bg-left-bottom bg-no-repeat bg-[length:0%_2px] transition-[background-size,filter] duration-700 ease-out`;
-
 
   // Scroll-position based active section logic
   useEffect(() => {
@@ -42,7 +44,7 @@ export default function Nav({
       document.querySelectorAll<HTMLElement>("section[id]")
     );
 
-    const headerOffset = 96; // must match your sticky header height
+    const headerOffset = 96;
 
     const onScroll = () => {
       requestAnimationFrame(() => {
@@ -61,7 +63,7 @@ export default function Nav({
     };
 
     window.addEventListener("scroll", onScroll, { passive: true });
-    onScroll(); // initialize on load
+    onScroll();
 
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
@@ -79,29 +81,37 @@ export default function Nav({
     return {
       linkClass: isActive ? "active" : "",
       indicatorClass: `nav-indicator mr-4 h-px w-8 bg-slate-600 transition-all ${isActive
-          ? "active w-16 bg-foreground h-2"
-          : "group-hover:w-16 group-hover:bg-foreground group-hover:h-px"
+        ? "active w-16 bg-foreground h-2"
+        : "group-hover:w-16 group-hover:bg-foreground group-hover:h-px"
         }`,
       textClass: `nav-text text-xs font-bold uppercase tracking-widest ${isActive
-          ? "text-foreground"
-          : "text-slate-500 group-hover:text-foreground"
+        ? "text-foreground"
+        : "text-slate-500 group-hover:text-foreground"
         }`,
     };
   };
 
   const handleProfileMouseEnter = () => {
     if (hasProfileEvolved) return;
-
     setIsProfileCharging(true);
   };
 
-  const handlePokemonFetch = (pokemon: any, loading: boolean, error: string | null) => {
+  const handlePokemonFetch = (
+    pokemon: any,
+    loading: boolean,
+    error: string | null
+  ) => {
     setRandomPokemon(pokemon);
     setIsPokemonLoading(loading);
     setPokemonError(error);
-    if (pokemon) {
-      // Delay the reveal to match the border fill animation (approx 2 seconds)
-      setTimeout(() => {
+
+    // Only continue if still charging (prevents stale reveal)
+    if (pokemon && isProfileCharging) {
+      if (evolveTimeoutRef.current) {
+        clearTimeout(evolveTimeoutRef.current);
+      }
+
+      evolveTimeoutRef.current = setTimeout(() => {
         setHasProgressCompleted(true);
         setHasProfileEvolved(true);
         setIsProfileCharging(false);
@@ -112,13 +122,21 @@ export default function Nav({
   const handleProfileMouseLeave = () => {
     if (hasProfileEvolved) return;
 
-    /**
-     * If they leave before the progress finishes, reset it.
-     * If the progress already completed, keep waiting for the PokeAPI fetch.
-     */
+    // stop charging
+    setIsProfileCharging(false);
+
+    // reset progress state
     if (!hasProgressCompleted) {
-      setIsProfileCharging(false);
+      setHasProgressCompleted(false);
     }
+
+    // cancel pending evolution
+    if (evolveTimeoutRef.current) {
+      clearTimeout(evolveTimeoutRef.current);
+      evolveTimeoutRef.current = null;
+    }
+
+    setIsPokemonLoading(false);
   };
 
   const profileImageSrc = hasProfileEvolved
@@ -141,26 +159,23 @@ export default function Nav({
           <div className="profile-catch-wrapper">
             <div
               className={`profile-image-ring h-10 w-10 lg:h-[3.25rem] lg:w-[3.25rem] ${isProfileCharging ? "profile-image-ring-charging" : ""
-                } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""}`}
+                } ${hasProfileEvolved ? "profile-image-ring-evolved" : ""
+                }`}
               aria-label={profileImageAlt}
-              onMouseEnter={(e) => {
-                handleProfileMouseEnter();
-                // Trigger the fetch in the hidden PokemonProfile component via a custom event or a ref
-                // Since we are using a hidden component, we can trigger the fetch by dispatching a custom event
-                window.dispatchEvent(new CustomEvent('trigger-pokemon-fetch'));
-              }}
+              onMouseEnter={handleProfileMouseEnter}
               onMouseLeave={handleProfileMouseLeave}
               onTransitionEnd={(event) => {
-                /**
-                 * Only trigger when the custom progress property finishes.
-                 * This prevents transform or shadow transitions from evolving it.
-                 */
                 if (
                   !hasProfileEvolved &&
                   isProfileCharging &&
                   event.propertyName === "--profile-border-progress"
                 ) {
                   setHasProgressCompleted(true);
+
+                  // trigger fetch ONLY when fully charged
+                  window.dispatchEvent(
+                    new CustomEvent("trigger-pokemon-fetch")
+                  );
                 }
               }}
             >
@@ -168,8 +183,8 @@ export default function Nav({
                 src={profileImageSrc}
                 alt={profileImageAlt}
                 className={`profile-image ${hasProfileEvolved
-                    ? "profile-image-pokemon"
-                    : "profile-image-pokeball"
+                  ? "profile-image-pokemon"
+                  : "profile-image-pokeball"
                   }`}
                 draggable={false}
               />
@@ -186,12 +201,15 @@ export default function Nav({
             )}
 
             {!hasProfileEvolved && pokemonError && (
-              <span className="profile-catch-error">{pokemonError}</span>
+              <span className="profile-catch-error">
+                {pokemonError}
+              </span>
             )}
           </div>
-          <PokemonProfile 
-            hasProfileEvolved={hasProfileEvolved} 
-            onFetchPokemon={handlePokemonFetch} 
+
+          <PokemonProfile
+            hasProfileEvolved={hasProfileEvolved}
+            onFetchPokemon={handlePokemonFetch}
           />
         </div>
 
@@ -200,8 +218,23 @@ export default function Nav({
         </h2>
 
         <p className="text-md text-muted-foreground text-center lg:text-start">
-          Software Engineering student with <span className={underlineOnRevealClass}>4+ years of experience</span>. 
-          Open-source <span className={underlineOnRevealClass}>contributor on Forem (dev.to)</span>, a platform supporting a community of <span className={underlineOnRevealClass}>3M+ developers</span> and backed by organizations such as <span className={underlineOnRevealClass}>Google and GitHub</span>.
+          Software Engineering student with{" "}
+          <span className={underlineOnRevealClass}>
+            4+ years of experience
+          </span>
+          . Open-source{" "}
+          <span className={underlineOnRevealClass}>
+            contributor on Forem (dev.to)
+          </span>
+          , a platform supporting a community of{" "}
+          <span className={underlineOnRevealClass}>
+            3M+ developers
+          </span>{" "}
+          and backed by organizations such as{" "}
+          <span className={underlineOnRevealClass}>
+            Google and GitHub
+          </span>
+          .
         </p>
 
         <ul className="flex flex-wrap gap-4 mt-4 justify-center lg:justify-start">
