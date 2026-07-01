@@ -7,7 +7,7 @@ import { Analytics } from "@vercel/analytics/react";
 
 const inter = Inter({ subsets: ["latin"] });
 const siteUrl = "https://francistr.github.io";
-const defaultTitle = "Francis Tran | Full-Stack Developer & Software Engineering Student";
+const defaultTitle = "Francis Tran | Full-Stack Developer";
 const defaultDescription =
   "Francis Tran is a software engineering student and full-stack developer building modern web apps, open-source products, and AI-powered experiences.";
 
